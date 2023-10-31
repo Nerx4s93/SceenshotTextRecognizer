@@ -18,9 +18,9 @@ namespace SceenshotTextRecognizer.GUI
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
-        [DllImportAttribute("user32.dll")]
+        [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
+        [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
         #endregion
@@ -34,7 +34,7 @@ namespace SceenshotTextRecognizer.GUI
         private Server _server;
 
         private Keys _bindKey;
-        private bool _nawBind = false;
+        private bool _waitKeyBind;
 
         #region GlobalKeyboardHook
 
@@ -50,31 +50,28 @@ namespace SceenshotTextRecognizer.GUI
 
         private void globalKeyboardHook_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == _bindKey)
+            if (_waitKeyBind)
             {
-                if (_nawBind == true)
-                {
-                    _nawBind = false;
-                    return;
-                }
-
-                if (ProgramData.SelectSone == false)
-                {
-                    ProgramData.SelectSone = true;
-                    Fon fon = new Fon();
-                    fon.Show();
-                }
+                buttonBind.Text = "Bind: " + e.KeyData.ToString();
+                _bindKey = e.KeyData;
+                buttonBind.Enabled = true;
+                _waitKeyBind = false;
+            }
+            else if (e.KeyData == _bindKey && !ProgramData.SelectSone)
+            {
+                ProgramData.SelectSone = true;
+                Fon fon = new Fon();
+                fon.Show();
             }
         }
 
         #endregion
         #region Settings
 
-        private void textBox_Bind_KeyDown(object sender, KeyEventArgs e)
+        private void buttonBind_Click(object sender, EventArgs e)
         {
-            _bindKey = e.KeyData;
-            _nawBind = true;
-            textBox_Bind.Text = e.KeyData.ToString();
+            _waitKeyBind = true;
+            buttonBind.Enabled = false;
         }
 
         private void checkBoxShowOnOtherForms_CheckedChanged(object sender, EventArgs e)

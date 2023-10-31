@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox_Bind = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.buttonBind = new System.Windows.Forms.Button();
             this.checkBoxWorkInFon = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOnOtherForms = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabPageLanguages = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.listView_Download = new System.Windows.Forms.ListView();
@@ -53,17 +52,6 @@
             this.tabPageCombinate.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox_Bind
-            // 
-            this.textBox_Bind.BackColor = System.Drawing.Color.White;
-            this.textBox_Bind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Bind.Location = new System.Drawing.Point(6, 26);
-            this.textBox_Bind.Name = "textBox_Bind";
-            this.textBox_Bind.ReadOnly = true;
-            this.textBox_Bind.Size = new System.Drawing.Size(446, 26);
-            this.textBox_Bind.TabIndex = 0;
-            this.textBox_Bind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Bind_KeyDown);
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageSettings);
@@ -79,10 +67,9 @@
             // tabPageSettings
             // 
             this.tabPageSettings.BackColor = System.Drawing.Color.White;
+            this.tabPageSettings.Controls.Add(this.buttonBind);
             this.tabPageSettings.Controls.Add(this.checkBoxWorkInFon);
             this.tabPageSettings.Controls.Add(this.checkBoxShowOnOtherForms);
-            this.tabPageSettings.Controls.Add(this.label4);
-            this.tabPageSettings.Controls.Add(this.textBox_Bind);
             this.tabPageSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabPageSettings.Location = new System.Drawing.Point(4, 24);
             this.tabPageSettings.Name = "tabPageSettings";
@@ -91,11 +78,22 @@
             this.tabPageSettings.TabIndex = 0;
             this.tabPageSettings.Text = "Настройки";
             // 
+            // buttonBind
+            // 
+            this.buttonBind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonBind.Location = new System.Drawing.Point(8, 6);
+            this.buttonBind.Name = "buttonBind";
+            this.buttonBind.Size = new System.Drawing.Size(446, 34);
+            this.buttonBind.TabIndex = 4;
+            this.buttonBind.Text = "Bind:";
+            this.buttonBind.UseVisualStyleBackColor = true;
+            this.buttonBind.Click += new System.EventHandler(this.buttonBind_Click);
+            // 
             // checkBoxWorkInFon
             // 
             this.checkBoxWorkInFon.AutoSize = true;
             this.checkBoxWorkInFon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxWorkInFon.Location = new System.Drawing.Point(8, 88);
+            this.checkBoxWorkInFon.Location = new System.Drawing.Point(8, 76);
             this.checkBoxWorkInFon.Name = "checkBoxWorkInFon";
             this.checkBoxWorkInFon.Size = new System.Drawing.Size(233, 24);
             this.checkBoxWorkInFon.TabIndex = 3;
@@ -106,24 +104,13 @@
             // 
             this.checkBoxShowOnOtherForms.AutoSize = true;
             this.checkBoxShowOnOtherForms.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxShowOnOtherForms.Location = new System.Drawing.Point(8, 58);
+            this.checkBoxShowOnOtherForms.Location = new System.Drawing.Point(8, 46);
             this.checkBoxShowOnOtherForms.Name = "checkBoxShowOnOtherForms";
             this.checkBoxShowOnOtherForms.Size = new System.Drawing.Size(270, 24);
             this.checkBoxShowOnOtherForms.TabIndex = 2;
             this.checkBoxShowOnOtherForms.Text = "Показывать поверхдругих  окон";
             this.checkBoxShowOnOtherForms.UseVisualStyleBackColor = true;
             this.checkBoxShowOnOtherForms.CheckedChanged += new System.EventHandler(this.checkBoxShowOnOtherForms_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(2, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(188, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Клавиша сканирования";
             // 
             // tabPageLanguages
             // 
@@ -318,8 +305,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox_Bind;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageSettings;
         private System.Windows.Forms.TabPage tabPageLanguages;
@@ -333,11 +318,11 @@
         private System.Windows.Forms.Button buttonEditCombination;
         private System.Windows.Forms.Button buttonDeleteCombination;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonFormMin;
         private System.Windows.Forms.CheckBox checkBoxShowOnOtherForms;
         private System.Windows.Forms.CheckBox checkBoxWorkInFon;
+        private System.Windows.Forms.Button buttonBind;
     }
 }
 
