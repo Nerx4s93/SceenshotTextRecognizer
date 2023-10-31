@@ -33,9 +33,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private Server _server;
 
-        // Кнопка активации выбора зоны обработки
         private Keys _bindKey;
-        // Изменина ли кнопка активации выбора зоны обрабоки сейчас
         private bool _nawBind = false;
 
         #region GlobalKeyboardHook
@@ -175,8 +173,9 @@ namespace SceenshotTextRecognizer.GUI
 
         private void buttonDeleteCombination_Click(object sender, EventArgs e)
         {
-            CombinationLanguagePacks.combinationLanguagePacks.Remove(
-                CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == listViewCombinationLanguagePacks.SelectedItems[0].Text));
+            var itemDeleted = CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == listViewCombinationLanguagePacks.SelectedItems[0].Text);
+
+            CombinationLanguagePacks.combinationLanguagePacks.Remove(itemDeleted);
             CombinationLanguagePacks.Save();
 
             UpdateForm();
@@ -208,8 +207,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private void FormMain_ResizeEnd(object sender, EventArgs e)
         {
-            if (_server != null)
-                _server.Dispose();
+            _server?.Dispose();
         }
 
         private void buttonFormMin_Click(object sender, EventArgs e)

@@ -20,28 +20,21 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             StartDownload();
         }
 
-        // Скачиваемая модель
         private Model _model;
 
-        // Поток, где скачивается модель
         private Thread _thread;
-        // Клиент для скачивания файла
         private WebClient _client;
 
-        // Закончино ли скачивание
         private bool _endDownload;
 
-        // Отменено ли скачивание
         public bool _cansel { get; private set; }
 
         private void DownloadModel_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Не закрывать форму при загрузке
-            if (_endDownload == false)
+            if (!_endDownload)
                 e.Cancel = true;
         }
 
-        // Начать загрузку
         private void StartDownload()
         {
             _thread = new Thread(() =>
@@ -54,7 +47,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             _thread.Start();
         }
 
-        // Процесс загрузки
         private void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             BeginInvoke((MethodInvoker)delegate
@@ -67,7 +59,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             });
         }
 
-        // Конец загрузки
         private void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             BeginInvoke((MethodInvoker)delegate
@@ -88,13 +79,11 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             if (_endDownload == false)
             {
-                //Отмена загрузки
                 _cansel = true;
                 _client.CancelAsync();
                 _thread.Abort();
             }
             else
-                //Закрыть форму
                 Dispose();
         }
     }

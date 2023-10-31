@@ -1,12 +1,14 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Windows.Automation.Text;
 using System.Windows.Forms;
 
 namespace SceenshotTextRecognizer
 {
-    internal class Server
+    internal class Server : IDisposable
     {
         public Server(Form form)
         {
@@ -15,23 +17,14 @@ namespace SceenshotTextRecognizer
 
         private readonly Form _form;
 
-        // Ссылка на экземпляр класса потока
         private Thread _thread;
-        // Ссылка на экземпляр класса сервера
         private Socket _listenSocket;
 
-        // Айпи сервера
-        private string _ip = "127.0.0.1";
-        // Порт сервера
-        private int _port = 8005;
-
-        // Запуск сервера
         public void StartServer()
         {
-            //Сервер в новом потоке
             _thread = new Thread(() =>
             {
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8005);
                 _listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 try
@@ -41,8 +34,8 @@ namespace SceenshotTextRecognizer
 
                     while (true)
                     {
-                        Socket handler = _listenSocket.Accept();
-                        StringBuilder builder = new StringBuilder();
+                        var handler = _listenSocket.Accept();
+                        var builder = new StringBuilder();
                         int bytes = 0;
                         byte[] data = new byte[256];
 
@@ -58,9 +51,10 @@ namespace SceenshotTextRecognizer
                         handler.Shutdown(SocketShutdown.Both);
                         handler.Close();
 
-                        //Открыть форму при получении сообщения "show"
                         if (message == "show")
+                        {
                             _form.Invoke((MethodInvoker)delegate () { _form.Show(); });
+                        }
                     }
                 }
                 catch { }
@@ -68,15 +62,15 @@ namespace SceenshotTextRecognizer
             {
                 IsBackground = true
             };
-            //Запуск потока
             _thread.Start();
         }
 
-        // Отчистить данные, занятые классом
         public void Dispose()
         {
             _listenSocket.Close();
+            _listenSocket = null;
             _thread.Abort();
+            _thread = null;
         }
     }
 }

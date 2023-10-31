@@ -19,13 +19,10 @@ namespace SceenshotTextRecognizer.GUI
             _screenshotWithBorders = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
         }
 
-        // Ссылка на изображение экрана
         private Bitmap _screenshot;
 
-        // Ссылка на изображение экрана с нарисованными краями выделенной области
         private Bitmap _screenshotWithBorders;
 
-        // Нарисовано ли изображение
         private bool _drawed = false;
 
         private void Fon_Paint(object sender, PaintEventArgs e)
@@ -40,12 +37,9 @@ namespace SceenshotTextRecognizer.GUI
 
         #region Select
 
-        // Нажата ли левая кнопка мыши
         private bool _moseDown = false;
 
-        // Начало движение мыши
         private Point _startPoint = new Point(0, 0);
-        // Конец движения мыши
         private Point _endPoint = new Point(0, 0);
 
         private void Fon_MouseDown(object sender, MouseEventArgs e)
@@ -93,7 +87,6 @@ namespace SceenshotTextRecognizer.GUI
 
         #endregion
 
-        // Нарисовать выделенную область
         private void Draw()
         {
             _screenshotWithBorders = (Bitmap)_screenshot.Clone();
@@ -105,16 +98,16 @@ namespace SceenshotTextRecognizer.GUI
             int minY = Math.Min(_startPoint.Y, _endPoint.Y);
             int maxY = Math.Max(_startPoint.Y, _endPoint.Y);
 
-            graphicsBorders.FillRectangle(new SolidBrush(Color.FromArgb(124, 0, 0, 0)), 0, 0, Screen.PrimaryScreen.Bounds.Width, minY);
-            graphicsBorders.FillRectangle(new SolidBrush(Color.FromArgb(124, 0, 0, 0)), 0, minY, minX, maxY - minY);
-            graphicsBorders.FillRectangle(new SolidBrush(Color.FromArgb(124, 0, 0, 0)), maxX, minY, Screen.PrimaryScreen.Bounds.Width - maxX, maxY - minY);
-            graphicsBorders.FillRectangle(new SolidBrush(Color.FromArgb(124, 0, 0, 0)), 0, maxY, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height - _endPoint.Y);
+            var solidBrush = new SolidBrush(Color.FromArgb(124, 0, 0, 0));
+            graphicsBorders.FillRectangle(solidBrush, 0, 0, Screen.PrimaryScreen.Bounds.Width, minY);
+            graphicsBorders.FillRectangle(solidBrush, 0, minY, minX, maxY - minY);
+            graphicsBorders.FillRectangle(solidBrush, maxX, minY, Screen.PrimaryScreen.Bounds.Width - maxX, maxY - minY);
+            graphicsBorders.FillRectangle(solidBrush, 0, maxY, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height - _endPoint.Y);
 
             Graphics formGraphics = CreateGraphics();
             formGraphics.DrawImage(_screenshotWithBorders, new Point(0, 0));
         }
 
-        // Сделать снимок экрана
         private Bitmap TakeSceenShow()
         {
             Rectangle screenBounds = Screen.PrimaryScreen.Bounds;

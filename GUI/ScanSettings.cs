@@ -19,44 +19,35 @@ namespace SceenshotTextRecognizer.GUI
             FormUpdate();
         }
 
-        // Обрабатываемое изображение
         private Bitmap _bitmap;
 
-        // Конекст для поиска языковой модели/комбинации
         private string _find;
 
-        // Выбраная модель/комбинация для обработки изображения
         private string _tag;
 
-        // Идёт ли загрузка
         private bool _loading;
 
         private void textBoxFind_TextChanged(object sender, EventArgs e)
         {
-            // Изменить критерий поиска
             _find = textBoxFind.Text;
             FormUpdate();
         }
 
         private void listViewSelectModels_DoubleClick(object sender, EventArgs e)
         {
-            //Если элемент не выбран, то завершить метод
             if (listViewSelectModels.SelectedItems.Count < 1)
                 return;
 
-            //Выбать переменную
             textBoxSelected.Text = listViewSelectModels.SelectedItems[0].Text;
             _tag = (string)listViewSelectModels.SelectedItems[0].Tag;
         }
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            //Начать загрузку
             _loading = true;
             buttonScan.Enabled = false;
             buttonScan.Text = "Загрузка";
 
-            //Обработка в новом потоке
             Thread thread = new Thread(() =>
             {
                 string model = _tag == "Model" ? textBoxSelected.Text : string.Join("+", CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == textBoxSelected.Text).models);
@@ -74,30 +65,25 @@ namespace SceenshotTextRecognizer.GUI
                     buttonScan.Text = "Сканировать";
                 });
 
-                //Показать Результат обработки
                 ImageTextResult imageTextResult = new ImageTextResult(res.GetText());
                 imageTextResult.ShowDialog();
             })
             {
                 IsBackground = true
             };
-            //Запуск потока
             thread.Start();
         }
 
         private void ScanSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Отмена закрытия, если идёт загрузка
             if (_loading)
                 e.Cancel = true;
         }
 
         public void FormUpdate()
         {
-            //Удалить все элементы ListView
             listViewSelectModels.Clear();
 
-            //Добавить в лист языковые модели
             foreach (Model model in Model.Downloaded)
             {
                 ListViewItem listViewItem = new ListViewItem(model.model);
@@ -109,7 +95,6 @@ namespace SceenshotTextRecognizer.GUI
                     listViewSelectModels.Items.Add(listViewItem);
             }
 
-            //Добавить в лист языковые комбинации
             foreach (CombinationLanguagePacks combinationLanguagePacks in CombinationLanguagePacks.combinationLanguagePacks)
             {
                 ListViewItem listViewItem = new ListViewItem(combinationLanguagePacks.name);

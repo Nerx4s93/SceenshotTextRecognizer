@@ -34,27 +34,21 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             UpdateForm();
         }
 
-        //имя языковой комбинации
         private string _name;
         private bool _editCombination;
 
-        //Используемые языковые модели
         List<Model> _use = new List<Model>();
-        //Неиспользуемые языковые модели
         List<Model> _dontUse = new List<Model>();
 
-        //Не сохранино ли
         private bool _dontSave;
 
         #region lists
 
         private void listViewDontUseModels_DoubleClick(object sender, EventArgs e)
         {
-            //Завершить метод, если не выбрана модель
             if (listViewDontUseModels.SelectedItems.Count != 1)
                 return;
 
-            //Добавить модель в использование
             _dontSave = true;
 
             Model model = _dontUse.Find(item => item.name == listViewDontUseModels.SelectedItems[0].Text);
@@ -67,11 +61,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void listViewUseModels_DoubleClick(object sender, EventArgs e)
         {
-            //Завершить метод, если не выбрана модель
             if (listViewUseModels.SelectedItems.Count != 1)
                 return;
 
-            //Убрать модель из использования
             _dontSave = true;
 
             Model model = _use.Find(item => item.name == listViewUseModels.SelectedItems[0].Text);
@@ -83,13 +75,11 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         #endregion
 
-        //Изменение имяни комбинации языков
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
             _dontSave = true;
         }
 
-        //Сохранить комбинацию языков
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxName.Text))

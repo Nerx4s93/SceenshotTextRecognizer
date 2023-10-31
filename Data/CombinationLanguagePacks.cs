@@ -16,15 +16,11 @@ namespace SceenshotTextRecognizer.Data
             this.models = models;
         }
 
-        // Имя языковой комбинаций
         public string name;
-        // Модели, используемые в языковой комбинации
         public List<string> models = new List<string>();
 
-        // Созданные языковые комбинации
         public static List<CombinationLanguagePacks> combinationLanguagePacks;
 
-        // Загрузка языковых комбинаций
         public static void Load()
         {
             string path = "data\\CombinationLanguagePacks.json";
@@ -47,8 +43,6 @@ namespace SceenshotTextRecognizer.Data
                 }
             }
         }
-
-        // Сохранение языковых комбинаций
         public static void Save()
         {
             using (StreamWriter streamWriter = new StreamWriter("data\\CombinationLanguagePacks.json"))
