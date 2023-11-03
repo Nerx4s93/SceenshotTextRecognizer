@@ -40,6 +40,8 @@ namespace SceenshotTextRecognizer.GUI
 
             textBoxSelected.Text = listViewSelectModels.SelectedItems[0].Text;
             _tag = (string)listViewSelectModels.SelectedItems[0].Tag;
+
+            buttonScan.Enabled = true;
         }
 
         private void buttonScan_Click(object sender, EventArgs e)
