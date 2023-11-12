@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Windows.Automation.Text;
 using System.Windows.Forms;
 
 namespace SceenshotTextRecognizer

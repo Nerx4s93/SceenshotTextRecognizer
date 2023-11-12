@@ -35,8 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ReaLTaiizor, Version=3.7.9.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ReaLTaiizor.3.7.9.6\lib\net48\ReaLTaiizor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,10 +51,15 @@
     <Reference Include="Tesseract, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Tesseract.5.2.0\lib\net48\Tesseract.dll</HintPath>
     </Reference>
-    <Reference Include="UIAutomationClient" />
-    <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomForm.cs" />
+    <Compile Include="GUI\MessageBoxes\DownloadModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\MessageBoxes\DownloadModel.Designer.cs">
+      <DependentUpon>DownloadModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MessageBoxes\EditCombinationLanguagePack.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,25 +78,19 @@
     <Compile Include="GUI\ScanSettings.Designer.cs">
       <DependentUpon>ScanSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProgramData.cs" />
-    <Compile Include="Data\CombinationLanguagePacks.cs" />
-    <Compile Include="GUI\MessageBoxes\DownloadModel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\MessageBoxes\DownloadModel.Designer.cs">
-      <DependentUpon>DownloadModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Fon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Fon.Designer.cs">
-      <DependentUpon>Fon.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramData.cs" />
+    <Compile Include="Data\CombinationLanguagePacks.cs" />
+    <Compile Include="GUI\Fon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Fon.Designer.cs">
+      <DependentUpon>Fon.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalKeyboardHook.cs" />
     <Compile Include="Data\Model.cs" />
@@ -101,9 +104,6 @@
     <EmbeddedResource Include="GUI\Fon.resx">
       <DependentUpon>Fon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MessageBoxes\EditCombinationLanguagePack.resx">
       <DependentUpon>EditCombinationLanguagePack.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ScanSettings.resx">
       <DependentUpon>ScanSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

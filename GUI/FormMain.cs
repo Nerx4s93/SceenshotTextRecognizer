@@ -1,33 +1,21 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
 using System;
+using System.Windows.Forms;
 using Utilities;
 using System.Linq;
-using System.Collections.Generic;
+using SceenshotTextRecognizer.Data;
+using ReaLTaiizor.Child.Crown;
 using System.IO;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
-using SceenshotTextRecognizer.Data;
-using System.Runtime.InteropServices;
 
 namespace SceenshotTextRecognizer.GUI
 {
-    // TODO: Функция автозагрузки
     public partial class FormMain : Form
     {
-        #region Dll
-
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        #endregion
-
         public FormMain()
         {
             InitializeComponent();
+            CustomForm.RoundOffTheEdges(this);
             UpdateForm();
         }
 
@@ -52,9 +40,9 @@ namespace SceenshotTextRecognizer.GUI
         {
             if (_waitKeyBind)
             {
-                buttonBind.Text = "Bind: " + e.KeyData.ToString();
+                hopeButtonBind.Text = "Bind: " + e.KeyData.ToString();
                 _bindKey = e.KeyData;
-                buttonBind.Enabled = true;
+                hopeButtonBind.Enabled = true;
                 _waitKeyBind = false;
             }
             else if (e.KeyData == _bindKey && !ProgramData.SelectSone)
@@ -68,26 +56,41 @@ namespace SceenshotTextRecognizer.GUI
         #endregion
         #region Settings
 
-        private void buttonBind_Click(object sender, EventArgs e)
+        private void hopeButtonBind_Click(object sender, EventArgs e)
         {
             _waitKeyBind = true;
-            buttonBind.Enabled = false;
+            hopeButtonBind.Enabled = false;
         }
 
-        private void checkBoxShowOnOtherForms_CheckedChanged(object sender, EventArgs e)
+        private void hopeCheckBoxShowOnOtherForms_CheckedChanged(object sender, System.EventArgs e)
         {
-            TopMost = checkBoxShowOnOtherForms.Checked;
+            TopMost = hopeCheckBoxShowOnOtherForms.Checked;
         }
 
         #endregion
         #region Language packs
 
-        private void listView_Delete_DoubleClick(object sender, EventArgs e)
+        private void crownListViewLanguagePacks_SelectedIndicesChanged(object sender, EventArgs e)
         {
-            if (listView_Delete.SelectedItems.Count == 0)
-                return;
+            if (crownListViewLanguagePacks.SelectedIndices.Count > 0)
+            {
+                hopeButtonDeleteLanguageModel.Visible = true;
+            }
+            else
+            {
+                hopeButtonDeleteLanguageModel.Visible = false;
+            }
+        }
 
-            Model model = Model.Downloaded.Find(item => item.name == listView_Delete.SelectedItems[0].Text);
+        private void hopeTextBoxSearchLanguageModel_TextChanged(object sender, EventArgs e)
+        {
+            UpdateForm();
+        }
+
+        private void hopeButtonDeleteLanguageModel_Click(object sender, EventArgs e)
+        {
+            Model model = Model.Downloaded.Find(item => item.name == crownListViewLanguagePacks.Items[crownListViewLanguagePacks.SelectedIndices[0]].Text);
+
             if (MessageBox.Show($"Вы дочно хотите удалить языковой пакет \"{model.name}\"?", "Подтвердить удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 File.Delete($@"tessdata\{model.model}.traineddata");
@@ -99,78 +102,36 @@ namespace SceenshotTextRecognizer.GUI
             }
         }
 
-        private void listView_Download_DoubleClick(object sender, EventArgs e)
+        private void hopeButtonDownloadLanguageModels_Click(object sender, EventArgs e)
         {
-            if (listView_Download.SelectedItems.Count == 0)
-                return;
+            DownloadModel downloadMode = new DownloadModel();
+            downloadMode.ShowDialog();
 
-            Model model = Model.CanDownload.Find(item => item.name == listView_Download.SelectedItems[0].Text);
-            DownloadModel downloadModel = new DownloadModel(model);
-            downloadModel.ShowDialog();
-
-            if (downloadModel._cansel == false)
-            {
-                Model.CanDownload.Remove(model);
-                Model.Downloaded.Add(model);
-            }
-
+            Model.Load();
             UpdateForm();
         }
 
         #endregion
         #region Combination of language packs
 
-        private void listViewCombinationLanguagePacks_SelectedIndexChanged(object sender, EventArgs e)
+        private void crownListViewCombinationOfLanguagePacks_SelectedIndicesChanged(object sender, EventArgs e)
         {
-            if (listViewCombinationLanguagePacks.SelectedItems.Count == 0)
+            if (crownListViewCombinationOfLanguagePacks.SelectedIndices.Count == 0)
             {
-                buttonDeleteCombination.Visible = false;
-                buttonEditCombination.Visible = false;
-            }
-            else if (listViewCombinationLanguagePacks.SelectedItems.Count == 1)
-            {
-                buttonDeleteCombination.Visible = true;
-                buttonEditCombination.Visible = true;
+                hopeButtonDeleteCombination.Visible = false;
+                hopeButtonEditCombination.Visible = false;
             }
             else
             {
-                buttonDeleteCombination.Visible = true;
-                buttonEditCombination.Visible = false;
+                hopeButtonDeleteCombination.Visible = true;
+                hopeButtonEditCombination.Visible = true;
             }
         }
 
-        private void listViewCombinationLanguagePacks_DoubleClick(object sender, EventArgs e)
+        private void hopeButtonDeleteCombination_Click(object sender, EventArgs e)
         {
-            if (listViewCombinationLanguagePacks.SelectedItems.Count < 1)
-                return;
-
-            EditCombinationLanguagePack combinationLanguagePacks = new EditCombinationLanguagePack(
-                CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == listViewCombinationLanguagePacks.SelectedItems[0].Text));
-            combinationLanguagePacks.ShowDialog();
-
-            UpdateForm();
-        }
-
-        private void buttonEditCombination_Click(object sender, EventArgs e)
-        {
-            EditCombinationLanguagePack combinationLanguagePacks = new EditCombinationLanguagePack(
-                CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == listViewCombinationLanguagePacks.SelectedItems[0].Text));
-            combinationLanguagePacks.ShowDialog();
-
-            UpdateForm();
-        }
-
-        private void buttonNewCombination_Click(object sender, EventArgs e)
-        {
-            EditCombinationLanguagePack editCombinationLanguagePack = new EditCombinationLanguagePack();
-            editCombinationLanguagePack.ShowDialog();
-
-            UpdateForm();
-        }
-
-        private void buttonDeleteCombination_Click(object sender, EventArgs e)
-        {
-            var itemDeleted = CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == listViewCombinationLanguagePacks.SelectedItems[0].Text);
+            var itemDeleted = CombinationLanguagePacks.combinationLanguagePacks.Find(
+               item => item.name == crownListViewCombinationOfLanguagePacks.Items[crownListViewCombinationOfLanguagePacks.SelectedIndices[0]].Text);
 
             CombinationLanguagePacks.combinationLanguagePacks.Remove(itemDeleted);
             CombinationLanguagePacks.Save();
@@ -178,57 +139,73 @@ namespace SceenshotTextRecognizer.GUI
             UpdateForm();
         }
 
-        #endregion
-        #region Top
-
-        private void FormMain_MouseMove(object sender, MouseEventArgs e)
+        private void hopeButtonEditCombination_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            var combinationLanguagePacks = CombinationLanguagePacks.combinationLanguagePacks.Find(
+                item => item.name == crownListViewCombinationOfLanguagePacks.Items[crownListViewCombinationOfLanguagePacks.SelectedIndices[0]].Text);
+
+            EditCombinationLanguagePack editCombinationLanguagePacks = new EditCombinationLanguagePack(combinationLanguagePacks);
+            editCombinationLanguagePacks.ShowDialog();
+
+            UpdateForm();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
+        private void hopeButtonNewCombination_Click(object sender, EventArgs e)
         {
-            if (checkBoxWorkInFon.Checked == true)
+            EditCombinationLanguagePack editCombinationLanguagePack = new EditCombinationLanguagePack();
+            editCombinationLanguagePack.ShowDialog();
+
+            UpdateForm();
+        }
+
+        #endregion
+
+        private void FormMain_ResizeEnd(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
             {
+                ShowInTaskbar = true;
+            }
+
+            _server?.Dispose();
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (hopeCheckBoxWorkInFon.Checked)
+            {
+                e.Cancel = true;
+
                 _server = new Server(this);
                 _server.StartServer();
 
                 Hide();
             }
-            else Close();
+            else Application.Exit();
         }
-
-        private void FormMain_ResizeEnd(object sender, EventArgs e)
-        {
-            _server?.Dispose();
-        }
-
-        private void buttonFormMin_Click(object sender, EventArgs e)
-        {
-            ShowInTaskbar = true;
-            WindowState = FormWindowState.Minimized;
-        }
-
-        #endregion
 
         public void UpdateForm()
         {
-            listView_Delete.Clear();
-            listView_Download.Clear();
-            listViewCombinationLanguagePacks.Clear();
+            crownListViewLanguagePacks.Items.Clear();
+            crownListViewCombinationOfLanguagePacks.Items.Clear();
 
             for (int i = 0; i != Model.Downloaded.Count; i++)
-                listView_Delete.Items.Add(Model.Downloaded[i].name);
-
-            for (int i = 0; i != Model.CanDownload.Count; i++)
-                listView_Download.Items.Add(Model.CanDownload[i].name);
+            {
+                if (string.IsNullOrEmpty(hopeTextBoxSearchLanguageModel.Text) || Model.Downloaded[i].name.IndexOf(hopeTextBoxSearchLanguageModel.Text) == 0)
+                {
+                    var crownListItem = new CrownListItem(Model.Downloaded[i].name);
+                    crownListViewLanguagePacks.Items.Add(crownListItem);
+                }
+            }
 
             for (int i = 0; i != CombinationLanguagePacks.combinationLanguagePacks.Count; i++)
-                listViewCombinationLanguagePacks.Items.Add(CombinationLanguagePacks.combinationLanguagePacks[i].name);
+            {
+                if (string.IsNullOrEmpty(hopeTextBoxSearchCombinationOfLanguagePacks.Text) || Model.Downloaded[i].name.IndexOf(hopeTextBoxSearchCombinationOfLanguagePacks.Text) == 0)
+                {
+                    var crownListItem = new CrownListItem(CombinationLanguagePacks.combinationLanguagePacks[i].name);
+                    crownListViewCombinationOfLanguagePacks.Items.Add(crownListItem);
+                }
+            }
         }
     }
 }
