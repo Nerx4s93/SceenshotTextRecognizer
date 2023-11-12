@@ -154,10 +154,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     {
                         File.Delete($@"tessdata\{_models[iModel].model}.traineddata");
                         hopeForm.Text = "Загрузка отменена";
+                        Text = "Загрузка отменена";
                     }
                     else
                     {
                         hopeForm.Text = "Загрузка завершена";
+                        Text = "Загрузка завершена";
 
                         labelStatusDownloadedModels.Text = $"Загружено моделей: {_models.Count}/{_models.Count}";
                         lostProgressBarDownloadedModels.Progress = 100;
