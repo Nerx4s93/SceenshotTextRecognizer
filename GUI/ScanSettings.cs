@@ -1,8 +1,10 @@
-﻿using SceenshotTextRecognizer.Data;
-using System;
-using System.Drawing;
-using System.Threading;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using System;
+using SceenshotTextRecognizer.Data;
+using ReaLTaiizor.Child.Crown;
+using SceenshotTextRecognizer.Properties;
+using System.Threading;
 using Tesseract;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
 
@@ -13,10 +15,13 @@ namespace SceenshotTextRecognizer.GUI
         public ScanSettings(Bitmap bitmap)
         {
             InitializeComponent();
+            CustomForm.RoundOffTheEdges(this);
+            FormUpdate();
+
+            imageButtonClose.ImageNoHovered = Resources.close;
+            imageButtonClose.ImageOnHovered = Resources.close2;
 
             _bitmap = bitmap;
-
-            FormUpdate();
         }
 
         private Bitmap _bitmap;
@@ -27,32 +32,35 @@ namespace SceenshotTextRecognizer.GUI
 
         private bool _loading;
 
-        private void textBoxFind_TextChanged(object sender, EventArgs e)
+        private void hopeTextBoxFind_TextChanged(object sender, EventArgs e)
         {
-            _find = textBoxFind.Text;
+            _find = hopeTextBoxFind.Text;
             FormUpdate();
         }
 
-        private void listViewSelectModels_DoubleClick(object sender, EventArgs e)
+        private void crownListViewSelectModels_DoubleClick(object sender, EventArgs e)
         {
-            if (listViewSelectModels.SelectedItems.Count < 1)
+            if (crownListViewSelectModels.SelectedIndices.Count == 0)
+            {
                 return;
+            }
 
-            textBoxSelected.Text = listViewSelectModels.SelectedItems[0].Text;
-            _tag = (string)listViewSelectModels.SelectedItems[0].Tag;
+            hopeTextBoxSelected.Text = crownListViewSelectModels.Items[crownListViewSelectModels.SelectedIndices[0]].Text;
+            _tag = (string)crownListViewSelectModels.Items[crownListViewSelectModels.SelectedIndices[0]].Tag;
 
-            buttonScan.Enabled = true;
+            hopeButtonScan.Enabled = true;
         }
 
-        private void buttonScan_Click(object sender, EventArgs e)
+        private void hopeButtonScan_Click(object sender, EventArgs e)
         {
             _loading = true;
-            buttonScan.Enabled = false;
-            buttonScan.Text = "Загрузка";
-
+            hopeButtonScan.Enabled = false;
+            hopeButtonScan.Text = "Загрузка";
             Thread thread = new Thread(() =>
             {
-                string model = _tag == "Model" ? textBoxSelected.Text : string.Join("+", CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == textBoxSelected.Text).models);
+                string model = _tag == "Model"?
+                    Model.Downloaded.Find(item => item.name == hopeTextBoxSelected.Text).model :
+                    string.Join("+", CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models);
 
                 var ocrengine = new TesseractEngine(@".\tessdata", model, EngineMode.Default);
 
@@ -63,8 +71,8 @@ namespace SceenshotTextRecognizer.GUI
                 _loading = false;
                 BeginInvoke((MethodInvoker)delegate
                 {
-                    buttonScan.Enabled = true;
-                    buttonScan.Text = "Сканировать";
+                    hopeButtonScan.Enabled = true;
+                    hopeButtonScan.Text = "Сканировать";
                 });
 
                 ImageTextResult imageTextResult = new ImageTextResult(res.GetText());
@@ -79,34 +87,49 @@ namespace SceenshotTextRecognizer.GUI
         private void ScanSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_loading)
+            {
                 e.Cancel = true;
+            }
         }
 
-        public void FormUpdate()
+        private void FormUpdate()
         {
-            listViewSelectModels.Clear();
+            crownListViewSelectModels.Items.Clear();
 
             foreach (Model model in Model.Downloaded)
             {
-                ListViewItem listViewItem = new ListViewItem(model.model);
+                CrownListItem listViewItem = new CrownListItem(model.name);
                 listViewItem.Tag = "Model";
 
                 if (string.IsNullOrEmpty(_find))
-                    listViewSelectModels.Items.Add(listViewItem);
-                else if (model.model.IndexOf(_find) != -1)
-                    listViewSelectModels.Items.Add(listViewItem);
+                {
+                    crownListViewSelectModels.Items.Add(listViewItem);
+                }
+                else if (model.name.IndexOf(_find) != -1)
+                {
+                    crownListViewSelectModels.Items.Add(listViewItem);
+                }
             }
 
             foreach (CombinationLanguagePacks combinationLanguagePacks in CombinationLanguagePacks.combinationLanguagePacks)
             {
-                ListViewItem listViewItem = new ListViewItem(combinationLanguagePacks.name);
+                CrownListItem listViewItem = new CrownListItem(combinationLanguagePacks.name);
                 listViewItem.Tag = "CombinationLanguagePacks";
 
                 if (string.IsNullOrEmpty(_find))
-                    listViewSelectModels.Items.Add(listViewItem);
+                {
+                    crownListViewSelectModels.Items.Add(listViewItem);
+                }
                 else if (combinationLanguagePacks.name.IndexOf(_find) != -1)
-                    listViewSelectModels.Items.Add(listViewItem);
+                {
+                    crownListViewSelectModels.Items.Add(listViewItem);  
+                }
             }
+        }
+
+        private void imageButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

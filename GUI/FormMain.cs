@@ -7,6 +7,7 @@ using SceenshotTextRecognizer.Data;
 using ReaLTaiizor.Child.Crown;
 using System.IO;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
+using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI
 {
@@ -17,6 +18,12 @@ namespace SceenshotTextRecognizer.GUI
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
             UpdateForm();
+
+            imageButtonFormMin.ImageNoHovered = Resources.min;
+            imageButtonFormMin.ImageOnHovered = Resources.min2;
+
+            imageButtonClose.ImageNoHovered = Resources.close;
+            imageButtonClose.ImageOnHovered = Resources.close2;
         }
 
         private Server _server;
@@ -51,6 +58,19 @@ namespace SceenshotTextRecognizer.GUI
                 Fon fon = new Fon();
                 fon.Show();
             }
+        }
+
+        #endregion
+        #region Top
+
+        private void imageButtonClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void imageButtonFormMin_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
 
         #endregion
@@ -139,21 +159,36 @@ namespace SceenshotTextRecognizer.GUI
             UpdateForm();
         }
 
+        private void crownListViewCombinationOfLanguagePacks_DoubleClick(object sender, EventArgs e)
+        {
+            if (crownListViewCombinationOfLanguagePacks.SelectedIndices.Count == 0)
+            {
+                return;
+            }
+
+            Edit();
+        }
+
         private void hopeButtonEditCombination_Click(object sender, EventArgs e)
         {
-            var combinationLanguagePacks = CombinationLanguagePacks.combinationLanguagePacks.Find(
-                item => item.name == crownListViewCombinationOfLanguagePacks.Items[crownListViewCombinationOfLanguagePacks.SelectedIndices[0]].Text);
-
-            EditCombinationLanguagePack editCombinationLanguagePacks = new EditCombinationLanguagePack(combinationLanguagePacks);
-            editCombinationLanguagePacks.ShowDialog();
-
-            UpdateForm();
+            Edit();
         }
 
         private void hopeButtonNewCombination_Click(object sender, EventArgs e)
         {
             EditCombinationLanguagePack editCombinationLanguagePack = new EditCombinationLanguagePack();
             editCombinationLanguagePack.ShowDialog();
+
+            UpdateForm();
+        }
+
+        private void Edit()
+        {
+            var combinationLanguagePacks = CombinationLanguagePacks.combinationLanguagePacks.Find(
+                item => item.name == crownListViewCombinationOfLanguagePacks.Items[crownListViewCombinationOfLanguagePacks.SelectedIndices[0]].Text);
+
+            EditCombinationLanguagePack editCombinationLanguagePacks = new EditCombinationLanguagePack(combinationLanguagePacks);
+            editCombinationLanguagePacks.ShowDialog();
 
             UpdateForm();
         }

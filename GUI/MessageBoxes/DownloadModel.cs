@@ -7,6 +7,7 @@ using System.Net;
 using System.Threading;
 using System.ComponentModel;
 using System.IO;
+using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
@@ -33,6 +34,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                 items.Add(new Item(model.name, false));
 
             UpdateForm();
+
+            imageButtonClose.ImageNoHovered = Resources.close;
+            imageButtonClose.ImageOnHovered = Resources.close2;
         }
 
         List<Item> items = new List<Item>();
@@ -43,6 +47,25 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             Item item = items.Find(find => find.modelName == checkedListBoxLanguages.Items[checkedListBoxLanguages.SelectedIndex].ToString());
             item.selected = checkedListBoxLanguages.GetSelected(checkedListBoxLanguages.SelectedIndex);
+
+            List<Model> models = new List<Model>();
+            foreach (Item item1 in items)
+            {
+                if (item.selected)
+                {
+                    Model model = Model.CanDownload.Find(find => find.name == item1.modelName);
+                    models.Add(model);
+                }
+            }
+
+            if (models.Count != 0)
+            {
+                hopeButtonStartDownload.Enabled = true;
+            }
+            else
+            {
+                hopeButtonStartDownload.Enabled = false;
+            }
         }
 
         private void hopeTextBoxSearchLanguageModel_TextChanged(object sender, EventArgs e)
@@ -74,9 +97,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void hopeButtonStartDownload_Click(object sender, EventArgs e)
         {
-            paneDownload.Location = new Point(0, 40);
-            panelSelectDownload.Location = new Point(541, 40);
-
             List<Model> models = new List<Model>();
             foreach (Item item in items)
             {
@@ -86,10 +106,18 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     models.Add(model);
                 }
             }
-            _models = models;
-            iModel = 0;
 
-            Download(models[iModel], iModel);
+            if (models.Count != 0)
+            {
+                paneDownload.Location = new Point(0, 40);
+                panelSelectDownload.Location = new Point(541, 40);
+
+                _models = models;
+                iModel = 0;
+
+                imageButtonClose.Visible = false;
+                Download(models[iModel], iModel);
+            }
         }
 
         #endregion
@@ -197,6 +225,11 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     checkedListBoxLanguages.Items.Add(item.modelName, item.selected);
                 }
             }
+        }
+
+        private void imageButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -3,6 +3,7 @@ using SceenshotTextRecognizer.Data;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System;
+using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
@@ -17,6 +18,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             _dontUse = Model.Downloaded;
 
             UpdateForm();
+
+            imageButtonClose.ImageNoHovered = Resources.close;
+            imageButtonClose.ImageOnHovered = Resources.close2;
         }
         public EditCombinationLanguagePack(CombinationLanguagePacks combinationLanguagePacks)
         {
@@ -78,24 +82,32 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void hopeButtonAdd_Click(object sender, EventArgs e)
         {
-            Model model = _dontUse.Find(item => item.name == crownListViewDontUseModels.Items[crownListViewDontUseModels.SelectedIndices[0]].Text);
+            Add();
+        }
 
-            _use.Add(model);
-            _dontUse.Remove(model);
+        private void crownListViewDontUseModels_DoubleClick(object sender, EventArgs e)
+        {
+            if (crownListViewDontUseModels.SelectedIndices.Count == 0)
+            {
+                return;
+            }
 
-            _dontSave = true;
-            UpdateForm();
+            Add();
         }
 
         private void hopeButtonRemove_Click(object sender, EventArgs e)
         {
-            Model model = _use.Find(item => item.name == crownListViewUseModels.Items[crownListViewUseModels.SelectedIndices[0]].Text);
+            Remove();
+        }
 
-            _dontUse.Add(model);
-            _use.Remove(model);
+        private void crownListViewUseModels_DoubleClick(object sender, EventArgs e)
+        {
+            if (crownListViewUseModels.SelectedIndices.Count == 0)
+            {
+                return;
+            }
 
-            _dontSave = true;
-            UpdateForm();
+            Remove();
         }
 
         #endregion
@@ -145,6 +157,28 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             MessageBox.Show($"Языковая комбинация \"{hopeTextBoxName.Text}\" сохранена.", "Сохранине языковой комбинации", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void Add()
+        {
+            Model model = _dontUse.Find(item => item.name == crownListViewDontUseModels.Items[crownListViewDontUseModels.SelectedIndices[0]].Text);
+
+            _use.Add(model);
+            _dontUse.Remove(model);
+
+            _dontSave = true;
+            UpdateForm();
+        }
+
+        private void Remove()
+        {
+            Model model = _use.Find(item => item.name == crownListViewUseModels.Items[crownListViewUseModels.SelectedIndices[0]].Text);
+
+            _dontUse.Add(model);
+            _use.Remove(model);
+
+            _dontSave = true;
+            UpdateForm();
+        }
+
         private void UpdateForm()
         {
             crownListViewUseModels.Items.Clear();
@@ -180,6 +214,11 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                 hopeForm.Text = $"Создание новой комбинации";
                 Text = $"Создание новой комбинации";
             }
+        }
+
+        private void imageButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

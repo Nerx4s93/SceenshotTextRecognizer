@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.hopeForm = new ReaLTaiizor.Forms.HopeForm();
+            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.label1 = new System.Windows.Forms.Label();
             this.hopeTextBoxName = new ReaLTaiizor.Controls.HopeTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,13 +39,16 @@
             this.hopeButtonSave = new ReaLTaiizor.Controls.HopeButton();
             this.hopeButtonAdd = new ReaLTaiizor.Controls.HopeButton();
             this.hopeButtonRemove = new ReaLTaiizor.Controls.HopeButton();
+            this.hopeForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // hopeForm
             // 
+            this.hopeForm.ControlBox = false;
             this.hopeForm.ControlBoxColorH = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
             this.hopeForm.ControlBoxColorHC = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
             this.hopeForm.ControlBoxColorN = System.Drawing.Color.White;
+            this.hopeForm.Controls.Add(this.imageButtonClose);
             this.hopeForm.Cursor = System.Windows.Forms.Cursors.Default;
             this.hopeForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.hopeForm.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -56,6 +60,18 @@
             this.hopeForm.Size = new System.Drawing.Size(535, 40);
             this.hopeForm.TabIndex = 0;
             this.hopeForm.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            // 
+            // imageButtonClose
+            // 
+            this.imageButtonClose.ImageNoHovered = null;
+            this.imageButtonClose.ImageOnHovered = null;
+            this.imageButtonClose.Location = new System.Drawing.Point(501, 8);
+            this.imageButtonClose.Name = "imageButtonClose";
+            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonClose.TabIndex = 10;
+            this.imageButtonClose.Text = "imageButton1";
+            this.imageButtonClose.UseVisualStyleBackColor = true;
+            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // label1
             // 
@@ -70,7 +86,7 @@
             // hopeTextBoxName
             // 
             this.hopeTextBoxName.BackColor = System.Drawing.Color.White;
-            this.hopeTextBoxName.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(66)))));
+            this.hopeTextBoxName.BaseColor = System.Drawing.Color.White;
             this.hopeTextBoxName.BorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.hopeTextBoxName.BorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
             this.hopeTextBoxName.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -109,6 +125,7 @@
             this.crownListViewUseModels.TabIndex = 4;
             this.crownListViewUseModels.Text = "crownListView1";
             this.crownListViewUseModels.SelectedIndicesChanged += new System.EventHandler(this.crownListViewUseModels_SelectedIndicesChanged);
+            this.crownListViewUseModels.DoubleClick += new System.EventHandler(this.crownListViewUseModels_DoubleClick);
             // 
             // label3
             // 
@@ -128,6 +145,7 @@
             this.crownListViewDontUseModels.TabIndex = 6;
             this.crownListViewDontUseModels.Text = "crownListView2";
             this.crownListViewDontUseModels.SelectedIndicesChanged += new System.EventHandler(this.crownListViewDontUseModels_SelectedIndicesChanged);
+            this.crownListViewDontUseModels.DoubleClick += new System.EventHandler(this.crownListViewDontUseModels_DoubleClick);
             // 
             // hopeButtonSave
             // 
@@ -199,6 +217,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 325);
+            this.ControlBox = false;
             this.Controls.Add(this.hopeButtonRemove);
             this.Controls.Add(this.hopeButtonAdd);
             this.Controls.Add(this.hopeButtonSave);
@@ -217,6 +236,7 @@
             this.Name = "EditCombinationLanguagePack";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditCombinationLanguagePack";
+            this.hopeForm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +254,6 @@
         private ReaLTaiizor.Controls.HopeButton hopeButtonSave;
         private ReaLTaiizor.Controls.HopeButton hopeButtonAdd;
         private ReaLTaiizor.Controls.HopeButton hopeButtonRemove;
+        private UI.ImageButton imageButtonClose;
     }
 }

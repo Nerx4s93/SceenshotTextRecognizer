@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.hopeForm1 = new ReaLTaiizor.Forms.HopeForm();
+            this.imageButtonFormMin = new SceenshotTextRecognizer.UI.ImageButton();
+            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeTabPage1 = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.hopeCheckBoxAddToAutorun = new ReaLTaiizor.Controls.HopeCheckBox();
             this.hopeCheckBoxWorkInFon = new ReaLTaiizor.Controls.HopeCheckBox();
             this.hopeCheckBoxShowOnOtherForms = new ReaLTaiizor.Controls.HopeCheckBox();
@@ -48,6 +51,7 @@
             this.hopeButtonNewCombination = new ReaLTaiizor.Controls.HopeButton();
             this.hopeButtonEditCombination = new ReaLTaiizor.Controls.HopeButton();
             this.crownListViewCombinationOfLanguagePacks = new ReaLTaiizor.Controls.CrownListView();
+            this.hopeForm1.SuspendLayout();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -56,9 +60,12 @@
             // 
             // hopeForm1
             // 
+            this.hopeForm1.ControlBox = false;
             this.hopeForm1.ControlBoxColorH = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
             this.hopeForm1.ControlBoxColorHC = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
             this.hopeForm1.ControlBoxColorN = System.Drawing.Color.White;
+            this.hopeForm1.Controls.Add(this.imageButtonFormMin);
+            this.hopeForm1.Controls.Add(this.imageButtonClose);
             this.hopeForm1.Cursor = System.Windows.Forms.Cursors.Default;
             this.hopeForm1.Dock = System.Windows.Forms.DockStyle.Top;
             this.hopeForm1.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -70,6 +77,30 @@
             this.hopeForm1.TabIndex = 0;
             this.hopeForm1.Text = "SceenshotTextRecognizer";
             this.hopeForm1.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            // 
+            // imageButtonFormMin
+            // 
+            this.imageButtonFormMin.ImageNoHovered = null;
+            this.imageButtonFormMin.ImageOnHovered = null;
+            this.imageButtonFormMin.Location = new System.Drawing.Point(573, 8);
+            this.imageButtonFormMin.Name = "imageButtonFormMin";
+            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonFormMin.TabIndex = 6;
+            this.imageButtonFormMin.Text = "imageButton1";
+            this.imageButtonFormMin.UseVisualStyleBackColor = true;
+            this.imageButtonFormMin.Click += new System.EventHandler(this.imageButtonFormMin_Click);
+            // 
+            // imageButtonClose
+            // 
+            this.imageButtonClose.ImageNoHovered = null;
+            this.imageButtonClose.ImageOnHovered = null;
+            this.imageButtonClose.Location = new System.Drawing.Point(597, 8);
+            this.imageButtonClose.Name = "imageButtonClose";
+            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonClose.TabIndex = 5;
+            this.imageButtonClose.Text = "imageButton1";
+            this.imageButtonClose.UseVisualStyleBackColor = true;
+            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // hopeTabPage1
             // 
@@ -86,7 +117,7 @@
             this.hopeTabPage1.Name = "hopeTabPage1";
             this.hopeTabPage1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hopeTabPage1.SelectedIndex = 0;
-            this.hopeTabPage1.Size = new System.Drawing.Size(631, 311);
+            this.hopeTabPage1.Size = new System.Drawing.Size(631, 313);
             this.hopeTabPage1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.hopeTabPage1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hopeTabPage1.TabIndex = 1;
@@ -97,6 +128,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.hopeCheckBoxAddToAutorun);
             this.tabPage1.Controls.Add(this.hopeCheckBoxWorkInFon);
             this.tabPage1.Controls.Add(this.hopeCheckBoxShowOnOtherForms);
@@ -104,10 +137,19 @@
             this.tabPage1.Location = new System.Drawing.Point(0, 40);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(631, 271);
+            this.tabPage1.Size = new System.Drawing.Size(631, 273);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Настройки";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label3.Location = new System.Drawing.Point(530, 245);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 21);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Версия 1.0.0";
             // 
             // hopeCheckBoxAddToAutorun
             // 
@@ -196,6 +238,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.hopeTextBoxSearchLanguageModel);
             this.tabPage2.Controls.Add(this.hopeButtonDownloadLanguageModels);
@@ -204,10 +247,9 @@
             this.tabPage2.Location = new System.Drawing.Point(0, 40);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(631, 271);
+            this.tabPage2.Size = new System.Drawing.Size(631, 273);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Языковые моедели";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -222,7 +264,7 @@
             // hopeTextBoxSearchLanguageModel
             // 
             this.hopeTextBoxSearchLanguageModel.BackColor = System.Drawing.Color.White;
-            this.hopeTextBoxSearchLanguageModel.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(66)))));
+            this.hopeTextBoxSearchLanguageModel.BaseColor = System.Drawing.Color.White;
             this.hopeTextBoxSearchLanguageModel.BorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.hopeTextBoxSearchLanguageModel.BorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
             this.hopeTextBoxSearchLanguageModel.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -298,6 +340,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.Color.White;
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.hopeTextBoxSearchCombinationOfLanguagePacks);
             this.tabPage3.Controls.Add(this.hopeButtonDeleteCombination);
@@ -306,10 +349,9 @@
             this.tabPage3.Controls.Add(this.crownListViewCombinationOfLanguagePacks);
             this.tabPage3.Location = new System.Drawing.Point(0, 40);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(631, 271);
+            this.tabPage3.Size = new System.Drawing.Size(631, 273);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Языковые комбинации";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -324,7 +366,7 @@
             // hopeTextBoxSearchCombinationOfLanguagePacks
             // 
             this.hopeTextBoxSearchCombinationOfLanguagePacks.BackColor = System.Drawing.Color.White;
-            this.hopeTextBoxSearchCombinationOfLanguagePacks.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(66)))));
+            this.hopeTextBoxSearchCombinationOfLanguagePacks.BaseColor = System.Drawing.Color.White;
             this.hopeTextBoxSearchCombinationOfLanguagePacks.BorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.hopeTextBoxSearchCombinationOfLanguagePacks.BorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
             this.hopeTextBoxSearchCombinationOfLanguagePacks.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -417,6 +459,7 @@
             this.crownListViewCombinationOfLanguagePacks.TabIndex = 1;
             this.crownListViewCombinationOfLanguagePacks.Text = "crownListView2";
             this.crownListViewCombinationOfLanguagePacks.SelectedIndicesChanged += new System.EventHandler(this.crownListViewCombinationOfLanguagePacks_SelectedIndicesChanged);
+            this.crownListViewCombinationOfLanguagePacks.DoubleClick += new System.EventHandler(this.crownListViewCombinationOfLanguagePacks_DoubleClick);
             // 
             // FormMain
             // 
@@ -424,6 +467,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(631, 350);
+            this.ControlBox = false;
             this.Controls.Add(this.hopeTabPage1);
             this.Controls.Add(this.hopeForm1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -435,6 +479,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
+            this.hopeForm1.ResumeLayout(false);
             this.hopeTabPage1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -468,5 +513,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBoxSearchCombinationOfLanguagePacks;
+        private System.Windows.Forms.Label label3;
+        private UI.ImageButton imageButtonClose;
+        private UI.ImageButton imageButtonFormMin;
     }
 }
