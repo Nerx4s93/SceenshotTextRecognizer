@@ -73,6 +73,7 @@ namespace SceenshotTextRecognizer.GUI
                 {
                     hopeButtonScan.Enabled = true;
                     hopeButtonScan.Text = "Сканировать";
+                    hopeButtonScan.Refresh();
                 });
 
                 ImageTextResult imageTextResult = new ImageTextResult(res.GetText());
@@ -94,6 +95,11 @@ namespace SceenshotTextRecognizer.GUI
 
         private void FormUpdate()
         {
+            if (hopeTextBoxSelected.Text != string.Empty)
+            {
+                hopeButtonScan.Enabled = true;
+            }
+
             crownListViewSelectModels.Items.Clear();
 
             foreach (Model model in Model.Downloaded)

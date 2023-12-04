@@ -8,6 +8,7 @@ using ReaLTaiizor.Child.Crown;
 using System.IO;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
 using SceenshotTextRecognizer.Properties;
+using Microsoft.Win32;
 
 namespace SceenshotTextRecognizer.GUI
 {
@@ -82,9 +83,23 @@ namespace SceenshotTextRecognizer.GUI
             hopeButtonBind.Enabled = false;
         }
 
-        private void hopeCheckBoxShowOnOtherForms_CheckedChanged(object sender, System.EventArgs e)
+        private void hopeCheckBoxShowOnOtherForms_CheckedChanged(object sender, EventArgs e)
         {
             TopMost = hopeCheckBoxShowOnOtherForms.Checked;
+        }
+
+        private void hopeCheckBoxAddToAutorun_CheckedChanged(object sender, EventArgs e)
+        {
+            if (hopeCheckBoxAddToAutorun.Checked)
+            {
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                key.SetValue("SceenshotTextRecognizer", Application.ExecutablePath);
+            }
+            else
+            {
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                key.DeleteValue("SceenshotTextRecognizer", false);
+            }
         }
 
         #endregion

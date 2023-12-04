@@ -194,6 +194,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     }
 
                     hopeButtonClose.Text = "Закрыть";
+                    hopeButtonClose.Refresh();
                     _endDownload = true;
                 });
             }
