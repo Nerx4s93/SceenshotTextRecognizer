@@ -35,6 +35,10 @@ namespace SceenshotTextRecognizer.GUI
 
         private bool _waitKeyBind;
 
+        private Fon _fon;
+        private SelectAreaF _selectAreaF;
+        private ScanResultF _scanResultF;
+
         #region GlobalKeyboardHook
 
         private readonly GlobalKeyboardHook _globalKeyboardHook = new GlobalKeyboardHook();
@@ -46,9 +50,6 @@ namespace SceenshotTextRecognizer.GUI
 
             _globalKeyboardHook.KeyUp += new KeyEventHandler(globalKeyboardHook_KeyUp);
         }
-
-        private Fon _fon;
-        private SelectAreaF _selectAreaF;
 
         private void globalKeyboardHook_KeyUp(object sender, KeyEventArgs e)
         {
@@ -115,7 +116,8 @@ namespace SceenshotTextRecognizer.GUI
 
         private void hopeButtonSettingsScanResult_Click(object sender, EventArgs e)
         {
-            // TODO: сделать
+            _scanResultF = new ScanResultF();
+            _scanResultF.ShowDialog();
         }
 
         private void hopeCheckBoxShowOnOtherForms_CheckedChanged(object sender, EventArgs e)
