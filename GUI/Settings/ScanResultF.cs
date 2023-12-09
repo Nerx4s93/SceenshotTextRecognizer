@@ -1,13 +1,6 @@
 ﻿using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.Properties;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SceenshotTextRecognizer.GUI.Settings
@@ -24,6 +17,10 @@ namespace SceenshotTextRecognizer.GUI.Settings
 
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
+
+            hopeCheckBoxRemoveExtraSpaces.Checked = Main.main.scanResult.removeExtraSpaces;
+            hopeCheckBoxDeleteEmptyLines.Checked = Main.main.scanResult.deleteEmptyLines;
+            hopeCheckBoxDeleteLinesWithoutLetters.Checked = Main.main.scanResult.deleteLinesWithoutLetters;
         }
 
         private void imageButtonClose_Click(object sender, EventArgs e)

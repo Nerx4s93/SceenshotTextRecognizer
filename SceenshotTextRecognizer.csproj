@@ -88,6 +88,12 @@
     <Compile Include="GUI\ScanSettings.Designer.cs">
       <DependentUpon>ScanSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Settings\ScanResultF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Settings\ScanResultF.Designer.cs">
+      <DependentUpon>ScanResultF.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Settings\SelectAreaF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ScanSettings.resx">
       <DependentUpon>ScanSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Settings\ScanResultF.resx">
+      <DependentUpon>ScanResultF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Settings\SelectAreaF.resx">
       <DependentUpon>SelectAreaF.cs</DependentUpon>
