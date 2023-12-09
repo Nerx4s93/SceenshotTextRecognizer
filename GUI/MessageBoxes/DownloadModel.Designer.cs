@@ -344,7 +344,7 @@
             this.checkedListBoxLanguages.Name = "checkedListBoxLanguages";
             this.checkedListBoxLanguages.Size = new System.Drawing.Size(250, 221);
             this.checkedListBoxLanguages.TabIndex = 0;
-            this.checkedListBoxLanguages.SelectedValueChanged += new System.EventHandler(this.checkedListBoxLanguages_SelectedValueChanged);
+            this.checkedListBoxLanguages.MouseUp += new System.Windows.Forms.MouseEventHandler(this.checkedListBoxLanguages_MouseUp);
             // 
             // DownloadModel
             // 

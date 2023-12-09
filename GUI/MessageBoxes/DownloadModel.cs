@@ -43,22 +43,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         #region panelSelectDownload
 
-        private void checkedListBoxLanguages_SelectedValueChanged(object sender, EventArgs e)
+        private void checkedListBoxLanguages_MouseUp(object sender, MouseEventArgs e)
         {
-            Item item = items.Find(find => find.modelName == checkedListBoxLanguages.Items[checkedListBoxLanguages.SelectedIndex].ToString());
-            item.selected = checkedListBoxLanguages.GetSelected(checkedListBoxLanguages.SelectedIndex);
-
-            List<Model> models = new List<Model>();
-            foreach (Item item1 in items)
-            {
-                if (item.selected)
-                {
-                    Model model = Model.CanDownload.Find(find => find.name == item1.modelName);
-                    models.Add(model);
-                }
-            }
-
-            if (models.Count != 0)
+            if (checkedListBoxLanguages.CheckedItems.Count != 0)
             {
                 hopeButtonStartDownload.Enabled = true;
             }

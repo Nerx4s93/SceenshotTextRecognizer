@@ -8,7 +8,7 @@ using ReaLTaiizor.Child.Crown;
 using System.IO;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
 using SceenshotTextRecognizer.Properties;
-using Microsoft.Win32;
+using SceenshotTextRecognizer.GUI.Settings;
 
 namespace SceenshotTextRecognizer.GUI
 {
@@ -18,6 +18,7 @@ namespace SceenshotTextRecognizer.GUI
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
+
             UpdateForm();
 
             imageButtonFormMin.ImageNoHovered = Resources.min;
@@ -25,11 +26,13 @@ namespace SceenshotTextRecognizer.GUI
 
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
+
+            hopeCheckBoxShowOnOtherWindows.Checked = Main.main.showOnOtherWindows;
+            hopeCheckBoxWorkInFon.Checked = Main.main.workInFon;
         }
 
         private Server _server;
 
-        private Keys _bindKey;
         private bool _waitKeyBind;
 
         #region GlobalKeyboardHook
@@ -44,20 +47,41 @@ namespace SceenshotTextRecognizer.GUI
             _globalKeyboardHook.KeyUp += new KeyEventHandler(globalKeyboardHook_KeyUp);
         }
 
+        private Fon _fon;
+        private SelectAreaF _selectAreaF;
+
         private void globalKeyboardHook_KeyUp(object sender, KeyEventArgs e)
         {
             if (_waitKeyBind)
             {
                 hopeButtonBind.Text = "Bind: " + e.KeyData.ToString();
-                _bindKey = e.KeyData;
+
+                if (Main.main.selectArea.closeSelectArea == e.KeyData || Main.main.selectArea.enterArea == e.KeyData)
+                {
+                    MessageBox.Show("Нельзя ставить одинаковые бинды на разные функции.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Main.main.bind = e.KeyData;
+
                 hopeButtonBind.Enabled = true;
                 _waitKeyBind = false;
             }
-            else if (e.KeyData == _bindKey && !ProgramData.SelectSone)
+            else if (e.KeyData == Main.main.bind && !ProgramData.SelectSone)
             {
+                _fon = new Fon();
+                _fon.Show();
                 ProgramData.SelectSone = true;
-                Fon fon = new Fon();
-                fon.Show();
+            }
+
+            if (_fon != null && _fon.Disposing == false)
+            {
+                _fon.FormKeyDown(e.KeyData);
+            }
+
+            if (_selectAreaF != null && _selectAreaF.Disposing == false)
+            {
+                _selectAreaF.FormKeyDown(e.KeyData);
             }
         }
 
@@ -83,14 +107,35 @@ namespace SceenshotTextRecognizer.GUI
             hopeButtonBind.Enabled = false;
         }
 
+        private void hopeButtonSettingsSelectArea_Click(object sender, EventArgs e)
+        {
+            _selectAreaF = new SelectAreaF();
+            _selectAreaF.ShowDialog();
+        }
+
+        private void hopeButtonSettingsScanResult_Click(object sender, EventArgs e)
+        {
+            // TODO: сделать
+        }
+
         private void hopeCheckBoxShowOnOtherForms_CheckedChanged(object sender, EventArgs e)
         {
-            TopMost = hopeCheckBoxShowOnOtherForms.Checked;
+            TopMost = hopeCheckBoxShowOnOtherWindows.Checked;
+
+            Main.main.showOnOtherWindows = hopeCheckBoxShowOnOtherWindows.Checked;
+            Main.Save();
+        }
+
+        private void hopeCheckBoxWorkInFon_CheckedChanged(object sender, EventArgs e)
+        {
+            Main.main.workInFon = hopeCheckBoxWorkInFon.Checked;
+            Main.Save();
         }
 
         private void hopeCheckBoxAddToAutorun_CheckedChanged(object sender, EventArgs e)
         {
-            if (hopeCheckBoxAddToAutorun.Checked)
+            // TODO: сдлать
+            /*if (hopeCheckBoxAddToAutorun.Checked)
             {
                 RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.SetValue("SceenshotTextRecognizer", Application.ExecutablePath);
@@ -99,7 +144,7 @@ namespace SceenshotTextRecognizer.GUI
             {
                 RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.DeleteValue("SceenshotTextRecognizer", false);
-            }
+            }*/
         }
 
         #endregion
@@ -222,7 +267,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (hopeCheckBoxWorkInFon.Checked)
+            if (Main.main.workInFon)
             {
                 e.Cancel = true;
 
@@ -236,6 +281,8 @@ namespace SceenshotTextRecognizer.GUI
 
         public void UpdateForm()
         {
+            hopeButtonBind.Text = "Bind: " + Main.main.bind;
+
             crownListViewLanguagePacks.Items.Clear();
             crownListViewCombinationOfLanguagePacks.Items.Clear();
 

@@ -2,13 +2,13 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using SceenshotTextRecognizer.GUI;
 using System.Linq;
 using SceenshotTextRecognizer.Data;
 using System.IO;
 using System.Net.Sockets;
 using System.Net;
 using System.Text;
+using main = SceenshotTextRecognizer.Data.Main;
 
 namespace SceenshotTextRecognizer
 {
@@ -48,6 +48,7 @@ namespace SceenshotTextRecognizer
 
                 Model.Load();
                 CombinationLanguagePacks.Load();
+                main.Load();
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

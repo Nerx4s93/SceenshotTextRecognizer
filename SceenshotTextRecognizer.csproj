@@ -53,6 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomForm.cs" />
+    <Compile Include="Data\Main.cs" />
+    <Compile Include="Data\Setting\ScanResult.cs" />
+    <Compile Include="Data\Setting\SelectArea.cs" />
+    <Compile Include="Data\Setting\TypeAreaSelection.cs" />
+    <Compile Include="Data\Setting\TypeFon.cs" />
     <Compile Include="GUI\MessageBoxes\DownloadModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +87,12 @@
     </Compile>
     <Compile Include="GUI\ScanSettings.Designer.cs">
       <DependentUpon>ScanSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Settings\SelectAreaF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Settings\SelectAreaF.Designer.cs">
+      <DependentUpon>SelectAreaF.cs</DependentUpon>
     </Compile>
     <Compile Include="ProgramData.cs" />
     <Compile Include="Data\CombinationLanguagePacks.cs" />
@@ -117,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ScanSettings.resx">
       <DependentUpon>ScanSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Settings\SelectAreaF.resx">
+      <DependentUpon>SelectAreaF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,6 +168,7 @@
   <ItemGroup>
     <None Include="Resources\min.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Tesseract.5.2.0\build\Tesseract.targets" Condition="Exists('packages\Tesseract.5.2.0\build\Tesseract.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -40,6 +40,7 @@
             this.ShowInTaskbar = false;
             this.Text = "Fon";
             this.TopMost = true;
+            this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Fon_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Fon_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Fon_MouseMove);

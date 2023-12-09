@@ -33,10 +33,12 @@
             this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeTabPage1 = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.hopeButtonSettingsScanResult = new ReaLTaiizor.Controls.HopeButton();
+            this.hopeButtonSettingsSelectArea = new ReaLTaiizor.Controls.HopeButton();
             this.label3 = new System.Windows.Forms.Label();
             this.hopeCheckBoxAddToAutorun = new ReaLTaiizor.Controls.HopeCheckBox();
             this.hopeCheckBoxWorkInFon = new ReaLTaiizor.Controls.HopeCheckBox();
-            this.hopeCheckBoxShowOnOtherForms = new ReaLTaiizor.Controls.HopeCheckBox();
+            this.hopeCheckBoxShowOnOtherWindows = new ReaLTaiizor.Controls.HopeCheckBox();
             this.hopeButtonBind = new ReaLTaiizor.Controls.HopeButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -129,10 +131,12 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.hopeButtonSettingsScanResult);
+            this.tabPage1.Controls.Add(this.hopeButtonSettingsSelectArea);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.hopeCheckBoxAddToAutorun);
             this.tabPage1.Controls.Add(this.hopeCheckBoxWorkInFon);
-            this.tabPage1.Controls.Add(this.hopeCheckBoxShowOnOtherForms);
+            this.tabPage1.Controls.Add(this.hopeCheckBoxShowOnOtherWindows);
             this.tabPage1.Controls.Add(this.hopeButtonBind);
             this.tabPage1.Location = new System.Drawing.Point(0, 40);
             this.tabPage1.Name = "tabPage1";
@@ -140,6 +144,48 @@
             this.tabPage1.Size = new System.Drawing.Size(631, 273);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Настройки";
+            // 
+            // hopeButtonSettingsScanResult
+            // 
+            this.hopeButtonSettingsScanResult.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
+            this.hopeButtonSettingsScanResult.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            this.hopeButtonSettingsScanResult.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hopeButtonSettingsScanResult.DangerColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
+            this.hopeButtonSettingsScanResult.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.hopeButtonSettingsScanResult.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.hopeButtonSettingsScanResult.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.hopeButtonSettingsScanResult.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
+            this.hopeButtonSettingsScanResult.Location = new System.Drawing.Point(316, 52);
+            this.hopeButtonSettingsScanResult.Name = "hopeButtonSettingsScanResult";
+            this.hopeButtonSettingsScanResult.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.hopeButtonSettingsScanResult.Size = new System.Drawing.Size(303, 39);
+            this.hopeButtonSettingsScanResult.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
+            this.hopeButtonSettingsScanResult.TabIndex = 6;
+            this.hopeButtonSettingsScanResult.Text = "Результат сканирования";
+            this.hopeButtonSettingsScanResult.TextColor = System.Drawing.Color.White;
+            this.hopeButtonSettingsScanResult.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.hopeButtonSettingsScanResult.Click += new System.EventHandler(this.hopeButtonSettingsScanResult_Click);
+            // 
+            // hopeButtonSettingsSelectArea
+            // 
+            this.hopeButtonSettingsSelectArea.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
+            this.hopeButtonSettingsSelectArea.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            this.hopeButtonSettingsSelectArea.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hopeButtonSettingsSelectArea.DangerColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
+            this.hopeButtonSettingsSelectArea.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.hopeButtonSettingsSelectArea.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.hopeButtonSettingsSelectArea.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.hopeButtonSettingsSelectArea.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
+            this.hopeButtonSettingsSelectArea.Location = new System.Drawing.Point(6, 52);
+            this.hopeButtonSettingsSelectArea.Name = "hopeButtonSettingsSelectArea";
+            this.hopeButtonSettingsSelectArea.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.hopeButtonSettingsSelectArea.Size = new System.Drawing.Size(304, 39);
+            this.hopeButtonSettingsSelectArea.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
+            this.hopeButtonSettingsSelectArea.TabIndex = 5;
+            this.hopeButtonSettingsSelectArea.Text = "Выделение области";
+            this.hopeButtonSettingsSelectArea.TextColor = System.Drawing.Color.White;
+            this.hopeButtonSettingsSelectArea.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.hopeButtonSettingsSelectArea.Click += new System.EventHandler(this.hopeButtonSettingsSelectArea_Click);
             // 
             // label3
             // 
@@ -165,11 +211,11 @@
             this.hopeCheckBoxAddToAutorun.EnabledUncheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
             this.hopeCheckBoxAddToAutorun.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.hopeCheckBoxAddToAutorun.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.hopeCheckBoxAddToAutorun.Location = new System.Drawing.Point(6, 104);
+            this.hopeCheckBoxAddToAutorun.Location = new System.Drawing.Point(6, 149);
             this.hopeCheckBoxAddToAutorun.Name = "hopeCheckBoxAddToAutorun";
-            this.hopeCheckBoxAddToAutorun.Size = new System.Drawing.Size(171, 20);
+            this.hopeCheckBoxAddToAutorun.Size = new System.Drawing.Size(271, 20);
             this.hopeCheckBoxAddToAutorun.TabIndex = 3;
-            this.hopeCheckBoxAddToAutorun.Text = "Автозагрузка";
+            this.hopeCheckBoxAddToAutorun.Text = "Автозагрузка СДЕЛАТЬ";
             this.hopeCheckBoxAddToAutorun.UseVisualStyleBackColor = false;
             this.hopeCheckBoxAddToAutorun.CheckedChanged += new System.EventHandler(this.hopeCheckBoxAddToAutorun_CheckedChanged);
             // 
@@ -187,34 +233,35 @@
             this.hopeCheckBoxWorkInFon.EnabledUncheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
             this.hopeCheckBoxWorkInFon.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.hopeCheckBoxWorkInFon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.hopeCheckBoxWorkInFon.Location = new System.Drawing.Point(6, 78);
+            this.hopeCheckBoxWorkInFon.Location = new System.Drawing.Point(6, 123);
             this.hopeCheckBoxWorkInFon.Name = "hopeCheckBoxWorkInFon";
             this.hopeCheckBoxWorkInFon.Size = new System.Drawing.Size(312, 20);
             this.hopeCheckBoxWorkInFon.TabIndex = 2;
             this.hopeCheckBoxWorkInFon.Text = "Работа в фоновом режиме";
             this.hopeCheckBoxWorkInFon.UseVisualStyleBackColor = false;
+            this.hopeCheckBoxWorkInFon.CheckedChanged += new System.EventHandler(this.hopeCheckBoxWorkInFon_CheckedChanged);
             // 
-            // hopeCheckBoxShowOnOtherForms
+            // hopeCheckBoxShowOnOtherWindows
             // 
-            this.hopeCheckBoxShowOnOtherForms.AutoSize = true;
-            this.hopeCheckBoxShowOnOtherForms.BackColor = System.Drawing.Color.White;
-            this.hopeCheckBoxShowOnOtherForms.CheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
-            this.hopeCheckBoxShowOnOtherForms.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.hopeCheckBoxShowOnOtherForms.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(198)))), ((int)(((byte)(202)))));
-            this.hopeCheckBoxShowOnOtherForms.DisabledStringColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(187)))), ((int)(((byte)(189)))));
-            this.hopeCheckBoxShowOnOtherForms.Enable = true;
-            this.hopeCheckBoxShowOnOtherForms.EnabledCheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
-            this.hopeCheckBoxShowOnOtherForms.EnabledStringColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
-            this.hopeCheckBoxShowOnOtherForms.EnabledUncheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
-            this.hopeCheckBoxShowOnOtherForms.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.hopeCheckBoxShowOnOtherForms.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
-            this.hopeCheckBoxShowOnOtherForms.Location = new System.Drawing.Point(6, 52);
-            this.hopeCheckBoxShowOnOtherForms.Name = "hopeCheckBoxShowOnOtherForms";
-            this.hopeCheckBoxShowOnOtherForms.Size = new System.Drawing.Size(366, 20);
-            this.hopeCheckBoxShowOnOtherForms.TabIndex = 1;
-            this.hopeCheckBoxShowOnOtherForms.Text = "Показывать поверх других окон";
-            this.hopeCheckBoxShowOnOtherForms.UseVisualStyleBackColor = false;
-            this.hopeCheckBoxShowOnOtherForms.CheckedChanged += new System.EventHandler(this.hopeCheckBoxShowOnOtherForms_CheckedChanged);
+            this.hopeCheckBoxShowOnOtherWindows.AutoSize = true;
+            this.hopeCheckBoxShowOnOtherWindows.BackColor = System.Drawing.Color.White;
+            this.hopeCheckBoxShowOnOtherWindows.CheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.hopeCheckBoxShowOnOtherWindows.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hopeCheckBoxShowOnOtherWindows.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(198)))), ((int)(((byte)(202)))));
+            this.hopeCheckBoxShowOnOtherWindows.DisabledStringColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(187)))), ((int)(((byte)(189)))));
+            this.hopeCheckBoxShowOnOtherWindows.Enable = true;
+            this.hopeCheckBoxShowOnOtherWindows.EnabledCheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.hopeCheckBoxShowOnOtherWindows.EnabledStringColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(153)))));
+            this.hopeCheckBoxShowOnOtherWindows.EnabledUncheckedColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(158)))), ((int)(((byte)(161)))));
+            this.hopeCheckBoxShowOnOtherWindows.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.hopeCheckBoxShowOnOtherWindows.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.hopeCheckBoxShowOnOtherWindows.Location = new System.Drawing.Point(6, 97);
+            this.hopeCheckBoxShowOnOtherWindows.Name = "hopeCheckBoxShowOnOtherWindows";
+            this.hopeCheckBoxShowOnOtherWindows.Size = new System.Drawing.Size(366, 20);
+            this.hopeCheckBoxShowOnOtherWindows.TabIndex = 1;
+            this.hopeCheckBoxShowOnOtherWindows.Text = "Показывать поверх других окон";
+            this.hopeCheckBoxShowOnOtherWindows.UseVisualStyleBackColor = false;
+            this.hopeCheckBoxShowOnOtherWindows.CheckedChanged += new System.EventHandler(this.hopeCheckBoxShowOnOtherForms_CheckedChanged);
             // 
             // hopeButtonBind
             // 
@@ -500,7 +547,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private ReaLTaiizor.Controls.HopeButton hopeButtonBind;
-        private ReaLTaiizor.Controls.HopeCheckBox hopeCheckBoxShowOnOtherForms;
+        private ReaLTaiizor.Controls.HopeCheckBox hopeCheckBoxShowOnOtherWindows;
         private ReaLTaiizor.Controls.HopeCheckBox hopeCheckBoxWorkInFon;
         private ReaLTaiizor.Controls.HopeCheckBox hopeCheckBoxAddToAutorun;
         private ReaLTaiizor.Controls.CrownListView crownListViewLanguagePacks;
@@ -517,5 +564,7 @@
         private System.Windows.Forms.Label label3;
         private UI.ImageButton imageButtonClose;
         private UI.ImageButton imageButtonFormMin;
+        private ReaLTaiizor.Controls.HopeButton hopeButtonSettingsScanResult;
+        private ReaLTaiizor.Controls.HopeButton hopeButtonSettingsSelectArea;
     }
 }
