@@ -159,6 +159,15 @@ namespace SceenshotTextRecognizer.GUI.Settings
 
         public void FormKeyDown(Keys keys)
         {
+            if (keys == Main.main.bind)
+            {
+                hopeButtonBindClose.Enabled = true;
+                hopeButtonBindEnter.Enabled = true;
+
+                _bindClose = false;
+                _bindEnter = false;
+            }
+
             if (_bindClose)
             {
                 hopeButtonBindClose.Enabled = true;
