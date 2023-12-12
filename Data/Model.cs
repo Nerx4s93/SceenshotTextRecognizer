@@ -23,11 +23,20 @@ namespace SceenshotTextRecognizer.Data
             new Model("Украинский", "ukr", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1TfbEaomZDRD9kEImdIGy79k0jBwgSxLm"),
             new Model("Француский", "fra", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1jacOGJ94duJ_IJRIOLB5Qcrar5lKiMMM"),
             new Model("Испанский", "spa", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1g0rxgc9gLxQI-vAq743TfVMyun1OT2Og"),
-            new Model("Испанский (старый)", "spa_old", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kuUSnPeke_0zWryugNpY-4ZPOaRjuKpM"),
             new Model("Итальянский", "ita", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1Pxu0sW9dpFcnVvolOeCDZbZSkpAkQdLy"),
-            new Model("Итальянский (старый)", "ita_old", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1JomEg9l4afNrh3xl6XQYcflYLeSeKDVA"),
             new Model("Португальский", "por", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1YKoi80zPz1OXw6Os_f4oaKcgJ9--GBPi"),
             new Model("Японский", "jpn", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1KdghnlHigU39Idge1lzd0_kCQf655pHD"),
+            new Model("Немецкий", "deu", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=10d9qradXHqlitVQqjT8Gfx6br3SCJH4Q"),
+            new Model("Финский", "fin", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1JSXl5LhJJPr27R5dZZ2zhI86h-l2aN59"),
+            new Model("Шведский", "swe", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1H_X9dUOb7hX4CntChNB1XjN0MokBOkWj"),
+            new Model("Норвежский", "nor", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1j9b-tBCvZsw9KzRSAzOA_Zkrlxxu0ObQ"),
+            new Model("Датский", "dan", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1hjgTQdbnWXs6GssYkR1ODi597f_y5dpb"),
+            new Model("Нидерландский", "nld", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1GLM6Mf84qGdE4jBQDyrrX7y8I7VhngSP"),
+            new Model("Греческий", "ell", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1p7HgzO4n4_w27-c4TP899kkW2FHSYyZT"),
+            new Model("Польский", "pol", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1j7TW-xIQSJNa7esFVYI2QAtfoMo6v4CV"),
+            new Model("Чешский", "ces", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1x1LQn5GQtNTwDJZlJ_KW6aBjT_go-buy"),
+            new Model("Словацкий", "slk", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1HwpjCbuWdq3VCqWkUlkGiBGGp6yJtqTq"),
+            new Model("Ирландский", "gle", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=11joOlt1UIbEy7CcAY5S0Q_3SpTXSjF4k")
         };
 
         public static List<Model> CanDownload = new List<Model>();
