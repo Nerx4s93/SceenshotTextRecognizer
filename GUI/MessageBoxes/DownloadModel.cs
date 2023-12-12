@@ -15,13 +15,13 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
     {
         private class Item
         {
-            public Item(string modelName, bool selected)
+            public Item(Model model, bool selected)
             {
-                this.modelName = modelName;
+                this.model = model;
                 this.selected = selected;
             }
 
-            public string modelName;
+            public Model model;
             public bool selected;
         }
 
@@ -31,7 +31,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             CustomForm.RoundOffTheEdges(this);
 
             foreach (Model model in Model.CanDownload)
-                items.Add(new Item(model.name, false));
+                items.Add(new Item(model, false));
 
             UpdateForm();
 
@@ -43,7 +43,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         #region panelSelectDownload
 
-        private void checkedListBoxLanguages_MouseUp(object sender, MouseEventArgs e)
+        private void checkedListBoxLanguages_SelectedValueChanged(object sender, EventArgs e)
         {
             if (checkedListBoxLanguages.CheckedItems.Count != 0)
             {
@@ -52,6 +52,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             else
             {
                 hopeButtonStartDownload.Enabled = false;
+            }
+
+            foreach (var checkedItemCollection in checkedListBoxLanguages.CheckedItems)
+            {
+                Item _item = items.Find(item => item.model.name == checkedItemCollection.ToString());
+                _item.selected = true;
             }
         }
 
@@ -64,7 +70,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             for (int i = 0; i != checkedListBoxLanguages.Items.Count; i++)
             {
-                Item item = items.Find(find => find.modelName == (string)checkedListBoxLanguages.Items[i]);
+                Item item = items.Find(find => find.model.name == (string)checkedListBoxLanguages.Items[i]);
                 item.selected = true;
             }
 
@@ -75,7 +81,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             for (int i = 0; i != checkedListBoxLanguages.Items.Count; i++)
             {
-                Item item = items.Find(find => find.modelName == (string)checkedListBoxLanguages.Items[i]);
+                Item item = items.Find(find => find.model.name == (string)checkedListBoxLanguages.Items[i]);
                 item.selected = false;
             }
 
@@ -89,7 +95,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             {
                 if (item.selected)
                 {
-                    Model model = Model.CanDownload.Find(find => find.name == item.modelName);
+                    Model model = Model.CanDownload.Find(find => find.name == item.model.name);
                     models.Add(model);
                 }
             }
@@ -208,10 +214,19 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             foreach (Item item in items)
             {
-                if (string.IsNullOrEmpty(hopeTextBoxSearchLanguageModel.Text) || item.modelName.IndexOf(hopeTextBoxSearchLanguageModel.Text) == 0)
+                if (string.IsNullOrEmpty(hopeTextBoxSearchLanguageModel.Text) || item.model.name.IndexOf(hopeTextBoxSearchLanguageModel.Text) != -1)
                 {
-                    checkedListBoxLanguages.Items.Add(item.modelName, item.selected);
+                    checkedListBoxLanguages.Items.Add(item.model.name, item.selected);
                 }
+            }
+
+            if (checkedListBoxLanguages.CheckedItems.Count != 0)
+            {
+                hopeButtonStartDownload.Enabled = true;
+            }
+            else
+            {
+                hopeButtonStartDownload.Enabled = false;
             }
         }
 
