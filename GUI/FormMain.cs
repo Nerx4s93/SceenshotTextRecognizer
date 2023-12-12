@@ -110,14 +110,20 @@ namespace SceenshotTextRecognizer.GUI
 
         private void hopeButtonSettingsSelectArea_Click(object sender, EventArgs e)
         {
-            _selectAreaF = new SelectAreaF();
-            _selectAreaF.Show();
+            if (_selectAreaF == null || _selectAreaF.IsDisposed)
+            {
+                _selectAreaF = new SelectAreaF();
+                _selectAreaF.Show();
+            }
         }
 
         private void hopeButtonSettingsScanResult_Click(object sender, EventArgs e)
         {
-            _scanResultF = new ScanResultF();
-            _scanResultF.Show();
+            if (_scanResultF == null || _scanResultF.IsDisposed)
+            {
+                _scanResultF = new ScanResultF();
+                _scanResultF.Show();
+            }
         }
 
         private void hopeCheckBoxShowOnOtherForms_CheckedChanged(object sender, EventArgs e)
