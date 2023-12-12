@@ -178,6 +178,7 @@ namespace SceenshotTextRecognizer.GUI.Settings
                     return;
                 }
 
+                hopeButtonBindClose.Refresh();
                 Main.main.selectArea.closeSelectArea = keys;
                 Main.Save();
 
@@ -193,6 +194,7 @@ namespace SceenshotTextRecognizer.GUI.Settings
                     return;
                 }
 
+                hopeButtonBindEnter.Refresh();
                 Main.main.selectArea.enterArea = keys;
                 Main.Save();
 
