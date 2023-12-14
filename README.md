@@ -1,1 +1,1 @@
-# SceenshotTextRecognizer
+# Инстукция по пользованию
