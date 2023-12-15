@@ -67,7 +67,7 @@
             this.hopeForm.Image = null;
             this.hopeForm.Location = new System.Drawing.Point(0, 0);
             this.hopeForm.Name = "hopeForm";
-            this.hopeForm.Size = new System.Drawing.Size(533, 40);
+            this.hopeForm.Size = new System.Drawing.Size(534, 40);
             this.hopeForm.TabIndex = 0;
             this.hopeForm.Text = "Загрузка моделей";
             this.hopeForm.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
@@ -93,6 +93,7 @@
             // 
             // paneDownload
             // 
+            this.paneDownload.BackColor = System.Drawing.SystemColors.Control;
             this.paneDownload.Controls.Add(this.hopeButtonClose);
             this.paneDownload.Controls.Add(this.lostProgressBarDownloadModel);
             this.paneDownload.Controls.Add(this.labelStatusModel);
@@ -220,6 +221,7 @@
             // 
             // panelSelectDownload
             // 
+            this.panelSelectDownload.BackColor = System.Drawing.SystemColors.Control;
             this.panelSelectDownload.Controls.Add(this.hopeButtonSelectAll);
             this.panelSelectDownload.Controls.Add(this.hopeButtonCanselAll);
             this.panelSelectDownload.Controls.Add(this.hopeButtonStartDownload);
@@ -350,8 +352,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(533, 276);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(534, 276);
             this.ControlBox = false;
             this.Controls.Add(this.panelSelectDownload);
             this.Controls.Add(this.paneDownload);
