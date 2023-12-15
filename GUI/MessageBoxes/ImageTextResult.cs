@@ -9,7 +9,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
     public partial class ImageTextResult : Form
     {
-        public ImageTextResult(string text)
+        public ImageTextResult(Model model, string text)
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
@@ -22,6 +22,8 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
         }
+
+        private Model model;
 
         private void SetText(string text)
         {
@@ -38,7 +40,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     }
                 }
 
-                if (Main.main.scanResult.deleteLinesWithoutLetters)
+                if (Main.main.scanResult.deleteLinesWithoutLetters && (model.model == "rus" || model.model == "eng"))
                 {
                     if (strings[i - remove].Any(c => char.IsLetterOrDigit(c)) == false)
                     {

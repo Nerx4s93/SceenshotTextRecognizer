@@ -58,11 +58,13 @@ namespace SceenshotTextRecognizer.GUI
             hopeButtonScan.Text = "Загрузка";
             Thread thread = new Thread(() =>
             {
-                string model = _tag == "Model"?
-                    Model.Downloaded.Find(item => item.name == hopeTextBoxSelected.Text).model :
+                Model model = Model.Downloaded.Find(item => item.name == hopeTextBoxSelected.Text);
+
+                string strModel = _tag == "Model"?
+                    model.model :
                     string.Join("+", CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models);
 
-                var ocrengine = new TesseractEngine(@".\tessdata", model, EngineMode.Default);
+                var ocrengine = new TesseractEngine(@".\tessdata", strModel, EngineMode.Default);
 
                 ImageConverter converter = new ImageConverter();
                 var img = Pix.LoadFromMemory((byte[])converter.ConvertTo(_bitmap, typeof(byte[])));
@@ -76,7 +78,7 @@ namespace SceenshotTextRecognizer.GUI
                     hopeButtonScan.Refresh();
                 });
 
-                ImageTextResult imageTextResult = new ImageTextResult(res.GetText());
+                ImageTextResult imageTextResult = new ImageTextResult(model, res.GetText());
                 imageTextResult.ShowDialog();
             })
             {
