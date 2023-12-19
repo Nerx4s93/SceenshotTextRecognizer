@@ -213,9 +213,9 @@
             this.hopeCheckBoxAddToAutorun.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.hopeCheckBoxAddToAutorun.Location = new System.Drawing.Point(6, 149);
             this.hopeCheckBoxAddToAutorun.Name = "hopeCheckBoxAddToAutorun";
-            this.hopeCheckBoxAddToAutorun.Size = new System.Drawing.Size(271, 20);
+            this.hopeCheckBoxAddToAutorun.Size = new System.Drawing.Size(171, 20);
             this.hopeCheckBoxAddToAutorun.TabIndex = 3;
-            this.hopeCheckBoxAddToAutorun.Text = "Автозагрузка СДЕЛАТЬ";
+            this.hopeCheckBoxAddToAutorun.Text = "Автозагрузка";
             this.hopeCheckBoxAddToAutorun.UseVisualStyleBackColor = false;
             this.hopeCheckBoxAddToAutorun.CheckedChanged += new System.EventHandler(this.hopeCheckBoxAddToAutorun_CheckedChanged);
             // 
