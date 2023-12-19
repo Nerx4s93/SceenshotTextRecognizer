@@ -92,6 +92,19 @@ namespace SceenshotTextRecognizer.GUI
 
                     if (Main.main.scanResult.deleteLinesWithoutLetters && (model.model == "rus" || model.model == "eng"))
                     {
+                        if (strModel.IndexOf('+') == -1 && strModel != "rus" && strModel != "eng")
+                        {
+                            return;
+                        }
+                        else if (strModel.IndexOf('+') != -1)
+                        {
+                            List<string> strs = CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models;
+                            if (strs.Count != 2 || ((strs[0] != "rus" && strs[0] != "eng") || (strs[1] != "rus" && strs[1] != "eng")))
+                            {
+                                return;
+                            }
+                        }
+
                         if (strings[i - remove].Any(c => char.IsLetterOrDigit(c)) == false)
                         {
                             strings.RemoveAt(i - remove);
