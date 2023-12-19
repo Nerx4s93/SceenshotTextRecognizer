@@ -7,6 +7,10 @@ using SceenshotTextRecognizer.Properties;
 using System.Threading;
 using Tesseract;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
+using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace SceenshotTextRecognizer.GUI
 {
@@ -31,6 +35,8 @@ namespace SceenshotTextRecognizer.GUI
         private string _tag;
 
         private bool _loading;
+
+        private ImageTextResult imageTextResult;
 
         private void hopeTextBoxFind_TextChanged(object sender, EventArgs e)
         {
@@ -70,16 +76,59 @@ namespace SceenshotTextRecognizer.GUI
                 var img = Pix.LoadFromMemory((byte[])converter.ConvertTo(_bitmap, typeof(byte[])));
                 var res = ocrengine.Process(img);
 
+                #region Обработка текста
+
+                List<string> strings = res.GetText().Split('\n').ToList();
+
+                for (int i = 0, remove = 0; i != strings.Count; i++)
+                {
+                    if (Main.main.scanResult.deleteEmptyLines)
+                    {
+                        if (strings[i - remove].Any(c => char.IsWhiteSpace(c) || c == '\n') == false)
+                        {
+                            strings.RemoveAt(i - remove);
+                            remove++;
+                        }
+                    }
+
+                    if (Main.main.scanResult.deleteLinesWithoutLetters && (model.model == "rus" || model.model == "eng"))
+                    {
+                        if (strings[i - remove].Any(c => char.IsLetterOrDigit(c)) == false)
+                        {
+                            strings.RemoveAt(i - remove);
+                            remove++;
+                        }
+                    }
+
+                    if (Main.main.scanResult.removeExtraSpaces)
+                    {
+                        string trimmed = strings[i - remove].Trim();
+
+                        string pattern = "\\s+";
+                        string replacement = " ";
+                        Regex regex = new Regex(pattern);
+
+                        strings[i - remove] = regex.Replace(trimmed, replacement);
+                    }
+                }
+
+                string result = string.Join("\n", strings);
+
+                #endregion
+
                 _loading = false;
                 BeginInvoke((MethodInvoker)delegate
                 {
+                    if (imageTextResult == null || imageTextResult.IsDisposed)
+                    {
+                        imageTextResult = new ImageTextResult(result);
+                        imageTextResult.Show();
+                    }
+
                     hopeButtonScan.Enabled = true;
                     hopeButtonScan.Text = "Сканировать";
                     hopeButtonScan.Refresh();
                 });
-
-                ImageTextResult imageTextResult = new ImageTextResult(model, res.GetText());
-                imageTextResult.ShowDialog();
             })
             {
                 IsBackground = true
