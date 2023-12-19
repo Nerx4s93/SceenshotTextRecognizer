@@ -25,10 +25,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             public bool selected;
         }
 
-        public DownloadModel()
+        public DownloadModel(FormMain formMain)
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
+
+            this.formMain = formMain;
 
             foreach (Model model in Model.CanDownload)
                 items.Add(new Item(model, false));
@@ -38,6 +40,8 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
         }
+
+        private FormMain formMain;
 
         List<Item> items = new List<Item>();
 
@@ -169,6 +173,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             }
             else
             {
+                formMain.UpdateForm();
+                Model.Load();
+
                 BeginInvoke((MethodInvoker)delegate
                 {
                     if (e.Cancelled)

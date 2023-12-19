@@ -38,6 +38,8 @@ namespace SceenshotTextRecognizer.GUI
         private Fon _fon;
         private SelectAreaF _selectAreaF;
         private ScanResultF _scanResultF;
+        private DownloadModel _downloadMode;
+        private EditCombinationLanguagePack _editCombinationLanguagePack;
 
         #region GlobalKeyboardHook
 
@@ -192,11 +194,11 @@ namespace SceenshotTextRecognizer.GUI
 
         private void hopeButtonDownloadLanguageModels_Click(object sender, EventArgs e)
         {
-            DownloadModel downloadMode = new DownloadModel();
-            downloadMode.ShowDialog();
-
-            Model.Load();
-            UpdateForm();
+            if (_downloadMode == null || _downloadMode.IsDisposed)
+            {
+                _downloadMode = new DownloadModel(this);
+                _downloadMode.Show();
+            }
         }
 
         #endregion
@@ -244,10 +246,11 @@ namespace SceenshotTextRecognizer.GUI
 
         private void hopeButtonNewCombination_Click(object sender, EventArgs e)
         {
-            EditCombinationLanguagePack editCombinationLanguagePack = new EditCombinationLanguagePack();
-            editCombinationLanguagePack.ShowDialog();
-
-            UpdateForm();
+            if (_editCombinationLanguagePack == null || _editCombinationLanguagePack.IsDisposed)
+            {
+                _editCombinationLanguagePack = new EditCombinationLanguagePack(this);
+                _editCombinationLanguagePack.Show();
+            }
         }
 
         private void Edit()
@@ -255,10 +258,11 @@ namespace SceenshotTextRecognizer.GUI
             var combinationLanguagePacks = CombinationLanguagePacks.combinationLanguagePacks.Find(
                 item => item.name == crownListViewCombinationOfLanguagePacks.Items[crownListViewCombinationOfLanguagePacks.SelectedIndices[0]].Text);
 
-            EditCombinationLanguagePack editCombinationLanguagePacks = new EditCombinationLanguagePack(combinationLanguagePacks);
-            editCombinationLanguagePacks.ShowDialog();
-
-            UpdateForm();
+            if (_editCombinationLanguagePack == null || _editCombinationLanguagePack.IsDisposed)
+            {
+                _editCombinationLanguagePack = new EditCombinationLanguagePack(combinationLanguagePacks, this);
+                _editCombinationLanguagePack.Show();
+            }
         }
 
         #endregion

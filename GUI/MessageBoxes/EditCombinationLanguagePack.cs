@@ -9,10 +9,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
     public partial class EditCombinationLanguagePack : Form
     {
-        public EditCombinationLanguagePack()
+        public EditCombinationLanguagePack(FormMain formMain)
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
+
+            this.formMain = formMain;
 
             Text = "Создание новой комбинация";
             _dontUse = Model.Downloaded;
@@ -22,10 +24,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
         }
-        public EditCombinationLanguagePack(CombinationLanguagePacks combinationLanguagePacks)
+        public EditCombinationLanguagePack(CombinationLanguagePacks combinationLanguagePacks, FormMain formMain)
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
+
+            this.formMain = formMain;
 
             _name = combinationLanguagePacks.name;
             _editCombination = true;
@@ -45,6 +49,8 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             UpdateForm();
         }
+
+        private FormMain formMain;
 
         private string _name;
         private bool _editCombination;
@@ -153,6 +159,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             _dontSave = false;
             UpdateForm();
+            formMain.UpdateForm();
 
             MessageBox.Show($"Языковая комбинация \"{hopeTextBoxName.Text}\" сохранена.", "Сохранине языковой комбинации", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

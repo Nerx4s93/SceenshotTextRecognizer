@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.hopeForm1 = new ReaLTaiizor.Forms.HopeForm();
+            this.imageButtonFormMin = new SceenshotTextRecognizer.UI.ImageButton();
+            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeTabPage1 = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.hopeButtonSettingsScanResult = new ReaLTaiizor.Controls.HopeButton();
@@ -51,8 +53,6 @@
             this.hopeButtonNewCombination = new ReaLTaiizor.Controls.HopeButton();
             this.hopeButtonEditCombination = new ReaLTaiizor.Controls.HopeButton();
             this.crownListViewCombinationOfLanguagePacks = new ReaLTaiizor.Controls.CrownListView();
-            this.imageButtonFormMin = new SceenshotTextRecognizer.UI.ImageButton();
-            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeForm1.SuspendLayout();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -79,6 +79,30 @@
             this.hopeForm1.TabIndex = 0;
             this.hopeForm1.Text = "SceenshotTextRecognizer";
             this.hopeForm1.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            // 
+            // imageButtonFormMin
+            // 
+            this.imageButtonFormMin.ImageNoHovered = null;
+            this.imageButtonFormMin.ImageOnHovered = null;
+            this.imageButtonFormMin.Location = new System.Drawing.Point(573, 8);
+            this.imageButtonFormMin.Name = "imageButtonFormMin";
+            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonFormMin.TabIndex = 6;
+            this.imageButtonFormMin.Text = "imageButton1";
+            this.imageButtonFormMin.UseVisualStyleBackColor = true;
+            this.imageButtonFormMin.Click += new System.EventHandler(this.imageButtonFormMin_Click);
+            // 
+            // imageButtonClose
+            // 
+            this.imageButtonClose.ImageNoHovered = null;
+            this.imageButtonClose.ImageOnHovered = null;
+            this.imageButtonClose.Location = new System.Drawing.Point(597, 8);
+            this.imageButtonClose.Name = "imageButtonClose";
+            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonClose.TabIndex = 5;
+            this.imageButtonClose.Text = "imageButton1";
+            this.imageButtonClose.UseVisualStyleBackColor = true;
+            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // hopeTabPage1
             // 
@@ -484,30 +508,6 @@
             this.crownListViewCombinationOfLanguagePacks.Text = "crownListView2";
             this.crownListViewCombinationOfLanguagePacks.SelectedIndicesChanged += new System.EventHandler(this.crownListViewCombinationOfLanguagePacks_SelectedIndicesChanged);
             this.crownListViewCombinationOfLanguagePacks.DoubleClick += new System.EventHandler(this.crownListViewCombinationOfLanguagePacks_DoubleClick);
-            // 
-            // imageButtonFormMin
-            // 
-            this.imageButtonFormMin.ImageNoHovered = null;
-            this.imageButtonFormMin.ImageOnHovered = null;
-            this.imageButtonFormMin.Location = new System.Drawing.Point(573, 8);
-            this.imageButtonFormMin.Name = "imageButtonFormMin";
-            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonFormMin.TabIndex = 6;
-            this.imageButtonFormMin.Text = "imageButton1";
-            this.imageButtonFormMin.UseVisualStyleBackColor = true;
-            this.imageButtonFormMin.Click += new System.EventHandler(this.imageButtonFormMin_Click);
-            // 
-            // imageButtonClose
-            // 
-            this.imageButtonClose.ImageNoHovered = null;
-            this.imageButtonClose.ImageOnHovered = null;
-            this.imageButtonClose.Location = new System.Drawing.Point(597, 8);
-            this.imageButtonClose.Name = "imageButtonClose";
-            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonClose.TabIndex = 5;
-            this.imageButtonClose.Text = "imageButton1";
-            this.imageButtonClose.UseVisualStyleBackColor = true;
-            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // FormMain
             // 
