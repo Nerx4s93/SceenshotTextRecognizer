@@ -19,10 +19,10 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             Text = "Создание новой комбинация";
             _dontUse = Model.Downloaded;
 
-            UpdateForm();
-
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
+
+            UpdateForm();
         }
         public EditCombinationLanguagePack(CombinationLanguagePacks combinationLanguagePacks, FormMain formMain)
         {
@@ -46,6 +46,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     _dontUse.Add(model);
                 }
             }
+
+            imageButtonClose.ImageNoHovered = Resources.close;
+            imageButtonClose.ImageOnHovered = Resources.close2;
 
             UpdateForm();
         }
