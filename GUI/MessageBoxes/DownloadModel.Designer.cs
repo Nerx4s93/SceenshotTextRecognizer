@@ -69,7 +69,7 @@
             this.hopeForm.Name = "hopeForm";
             this.hopeForm.Size = new System.Drawing.Size(534, 40);
             this.hopeForm.TabIndex = 0;
-            this.hopeForm.Text = "Загрузка моделей";
+            this.hopeForm.Text = "Загрузка языков";
             this.hopeForm.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
             // 
             // imageButtonClose

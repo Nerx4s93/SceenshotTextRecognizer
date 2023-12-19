@@ -127,12 +127,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             if (string.IsNullOrEmpty(hopeTextBoxName.Text))
             {
-                MessageBox.Show("Введите имя комбинации языковх пекетов", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Введите имя языкой комбинации", "Имя крмбинации отсутствует", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (crownListViewUseModels.Items.Count < 2)
             {
-                MessageBox.Show("Выберите хотябы два языковых пекета", "Ошибка сохранения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Выберите хотябы два языка", "Не выбраны языки", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -161,7 +161,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             UpdateForm();
             formMain.UpdateForm();
 
-            MessageBox.Show($"Языковая комбинация \"{hopeTextBoxName.Text}\" сохранена.", "Сохранине языковой комбинации", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Языковая комбинация \"{hopeTextBoxName.Text}\" сохранена.", "Сохранине", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Add()
@@ -207,13 +207,13 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             {
                 if (_dontSave)
                 {
-                    hopeForm.Text = $"Языкованя комбинация \"{_name}\"*";
-                    Text = $"Языкованя комбинация \"{_name}\"*";
+                    hopeForm.Text = $"Языковая комбинация \"{_name}\"*";
+                    Text = $"Языковая комбинация \"{_name}\"*";
                 }
                 else
                 {
-                    hopeForm.Text = $"Языкованя комбинация \"{_name}\"";
-                    Text = $"Языкованя комбинация \"{_name}\"";
+                    hopeForm.Text = $"Языковая комбинация \"{_name}\"";
+                    Text = $"Языковая комбинация \"{_name}\"";
                 }
             }
             else

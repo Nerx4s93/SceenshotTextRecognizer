@@ -7,7 +7,6 @@ using SceenshotTextRecognizer.Properties;
 using System.Threading;
 using Tesseract;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
-using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;

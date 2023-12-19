@@ -138,6 +138,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     lostProgressBarDownloadedModels.Progress = (int)((double)iModel / (double)_models.Count * 100);
                 });
 
+                Model.Load();
+                formMain.BeginInvoke((MethodInvoker)delegate
+                {
+                    formMain.UpdateForm();
+                });
+
                 _client = new WebClient();
                 _client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
                 _client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
@@ -160,6 +166,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
+            Model.Load();
+            formMain.BeginInvoke((MethodInvoker)delegate
+            {
+                formMain.UpdateForm();
+            });
+
             if (e.Cancelled == false && iModel + 1 != _models.Count)
             {
                 BeginInvoke((MethodInvoker)delegate
@@ -173,9 +185,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             }
             else
             {
-                formMain.UpdateForm();
-                Model.Load();
-
                 BeginInvoke((MethodInvoker)delegate
                 {
                     if (e.Cancelled)
