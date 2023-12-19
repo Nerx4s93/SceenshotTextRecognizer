@@ -66,7 +66,6 @@ namespace SceenshotTextRecognizer.GUI
                 }
 
                 Main.main.bind = e.KeyData;
-                Main.Save();
 
                 hopeButtonBind.Enabled = true;
                 _waitKeyBind = false;
