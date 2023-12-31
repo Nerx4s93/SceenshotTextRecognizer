@@ -79,50 +79,58 @@ namespace SceenshotTextRecognizer.GUI
 
                 List<string> strings = res.GetText().Split('\n').ToList();
 
-                for (int i = 0, remove = 0; i != strings.Count; i++)
+                try
                 {
-                    if (Main.main.scanResult.deleteEmptyLines)
+                    for (int i = 0, remove = 0; i != strings.Count; i++)
                     {
-                        if (strings[i - remove].Any(c => char.IsWhiteSpace(c) || c == '\n') == false)
+                        if (Main.main.scanResult.deleteEmptyLines)
                         {
-                            strings.RemoveAt(i - remove);
-                            remove++;
-                        }
-                    }
-
-                    if (Main.main.scanResult.deleteLinesWithoutLetters && (model.model == "rus" || model.model == "eng"))
-                    {
-                        if (strModel.IndexOf('+') == -1 && strModel != "rus" && strModel != "eng")
-                        {
-                            return;
-                        }
-                        else if (strModel.IndexOf('+') != -1)
-                        {
-                            List<string> strs = CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models;
-                            if (strs.Count != 2 || ((strs[0] != "rus" && strs[0] != "eng") || (strs[1] != "rus" && strs[1] != "eng")))
+                            if (strings[i - remove].Any(c => char.IsWhiteSpace(c) || c == '\n') == false)
                             {
-                                return;
+                                strings.RemoveAt(i - remove);
+                                remove++;
+
+                                continue;
                             }
                         }
 
-                        if (strings[i - remove].Any(c => char.IsLetterOrDigit(c)) == false)
+                        if (Main.main.scanResult.deleteLinesWithoutLetters)
                         {
-                            strings.RemoveAt(i - remove);
-                            remove++;
+                            if (strModel.IndexOf('+') == -1 && strModel != "rus" && strModel != "eng")
+                            {
+                                continue;
+                            }
+                            else if (strModel.IndexOf('+') != -1)
+                            {
+                                List<string> strs = CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models;
+                                if (strs.Count != 2 || !(strs[0] == "rus" || strs[0] == "eng") || !(strs[1] == "rus" || strs[1] == "eng"))
+                                {
+                                    continue;
+                                }
+                            }
+
+                            if (strings[i - remove].Any(c => char.IsLetterOrDigit(c)) == false)
+                            {
+                                strings.RemoveAt(i - remove);
+                                remove++;
+
+                                continue;
+                            }
+                        }
+
+                        if (Main.main.scanResult.removeExtraSpaces)
+                        {
+                            string trimmed = strings[i - remove].Trim();
+
+                            string pattern = "\\s+";
+                            string replacement = " ";
+                            Regex regex = new Regex(pattern);
+
+                            strings[i - remove] = regex.Replace(trimmed, replacement);
                         }
                     }
-
-                    if (Main.main.scanResult.removeExtraSpaces)
-                    {
-                        string trimmed = strings[i - remove].Trim();
-
-                        string pattern = "\\s+";
-                        string replacement = " ";
-                        Regex regex = new Regex(pattern);
-
-                        strings[i - remove] = regex.Replace(trimmed, replacement);
-                    }
                 }
+                catch (Exception ex) { MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
                 string result = string.Join("\n", strings);
 
