@@ -9,86 +9,120 @@ namespace SceenshotTextRecognizer.GUI
 {
     public partial class Fon : Form
     {
+        private Bitmap originalImage;
+        private Rectangle selectionRectangle;
+        private Point startPoint;
+        private Point endPoint;
+        private bool isMouseDown;
+
         public Fon()
         {
             new OnTopControl(Handle);
             InitializeComponent();
-
-            Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             Location = new Point(0, 0);
-
-            _screenshot = TakeSceenShow();
-            _screenshotWithBorders = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            InitializeImage();
+            isMouseDown = false;
+            DoubleBuffered = true;
         }
 
-        private Bitmap _screenshot;
+        private Bitmap TakeScreenshot()
+        {
+            Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
 
-        private Bitmap _screenshotWithBorders;
+            Bitmap screenshot = new Bitmap(screenBounds.Width, screenBounds.Height);
 
-        private bool _drawed = false;
+            using (Graphics graphics = Graphics.FromImage(screenshot))
+            {
+                graphics.CopyFromScreen(screenBounds.X, screenBounds.Y, 0, 0, screenBounds.Size);
+            }
+
+            return screenshot;
+        }
+
+        private void InitializeImage()
+        {
+            originalImage = TakeScreenshot();
+
+            ClientSize = new Size(originalImage.Width, originalImage.Height);
+
+            selectionRectangle = new Rectangle(0, 0, 0, 0);
+        }
 
         private void Fon_Paint(object sender, PaintEventArgs e)
         {
-            if (_drawed == false)
-            {
-                Graphics graphics = CreateGraphics();
-                graphics.DrawImage(_screenshot, new Point(0, 0));
+            int x = Math.Min(endPoint.X, startPoint.X);
+            int y = Math.Min(endPoint.Y, startPoint.Y);
+            int width = Math.Abs(endPoint.X - startPoint.X);
+            int height = Math.Abs(endPoint.Y - startPoint.Y);
+            selectionRectangle = new Rectangle(x, y, width, height);
 
-                if (Main.main.selectArea.typeFon == TypeFon.Black)
+            e.Graphics.DrawImage(originalImage, 0, 0);
+
+            if (Main.main.selectArea.typeFon == TypeFon.Black)
+            {
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(128, Color.Black)))
                 {
-                    graphics.FillRectangle(new SolidBrush(Color.FromArgb(124, 0, 0, 0)), 0, 0, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                    Rectangle topRect = new Rectangle(0, 0, this.ClientSize.Width, selectionRectangle.Top);
+                    Rectangle bottomRect = new Rectangle(0, selectionRectangle.Bottom, this.ClientSize.Width, this.ClientSize.Height - selectionRectangle.Bottom);
+                    Rectangle leftRect = new Rectangle(0, selectionRectangle.Top, selectionRectangle.Left, selectionRectangle.Height);
+                    Rectangle rightRect = new Rectangle(selectionRectangle.Right, selectionRectangle.Top, this.ClientSize.Width - selectionRectangle.Right, selectionRectangle.Height);
+
+                    e.Graphics.FillRectangle(brush, topRect);
+                    e.Graphics.FillRectangle(brush, bottomRect);
+                    e.Graphics.FillRectangle(brush, leftRect);
+                    e.Graphics.FillRectangle(brush, rightRect);
                 }
             }
+
+            using (Pen pen = new Pen(Color.Red, 2))
+            {
+                e.Graphics.DrawRectangle(pen, selectionRectangle);
+            }
         }
-
-        #region Select
-
-        private bool _moseDown = false;
-
-        private Point _startPoint = new Point(0, 0);
-        private Point _endPoint = new Point(0, 0);
 
         private void Fon_MouseDown(object sender, MouseEventArgs e)
         {
             if (Main.main.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
             {
-                _startPoint = new Point(e.X, e.Y);
-                _moseDown = true;
+                if (e.Button == MouseButtons.Left)
+                {
+                    isMouseDown = true;
+                    startPoint = e.Location;
+                    selectionRectangle = new Rectangle(startPoint, new Size(0, 0));
+                    Invalidate();
+                }
             }
             else
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    _startPoint = new Point(e.X, e.Y);
+                    startPoint = new Point(e.X, e.Y);
                 }
                 else if (e.Button == MouseButtons.Right)
                 {
-                    _endPoint = new Point(e.X, e.Y);
+                    endPoint = new Point(e.X, e.Y);
                 }
 
-                Draw();
-            }
-        }
-
-        private void Fon_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (Main.main.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
-            {
-                _endPoint = new Point(e.X, e.Y);
-                _moseDown = false;
+                Invalidate();
             }
         }
 
         private void Fon_MouseMove(object sender, MouseEventArgs e)
         {
-            if (_moseDown == true && Main.main.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
+            if (isMouseDown)
             {
-                _endPoint = new Point(e.X, e.Y);
-                Draw();
+                endPoint = new Point(e.X, e.Y);
+                Invalidate();
             }
         }
 
-        #endregion
+        private void Fon_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMouseDown = false;
+            }
+        }
 
         public void FormKeyDown(Keys key)
         {
@@ -108,13 +142,13 @@ namespace SceenshotTextRecognizer.GUI
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    CreateGraphics().DrawImage(_screenshotWithBorders, new Point(0, 0));
+                    Invalidate();
 
-                    Bitmap result = _screenshot.Clone(new Rectangle(
-                        Math.Min(_startPoint.X, _endPoint.X),
-                        Math.Min(_startPoint.Y, _endPoint.Y),
-                        Math.Max(_startPoint.X, _endPoint.X) - Math.Min(_startPoint.X, _endPoint.X),
-                        Math.Max(_startPoint.Y, _endPoint.Y) - Math.Min(_startPoint.Y, _endPoint.Y)), _screenshot.PixelFormat);
+                    Bitmap result = originalImage.Clone(new Rectangle(
+                        Math.Min(startPoint.X, endPoint.X),
+                        Math.Min(startPoint.Y, endPoint.Y),
+                        Math.Max(startPoint.X, endPoint.X) - Math.Min(startPoint.X, endPoint.X),
+                        Math.Max(startPoint.Y, endPoint.Y) - Math.Min(startPoint.Y, endPoint.Y)), originalImage.PixelFormat);
 
                     ProgramData.SelectSone = false;
                     ScanSettings scanSettings = new ScanSettings(result);
@@ -123,50 +157,6 @@ namespace SceenshotTextRecognizer.GUI
                     Dispose();
                 }
             }
-        }
-
-        private void Draw()
-        {
-            _screenshotWithBorders = (Bitmap)_screenshot.Clone();
-
-            Graphics graphicsBorders = Graphics.FromImage(_screenshotWithBorders);
-
-            int minX = Math.Min(_startPoint.X, _endPoint.X);
-            int maxX = Math.Max(_startPoint.X, _endPoint.X);
-            int minY = Math.Min(_startPoint.Y, _endPoint.Y);
-            int maxY = Math.Max(_startPoint.Y, _endPoint.Y);
-
-            if (Main.main.selectArea.typeFon == TypeFon.Black)
-            {
-                var solidBrush = new SolidBrush(Color.FromArgb(124, 0, 0, 0));
-                graphicsBorders.FillRectangle(solidBrush, 0, 0, Screen.PrimaryScreen.Bounds.Width, minY);
-                graphicsBorders.FillRectangle(solidBrush, 0, minY, minX, maxY - minY);
-                graphicsBorders.FillRectangle(solidBrush, maxX, minY, Screen.PrimaryScreen.Bounds.Width - maxX, maxY - minY);
-                graphicsBorders.FillRectangle(solidBrush, 0, maxY, Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height - _endPoint.Y);
-            }
-            else if (Main.main.selectArea.typeFon == TypeFon.None)
-            {
-                var solidBrush = new SolidBrush(Color.FromArgb(255, 245, 245, 245));
-                graphicsBorders.FillRectangle(solidBrush, minX, minY - 5, maxX - minX, 5);
-                graphicsBorders.FillRectangle(solidBrush, maxX, minY - 5, 5, maxY - minY + 10);
-                graphicsBorders.FillRectangle(solidBrush, minX, maxY, maxX - minX, 5);
-                graphicsBorders.FillRectangle(solidBrush, minX - 5, minY - 5, 5, maxY - minY + 10);
-            }
-
-            Graphics formGraphics = CreateGraphics();
-            formGraphics.DrawImage(_screenshotWithBorders, new Point(0, 0));
-        }
-
-        private Bitmap TakeSceenShow()
-        {
-            Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
-
-            Bitmap screenshot = new Bitmap(screenBounds.Width, screenBounds.Height);
-
-            Graphics graphics = Graphics.FromImage(screenshot);
-            graphics.CopyFromScreen(screenBounds.X, screenBounds.Y, 0, 0, screenBounds.Size);
-
-            return screenshot;
         }
     }
 }
