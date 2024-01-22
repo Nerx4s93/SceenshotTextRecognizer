@@ -20,7 +20,6 @@ namespace SceenshotTextRecognizer.Data
         {
             new Model("Русский", "rus", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=100UgP7h1LHC7ZMBSik7f-5ABTjEBdBvJ"),
             new Model("Английский", "eng", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1WmTaDMxf8c7LQjY0LJrhyLkoniaeueNJ"),
-            new Model("Украинский", "ukr", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1TfbEaomZDRD9kEImdIGy79k0jBwgSxLm"),
             new Model("Француский", "fra", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1jacOGJ94duJ_IJRIOLB5Qcrar5lKiMMM"),
             new Model("Испанский", "spa", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1g0rxgc9gLxQI-vAq743TfVMyun1OT2Og"),
             new Model("Итальянский", "ita", "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1Pxu0sW9dpFcnVvolOeCDZbZSkpAkQdLy"),
