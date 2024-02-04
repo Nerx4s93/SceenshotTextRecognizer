@@ -65,7 +65,7 @@ namespace SceenshotTextRecognizer.GUI
             {
                 Model model = Model.Downloaded.Find(item => item.name == hopeTextBoxSelected.Text);
 
-                string strModel = _tag == "Model"?
+                string strModel = _tag == "Model" ?
                     model.model :
                     string.Join("+", CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models);
 
@@ -79,9 +79,9 @@ namespace SceenshotTextRecognizer.GUI
 
                 List<string> strings = res.GetText().Split('\n').ToList();
 
-                try
+                for (int i = 0, remove = 0; i != strings.Count; i++)
                 {
-                    for (int i = 0, remove = 0; i != strings.Count; i++)
+                    try
                     {
                         if (Main.main.scanResult.deleteEmptyLines)
                         {
@@ -93,7 +93,10 @@ namespace SceenshotTextRecognizer.GUI
                                 continue;
                             }
                         }
-
+                    }
+                    catch { }
+                    try
+                    {
                         if (Main.main.scanResult.deleteLinesWithoutLetters)
                         {
                             if (strModel.IndexOf('+') == -1 && strModel != "rus" && strModel != "eng")
@@ -103,7 +106,7 @@ namespace SceenshotTextRecognizer.GUI
                             else if (strModel.IndexOf('+') != -1)
                             {
                                 List<string> strs = CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models;
-                                if (strs.Count != 2 || !(strs[0] == "rus" || strs[0] == "eng") || !(strs[1] == "rus" || strs[1] == "eng"))
+                                if (strs.Count != 2 || !(strs[0] == "rus" & strs[1] == "eng") || !(strs[0] == "eng" & strs[1] == "rus"))
                                 {
                                     continue;
                                 }
@@ -117,7 +120,10 @@ namespace SceenshotTextRecognizer.GUI
                                 continue;
                             }
                         }
-
+                    }
+                    catch { }
+                    try
+                    {
                         if (Main.main.scanResult.removeExtraSpaces)
                         {
                             string trimmed = strings[i - remove].Trim();
@@ -129,8 +135,8 @@ namespace SceenshotTextRecognizer.GUI
                             strings[i - remove] = regex.Replace(trimmed, replacement);
                         }
                     }
+                    catch { }
                 }
-                catch (Exception ex) { MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
                 string result = string.Join("\n", strings);
 
