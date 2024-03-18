@@ -9,6 +9,7 @@ using System.IO;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
 using SceenshotTextRecognizer.Properties;
 using SceenshotTextRecognizer.GUI.Settings;
+using Microsoft.Win32;
 
 namespace SceenshotTextRecognizer.GUI
 {
@@ -145,8 +146,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private void hopeCheckBoxAddToAutorun_CheckedChanged(object sender, EventArgs e)
         {
-            // TODO: сдлать
-            /*if (hopeCheckBoxAddToAutorun.Checked)
+            if (hopeCheckBoxAddToAutorun.Checked)
             {
                 RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.SetValue("SceenshotTextRecognizer", Application.ExecutablePath);
@@ -155,7 +155,10 @@ namespace SceenshotTextRecognizer.GUI
             {
                 RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.DeleteValue("SceenshotTextRecognizer", false);
-            }*/
+            }
+
+            Main.main.autoUpload = hopeCheckBoxWorkInFon.Checked;
+            Main.Save();
         }
 
         #endregion

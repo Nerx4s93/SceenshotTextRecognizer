@@ -12,6 +12,7 @@ namespace SceenshotTextRecognizer.Data
         public Keys bind = Keys.RShiftKey;
         public bool showOnOtherWindows;
         public bool workInFon;
+        public bool autoUpload;
         public SelectArea selectArea = new SelectArea();
         public ScanResult scanResult = new ScanResult();
 
