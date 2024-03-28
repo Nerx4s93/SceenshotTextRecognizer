@@ -190,6 +190,13 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                     if (e.Cancelled)
                     {
                         File.Delete($@"tessdata\{_models[iModel].model}.traineddata");
+
+                        Model.Load();
+                        formMain.BeginInvoke((MethodInvoker)delegate
+                        {
+                            formMain.UpdateForm();
+                        });
+
                         hopeForm.Text = "Загрузка отменена";
                         Text = "Загрузка отменена";
                     }
