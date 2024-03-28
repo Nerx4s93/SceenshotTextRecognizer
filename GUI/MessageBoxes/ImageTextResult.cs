@@ -19,6 +19,8 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             dungeonRichTextBoxText.Text = text;
         }
 
+        public bool saveProcess;
+
         private void imageButtonClose_Click(object sender, System.EventArgs e)
         {
             Close();
@@ -27,6 +29,14 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         private void imageButtonFormMin_Click(object sender, System.EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void hopeButtonSave_Click(object sender, System.EventArgs e)
+        {
+            saveProcess = true;
+
+            SaveResult saveResult = new SaveResult(this, dungeonRichTextBoxText.Text);
+            saveResult.Show();
         }
     }
 }

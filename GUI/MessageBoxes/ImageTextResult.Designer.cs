@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.hopeForm1 = new ReaLTaiizor.Forms.HopeForm();
-            this.cyberRichTextBox1 = new ReaLTaiizor.Controls.CyberRichTextBox();
-            this.dungeonRichTextBoxText = new ReaLTaiizor.Controls.DungeonRichTextBox();
             this.imageButtonFormMin = new SceenshotTextRecognizer.UI.ImageButton();
             this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
+            this.cyberRichTextBox1 = new ReaLTaiizor.Controls.CyberRichTextBox();
+            this.dungeonRichTextBoxText = new ReaLTaiizor.Controls.DungeonRichTextBox();
+            this.hopeButtonSave = new ReaLTaiizor.Controls.HopeButton();
             this.hopeForm1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,30 @@
             this.hopeForm1.TabIndex = 1;
             this.hopeForm1.Text = "Результат сканирования";
             this.hopeForm1.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            // 
+            // imageButtonFormMin
+            // 
+            this.imageButtonFormMin.ImageNoHovered = null;
+            this.imageButtonFormMin.ImageOnHovered = null;
+            this.imageButtonFormMin.Location = new System.Drawing.Point(742, 8);
+            this.imageButtonFormMin.Name = "imageButtonFormMin";
+            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonFormMin.TabIndex = 8;
+            this.imageButtonFormMin.Text = "imageButton1";
+            this.imageButtonFormMin.UseVisualStyleBackColor = true;
+            this.imageButtonFormMin.Click += new System.EventHandler(this.imageButtonFormMin_Click);
+            // 
+            // imageButtonClose
+            // 
+            this.imageButtonClose.ImageNoHovered = null;
+            this.imageButtonClose.ImageOnHovered = null;
+            this.imageButtonClose.Location = new System.Drawing.Point(766, 8);
+            this.imageButtonClose.Name = "imageButtonClose";
+            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonClose.TabIndex = 7;
+            this.imageButtonClose.Text = "imageButton1";
+            this.imageButtonClose.UseVisualStyleBackColor = true;
+            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // cyberRichTextBox1
             // 
@@ -96,34 +121,31 @@
             this.dungeonRichTextBoxText.Location = new System.Drawing.Point(12, 46);
             this.dungeonRichTextBoxText.Name = "dungeonRichTextBoxText";
             this.dungeonRichTextBoxText.ReadOnly = false;
-            this.dungeonRichTextBoxText.Size = new System.Drawing.Size(776, 363);
+            this.dungeonRichTextBoxText.Size = new System.Drawing.Size(776, 317);
             this.dungeonRichTextBoxText.TabIndex = 4;
             this.dungeonRichTextBoxText.TextBackColor = System.Drawing.Color.White;
             this.dungeonRichTextBoxText.WordWrap = true;
             // 
-            // imageButtonFormMin
+            // hopeButtonSave
             // 
-            this.imageButtonFormMin.ImageNoHovered = null;
-            this.imageButtonFormMin.ImageOnHovered = null;
-            this.imageButtonFormMin.Location = new System.Drawing.Point(742, 8);
-            this.imageButtonFormMin.Name = "imageButtonFormMin";
-            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonFormMin.TabIndex = 8;
-            this.imageButtonFormMin.Text = "imageButton1";
-            this.imageButtonFormMin.UseVisualStyleBackColor = true;
-            this.imageButtonFormMin.Click += new System.EventHandler(this.imageButtonFormMin_Click);
-            // 
-            // imageButtonClose
-            // 
-            this.imageButtonClose.ImageNoHovered = null;
-            this.imageButtonClose.ImageOnHovered = null;
-            this.imageButtonClose.Location = new System.Drawing.Point(766, 8);
-            this.imageButtonClose.Name = "imageButtonClose";
-            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonClose.TabIndex = 7;
-            this.imageButtonClose.Text = "imageButton1";
-            this.imageButtonClose.UseVisualStyleBackColor = true;
-            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
+            this.hopeButtonSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
+            this.hopeButtonSave.ButtonType = ReaLTaiizor.Util.HopeButtonType.Primary;
+            this.hopeButtonSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hopeButtonSave.DangerColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
+            this.hopeButtonSave.DefaultColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.hopeButtonSave.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.hopeButtonSave.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
+            this.hopeButtonSave.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
+            this.hopeButtonSave.Location = new System.Drawing.Point(12, 369);
+            this.hopeButtonSave.Name = "hopeButtonSave";
+            this.hopeButtonSave.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.hopeButtonSave.Size = new System.Drawing.Size(194, 40);
+            this.hopeButtonSave.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
+            this.hopeButtonSave.TabIndex = 6;
+            this.hopeButtonSave.Text = "Сохранить";
+            this.hopeButtonSave.TextColor = System.Drawing.Color.White;
+            this.hopeButtonSave.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
+            this.hopeButtonSave.Click += new System.EventHandler(this.hopeButtonSave_Click);
             // 
             // ImageTextResult
             // 
@@ -131,6 +153,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 421);
             this.ControlBox = false;
+            this.Controls.Add(this.hopeButtonSave);
             this.Controls.Add(this.dungeonRichTextBoxText);
             this.Controls.Add(this.cyberRichTextBox1);
             this.Controls.Add(this.hopeForm1);
@@ -151,5 +174,6 @@
         private ReaLTaiizor.Controls.DungeonRichTextBox dungeonRichTextBoxText;
         private UI.ImageButton imageButtonFormMin;
         private UI.ImageButton imageButtonClose;
+        private ReaLTaiizor.Controls.HopeButton hopeButtonSave;
     }
 }
