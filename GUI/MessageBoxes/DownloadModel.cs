@@ -60,7 +60,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             foreach (var checkedItemCollection in checkedListBoxLanguages.CheckedItems)
             {
-                Item _item = items.Find(item => item.model.name == checkedItemCollection.ToString());
+                Item _item = items.Find(item => item.model.Name == checkedItemCollection.ToString());
                 _item.selected = true;
             }
         }
@@ -74,7 +74,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             for (int i = 0; i != checkedListBoxLanguages.Items.Count; i++)
             {
-                Item item = items.Find(find => find.model.name == (string)checkedListBoxLanguages.Items[i]);
+                Item item = items.Find(find => find.model.Name == (string)checkedListBoxLanguages.Items[i]);
                 item.selected = true;
             }
 
@@ -85,7 +85,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             for (int i = 0; i != checkedListBoxLanguages.Items.Count; i++)
             {
-                Item item = items.Find(find => find.model.name == (string)checkedListBoxLanguages.Items[i]);
+                Item item = items.Find(find => find.model.Name == (string)checkedListBoxLanguages.Items[i]);
                 item.selected = false;
             }
 
@@ -99,7 +99,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             {
                 if (item.selected)
                 {
-                    Model model = Model.CanDownload.Find(find => find.name == item.model.name);
+                    Model model = Model.CanDownload.Find(find => find.Name == item.model.Name);
                     models.Add(model);
                 }
             }
@@ -147,7 +147,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                 _client = new WebClient();
                 _client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
                 _client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
-                _client.DownloadFileAsync(new Uri(model.url), $@"tessdata\{model.model}.traineddata");
+                _client.DownloadFileAsync(new Uri(model.Url), $@"tessdata\{model.Code}.traineddata");
             });
             _thread.Start();
         }
@@ -189,7 +189,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                 {
                     if (e.Cancelled)
                     {
-                        File.Delete($@"tessdata\{_models[iModel].model}.traineddata");
+                        File.Delete($@"tessdata\{_models[iModel].Code}.traineddata");
 
                         Model.Load();
                         formMain.BeginInvoke((MethodInvoker)delegate
@@ -237,9 +237,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             foreach (Item item in items)
             {
-                if (string.IsNullOrEmpty(hopeTextBoxSearchLanguageModel.Text) || item.model.name.IndexOf(hopeTextBoxSearchLanguageModel.Text) != -1)
+                if (string.IsNullOrEmpty(hopeTextBoxSearchLanguageModel.Text) || item.model.Name.IndexOf(hopeTextBoxSearchLanguageModel.Text) != -1)
                 {
-                    checkedListBoxLanguages.Items.Add(item.model.name, item.selected);
+                    checkedListBoxLanguages.Items.Add(item.model.Name, item.selected);
                 }
             }
 

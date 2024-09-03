@@ -37,7 +37,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             hopeTextBoxName.Text = combinationLanguagePacks.name;
             foreach (Model model in Model.models)
             {
-                if (combinationLanguagePacks.models.Find(item => item == model.model) != null)
+                if (combinationLanguagePacks.models.Find(item => item == model.Code) != null)
                 {
                     _use.Add(model);
                 }
@@ -142,7 +142,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             List<string> stringModels = new List<string>();
             foreach (Model model in _use)
             {
-                stringModels.Add(model.model);
+                stringModels.Add(model.Code);
             }
 
             if (_editCombination)
@@ -169,7 +169,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void Add()
         {
-            Model model = _dontUse.Find(item => item.name == crownListViewDontUseModels.Items[crownListViewDontUseModels.SelectedIndices[0]].Text);
+            Model model = _dontUse.Find(item => item.Name == crownListViewDontUseModels.Items[crownListViewDontUseModels.SelectedIndices[0]].Text);
 
             _use.Add(model);
             _dontUse.Remove(model);
@@ -180,7 +180,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void Remove()
         {
-            Model model = _use.Find(item => item.name == crownListViewUseModels.Items[crownListViewUseModels.SelectedIndices[0]].Text);
+            Model model = _use.Find(item => item.Name == crownListViewUseModels.Items[crownListViewUseModels.SelectedIndices[0]].Text);
 
             _dontUse.Add(model);
             _use.Remove(model);
@@ -196,13 +196,13 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             for (int i = 0; i != _use.Count; i++)
             {
-                var crownListItem = new CrownListItem(_use[i].name);
+                var crownListItem = new CrownListItem(_use[i].Name);
                 crownListViewUseModels.Items.Add(crownListItem);
             }
 
             for (int i = 0; i != _dontUse.Count; i++)
             {
-                var crownListItem = new CrownListItem(_dontUse[i].name);
+                var crownListItem = new CrownListItem(_dontUse[i].Name);
                 crownListViewDontUseModels.Items.Add(crownListItem);
             }
 

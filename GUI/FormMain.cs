@@ -183,11 +183,11 @@ namespace SceenshotTextRecognizer.GUI
 
         private void hopeButtonDeleteLanguageModel_Click(object sender, EventArgs e)
         {
-            Model model = Model.Downloaded.Find(item => item.name == crownListViewLanguagePacks.Items[crownListViewLanguagePacks.SelectedIndices[0]].Text);
+            Model model = Model.Downloaded.Find(item => item.Name == crownListViewLanguagePacks.Items[crownListViewLanguagePacks.SelectedIndices[0]].Text);
 
-            if (MessageBox.Show($"Вы дочно хотите удалить языковой пакет \"{model.name}\"?", "Подтвердить удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show($"Вы дочно хотите удалить языковой пакет \"{model.Name}\"?", "Подтвердить удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                File.Delete($@"tessdata\{model.model}.traineddata");
+                File.Delete($@"tessdata\{model.Code}.traineddata");
 
                 Model.CanDownload.Add(model);
                 Model.Downloaded.Remove(model);
@@ -304,16 +304,16 @@ namespace SceenshotTextRecognizer.GUI
 
             for (int i = 0; i != Model.Downloaded.Count; i++)
             {
-                if (string.IsNullOrEmpty(hopeTextBoxSearchLanguageModel.Text) || Model.Downloaded[i].name.IndexOf(hopeTextBoxSearchLanguageModel.Text) == 0)
+                if (string.IsNullOrEmpty(hopeTextBoxSearchLanguageModel.Text) || Model.Downloaded[i].Name.IndexOf(hopeTextBoxSearchLanguageModel.Text) == 0)
                 {
-                    var crownListItem = new CrownListItem(Model.Downloaded[i].name);
+                    var crownListItem = new CrownListItem(Model.Downloaded[i].Name);
                     crownListViewLanguagePacks.Items.Add(crownListItem);
                 }
             }
 
             for (int i = 0; i != CombinationLanguagePacks.combinationLanguagePacks.Count; i++)
             {
-                if (string.IsNullOrEmpty(hopeTextBoxSearchCombinationOfLanguagePacks.Text) || Model.Downloaded[i].name.IndexOf(hopeTextBoxSearchCombinationOfLanguagePacks.Text) == 0)
+                if (string.IsNullOrEmpty(hopeTextBoxSearchCombinationOfLanguagePacks.Text) || Model.Downloaded[i].Name.IndexOf(hopeTextBoxSearchCombinationOfLanguagePacks.Text) == 0)
                 {
                     var crownListItem = new CrownListItem(CombinationLanguagePacks.combinationLanguagePacks[i].name);
                     crownListViewCombinationOfLanguagePacks.Items.Add(crownListItem);

@@ -63,10 +63,10 @@ namespace SceenshotTextRecognizer.GUI
             hopeButtonScan.Text = "Загрузка";
             Thread thread = new Thread(() =>
             {
-                Model model = Model.Downloaded.Find(item => item.name == hopeTextBoxSelected.Text);
+                Model model = Model.Downloaded.Find(item => item.Name == hopeTextBoxSelected.Text);
 
                 string strModel = _tag == "Model" ?
-                    model.model :
+                    model.Code :
                     string.Join("+", CombinationLanguagePacks.combinationLanguagePacks.Find(item => item.name == hopeTextBoxSelected.Text).models);
 
                 var ocrengine = new TesseractEngine(@".\tessdata", strModel, EngineMode.Default);
@@ -150,14 +150,14 @@ namespace SceenshotTextRecognizer.GUI
 
             foreach (Model model in Model.Downloaded)
             {
-                CrownListItem listViewItem = new CrownListItem(model.name);
+                CrownListItem listViewItem = new CrownListItem(model.Name);
                 listViewItem.Tag = "Model";
 
                 if (string.IsNullOrEmpty(_find))
                 {
                     crownListViewSelectModels.Items.Add(listViewItem);
                 }
-                else if (model.name.IndexOf(_find) != -1)
+                else if (model.Name.IndexOf(_find) != -1)
                 {
                     crownListViewSelectModels.Items.Add(listViewItem);
                 }
