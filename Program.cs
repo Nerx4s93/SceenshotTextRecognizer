@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Linq;
-using SceenshotTextRecognizer.Data;
+using System.Diagnostics;
 using System.IO;
-using System.Net.Sockets;
+using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Data;
 using main = SceenshotTextRecognizer.Data.Main;
 
 namespace SceenshotTextRecognizer
