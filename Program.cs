@@ -2,6 +2,8 @@
 using System.IO;
 using System.Windows.Forms;
 
+using SceenshotTextRecognizer.GUI;
+
 using SceenshotTextRecognizer.Data;
 using main = SceenshotTextRecognizer.Data.Main;
 
@@ -29,7 +31,7 @@ namespace SceenshotTextRecognizer
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new GUI.FormMain());
+                Application.Run(new FormMain());
             }
         }
     }
