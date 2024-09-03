@@ -15,8 +15,8 @@ namespace SceenshotTextRecognizer
         [STAThread]
         static void Main()
         {
-            Process thisProcess = Process.GetCurrentProcess();
-            List<Process> processes = Process.GetProcessesByName(thisProcess.ProcessName).ToList();
+            var thisProcess = Process.GetCurrentProcess();
+            var processes = Process.GetProcessesByName(thisProcess.ProcessName).ToList();
 
             bool anyProcess = processes.Any(item => item.Id != thisProcess.Id);
 
