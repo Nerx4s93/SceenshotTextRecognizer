@@ -9,6 +9,9 @@ namespace SceenshotTextRecognizer
 {
     internal class Server : IDisposable
     {
+        private const string _ip = "127.0.0.1";
+        private const int _port = 8005;
+
         public Server(Form form)
         {
             _form = form;
@@ -23,7 +26,7 @@ namespace SceenshotTextRecognizer
         {
             _thread = new Thread(() =>
             {
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8005);
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
                 _listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 try
@@ -62,6 +65,24 @@ namespace SceenshotTextRecognizer
                 IsBackground = true
             };
             _thread.Start();
+        }
+
+        public static void SendMessage(string message)
+        {
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
+
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket.SendTimeout = 100;
+            socket.Connect(ipPoint);
+
+            if (socket.Connected)
+            {
+                byte[] data = Encoding.Unicode.GetBytes(message);
+                socket.Send(data);
+
+                socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+            }
         }
 
         public void Dispose()
