@@ -15,10 +15,10 @@ namespace SceenshotTextRecognizer
         [STAThread]
         static void Main()
         {
-            Process thisP = Process.GetCurrentProcess();
-            List<Process> processes = Process.GetProcessesByName(thisP.ProcessName).ToList();
+            Process thisProcess = Process.GetCurrentProcess();
+            List<Process> processes = Process.GetProcessesByName(thisProcess.ProcessName).ToList();
 
-            bool anyProcess = processes.Any(item => item.Id != thisP.Id);
+            bool anyProcess = processes.Any(item => item.Id != thisProcess.Id);
 
             if (anyProcess)
             {
