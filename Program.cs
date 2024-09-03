@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 using SceenshotTextRecognizer.Data;
@@ -15,10 +12,7 @@ namespace SceenshotTextRecognizer
         [STAThread]
         static void Main()
         {
-            var thisProcess = Process.GetCurrentProcess();
-            var processes = Process.GetProcessesByName(thisProcess.ProcessName).ToList();
-
-            bool anyProcess = processes.Any(item => item.Id != thisProcess.Id);
+            bool anyProcess = ProcessesFinder.Find();
 
             if (anyProcess)
             {

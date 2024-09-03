@@ -127,6 +127,7 @@
     <Compile Include="GUI\Settings\SelectAreaF.Designer.cs">
       <DependentUpon>SelectAreaF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProcessesFinder.cs" />
     <Compile Include="ProgramData.cs" />
     <Compile Include="Data\CombinationLanguagePacks.cs" />
     <Compile Include="GUI\Fon.cs">
