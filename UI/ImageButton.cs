@@ -9,7 +9,7 @@ namespace SceenshotTextRecognizer.UI
     {
         private Image _imageNoHovered;
         private Image _imageOnHover;
-        private bool _onHover;
+        private bool _onMouseEnter;
 
         [Localizable(true)]
         public Image ImageNoHovered
@@ -45,21 +45,21 @@ namespace SceenshotTextRecognizer.UI
             }
         }
 
-        protected override void OnMouseHover(EventArgs e)
+        protected override void OnMouseEnter(EventArgs eventargs)
         {
-            _onHover = true;
+            _onMouseEnter = true;
             Invalidate();
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            _onHover = false;
+            _onMouseEnter = false;
             Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
-            if (_onHover && _imageOnHover != null)
+            if (_onMouseEnter && _imageOnHover != null)
             {
                 pevent.Graphics.DrawImage(_imageOnHover, 0, 0, ClientSize.Width, ClientSize.Height);
             }
