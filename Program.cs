@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using SceenshotTextRecognizer.GUI;
 
 using SceenshotTextRecognizer.Data;
-using main = SceenshotTextRecognizer.Data.Main;
 
 namespace SceenshotTextRecognizer
 {
@@ -27,7 +26,7 @@ namespace SceenshotTextRecognizer
 
                 Model.Load();
                 CombinationLanguagePacks.Load();
-                main.Load();
+                Config.Load();
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

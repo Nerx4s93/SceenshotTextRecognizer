@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace SceenshotTextRecognizer.Data
 {
-    public class Main
+    public class Config
     {
-        public static Main main;
+        public static Config config;
 
         public Keys bind = Keys.RShiftKey;
         public bool showOnOtherWindows;
@@ -21,13 +21,13 @@ namespace SceenshotTextRecognizer.Data
             if (File.Exists(@"data\settings.json"))
             {
                 string stringJson = File.ReadAllText(@"data\settings.json");
-                Main main = JsonConvert.DeserializeObject<Main>(stringJson);
+                Config config = JsonConvert.DeserializeObject<Config>(stringJson);
 
-                Main.main = main;
+                Config.config = config;
             }
             else
             {
-                main = new Main();
+                config = new Config();
                 Save();
             }
         }
@@ -36,7 +36,7 @@ namespace SceenshotTextRecognizer.Data
         {
             using (StreamWriter streamWriter = new StreamWriter(@"data\settings.json"))
             {
-                string stringJson = JsonConvert.SerializeObject(main);
+                string stringJson = JsonConvert.SerializeObject(config);
 
                 streamWriter.Write(stringJson);
                 streamWriter.Close();

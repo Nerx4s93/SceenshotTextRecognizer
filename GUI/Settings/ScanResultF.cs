@@ -18,9 +18,9 @@ namespace SceenshotTextRecognizer.GUI.Settings
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
 
-            hopeCheckBoxRemoveExtraSpaces.Checked = Main.main.scanResult.removeExtraSpaces;
-            hopeCheckBoxDeleteEmptyLines.Checked = Main.main.scanResult.deleteEmptyLines;
-            hopeCheckBoxDeleteLinesWithoutLetters.Checked = Main.main.scanResult.deleteLinesWithoutLetters;
+            hopeCheckBoxRemoveExtraSpaces.Checked = Config.config.scanResult.removeExtraSpaces;
+            hopeCheckBoxDeleteEmptyLines.Checked = Config.config.scanResult.deleteEmptyLines;
+            hopeCheckBoxDeleteLinesWithoutLetters.Checked = Config.config.scanResult.deleteLinesWithoutLetters;
         }
 
         private void imageButtonClose_Click(object sender, EventArgs e)
@@ -35,20 +35,20 @@ namespace SceenshotTextRecognizer.GUI.Settings
 
         private void hopeCheckBoxRemoveExtraSpaces_CheckedChanged(object sender, EventArgs e)
         {
-            Main.main.scanResult.removeExtraSpaces = hopeCheckBoxRemoveExtraSpaces.Checked;
-            Main.Save();
+            Config.config.scanResult.removeExtraSpaces = hopeCheckBoxRemoveExtraSpaces.Checked;
+            Config.Save();
         }
 
         private void hopeCheckBoxDeleteEmptyLines_CheckedChanged(object sender, EventArgs e)
         {
-            Main.main.scanResult.deleteEmptyLines = hopeCheckBoxDeleteEmptyLines.Checked;
-            Main.Save();
+            Config.config.scanResult.deleteEmptyLines = hopeCheckBoxDeleteEmptyLines.Checked;
+            Config.Save();
         }
 
         private void hopeCheckBoxDeleteLinesWithoutLetters_CheckedChanged(object sender, EventArgs e)
         {
-            Main.main.scanResult.deleteLinesWithoutLetters = hopeCheckBoxDeleteLinesWithoutLetters.Checked;
-            Main.Save();
+            Config.config.scanResult.deleteLinesWithoutLetters = hopeCheckBoxDeleteLinesWithoutLetters.Checked;
+            Config.Save();
         }
     }
 }
