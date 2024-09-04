@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.IO;
-using SceenshotTextRecognizer.Data.Setting;
+﻿using System.IO;
 using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Data.Setting;
+
+using Newtonsoft.Json;
 
 namespace SceenshotTextRecognizer.Data
 {
