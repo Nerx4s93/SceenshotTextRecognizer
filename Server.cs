@@ -77,20 +77,24 @@ namespace SceenshotTextRecognizer
 
         public static void SendMessage(string message)
         {
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
-
-            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.SendTimeout = 100;
-            socket.Connect(ipPoint);
-
-            if (socket.Connected)
+            try
             {
-                byte[] data = Encoding.Unicode.GetBytes(message);
-                socket.Send(data);
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
 
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.SendTimeout = 100;
+                socket.Connect(ipPoint);
+
+                if (socket.Connected)
+                {
+                    byte[] data = Encoding.Unicode.GetBytes(message);
+                    socket.Send(data);
+
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
+                }
             }
+            catch (SocketException) { /* Ничего не делать, если сервер не запущен */ }
         }
     }
 }
