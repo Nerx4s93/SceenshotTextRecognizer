@@ -67,6 +67,14 @@ namespace SceenshotTextRecognizer
             _thread.Start();
         }
 
+        public void Dispose()
+        {
+            _listenSocket.Close();
+            _listenSocket = null;
+            _thread.Abort();
+            _thread = null;
+        }
+
         public static void SendMessage(string message)
         {
             IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
@@ -83,14 +91,6 @@ namespace SceenshotTextRecognizer
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
             }
-        }
-
-        public void Dispose()
-        {
-            _listenSocket.Close();
-            _listenSocket = null;
-            _thread.Abort();
-            _thread = null;
         }
     }
 }
