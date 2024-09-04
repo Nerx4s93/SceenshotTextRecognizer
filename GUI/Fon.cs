@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using SceenshotTextRecognizer.Data.Setting;
+using SceenshotTextRecognizer.Utils;
 
 namespace SceenshotTextRecognizer.GUI
 {
