@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,39 +6,43 @@ namespace SceenshotTextRecognizer.UI
 {
     public class ImageButton : ButtonBase
     {
-        private Image _imageNoHovered;
-        private Image _imageOnHover;
+        private Image _imageDeffault;
+        private Image _imageOnMouseEnter;
+
         private bool _onMouseEnter;
 
-        [Localizable(true)]
+        public ImageButton()
+        {
+            DoubleBuffered = true;
+        }
+
         public Image ImageNoHovered
         {
             get
             {
-                return _imageNoHovered;
+                return _imageDeffault;
             }
             set
             {
-                if (_imageNoHovered != value)
+                if (_imageDeffault != value)
                 {
-                    _imageNoHovered = value;
+                    _imageDeffault = value;
                     Invalidate();
                 }
             }
         }
 
-        [Localizable(true)]
         public Image ImageOnHovered
         {
             get
             {
-                return _imageOnHover;
+                return _imageOnMouseEnter;
             }
             set
             {
-                if (_imageOnHover != value)
+                if (_imageOnMouseEnter != value)
                 {
-                    _imageOnHover = value;
+                    _imageOnMouseEnter = value;
                     Invalidate();
                 }
             }
@@ -59,13 +62,13 @@ namespace SceenshotTextRecognizer.UI
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
-            if (_onMouseEnter && _imageOnHover != null)
+            if (_onMouseEnter && _imageOnMouseEnter != null)
             {
-                pevent.Graphics.DrawImage(_imageOnHover, 0, 0, ClientSize.Width, ClientSize.Height);
+                pevent.Graphics.DrawImage(_imageOnMouseEnter, 0, 0, ClientSize.Width, ClientSize.Height);
             }
-            else if (_imageNoHovered != null)
+            else if (_imageDeffault != null)
             {
-                pevent.Graphics.DrawImage(_imageNoHovered, 0, 0, ClientSize.Width, ClientSize.Height);
+                pevent.Graphics.DrawImage(_imageDeffault, 0, 0, ClientSize.Width, ClientSize.Height);
             }
             else
             {
