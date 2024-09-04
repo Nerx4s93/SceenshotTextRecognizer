@@ -1,5 +1,6 @@
-﻿using SceenshotTextRecognizer.Properties;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {

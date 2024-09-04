@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Windows.Forms;
-using System;
-using SceenshotTextRecognizer.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Threading;
-using System.ComponentModel;
-using System.IO;
+using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes

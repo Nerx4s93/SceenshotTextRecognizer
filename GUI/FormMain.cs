@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
-using System;
-using System.Windows.Forms;
-using System.Linq;
-using SceenshotTextRecognizer.Data;
-using ReaLTaiizor.Child.Crown;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
-using SceenshotTextRecognizer.Properties;
 using SceenshotTextRecognizer.GUI.Settings;
+using SceenshotTextRecognizer.Properties;
+
 using Microsoft.Win32;
+using ReaLTaiizor.Child.Crown;
 
 namespace SceenshotTextRecognizer.GUI
 {

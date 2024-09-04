@@ -1,7 +1,9 @@
-﻿using SceenshotTextRecognizer.Properties;
-using System.Windows.Forms;
-using System;
+﻿using System;
 using System.IO;
+using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Properties;
+
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;

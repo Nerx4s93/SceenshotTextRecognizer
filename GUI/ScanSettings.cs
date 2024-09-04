@@ -1,15 +1,16 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-using System;
-using SceenshotTextRecognizer.Data;
-using ReaLTaiizor.Child.Crown;
-using SceenshotTextRecognizer.Properties;
-using System.Threading;
-using Tesseract;
-using SceenshotTextRecognizer.GUI.MessageBoxes;
+﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Drawing;
 using System.Linq;
+using System.Threading;
+using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Data;
+using SceenshotTextRecognizer.GUI.MessageBoxes;
+using SceenshotTextRecognizer.Properties;
+
+using ReaLTaiizor.Child.Crown;
+using Tesseract;
 
 namespace SceenshotTextRecognizer.GUI
 {

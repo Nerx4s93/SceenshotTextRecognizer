@@ -1,7 +1,8 @@
-﻿using SceenshotTextRecognizer.Data;
-using SceenshotTextRecognizer.Properties;
-using System;
+﻿using System;
 using System.Windows.Forms;
+
+using SceenshotTextRecognizer.Data;
+using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI.Settings
 {

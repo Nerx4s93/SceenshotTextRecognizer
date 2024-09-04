@@ -1,9 +1,11 @@
-﻿using ReaLTaiizor.Child.Crown;
-using SceenshotTextRecognizer.Data;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System;
+
+using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.Properties;
+
+using ReaLTaiizor.Child.Crown;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {

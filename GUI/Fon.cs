@@ -1,7 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
 using System.Drawing;
-using System;
-using SceenshotTextRecognizer.Data;
+using System.Windows.Forms;
+
 using SceenshotTextRecognizer.Data.Setting;
 
 namespace SceenshotTextRecognizer.GUI
