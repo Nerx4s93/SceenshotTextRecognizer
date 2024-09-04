@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Windows.Forms;
-using Utilities;
 using System.Linq;
 using SceenshotTextRecognizer.Data;
 using ReaLTaiizor.Child.Crown;
