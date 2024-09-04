@@ -61,7 +61,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             foreach (var checkedItemCollection in checkedListBoxLanguages.CheckedItems)
             {
-                Item _item = items.Find(item => item.model.Name == checkedItemCollection.ToString());
+                var _item = items.Find(item => item.model.Name == checkedItemCollection.ToString());
                 _item.selected = true;
             }
         }
@@ -75,7 +75,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             for (int i = 0; i != checkedListBoxLanguages.Items.Count; i++)
             {
-                Item item = items.Find(find => find.model.Name == (string)checkedListBoxLanguages.Items[i]);
+                var item = items.Find(find => find.model.Name == (string)checkedListBoxLanguages.Items[i]);
                 item.selected = true;
             }
 
@@ -86,7 +86,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             for (int i = 0; i != checkedListBoxLanguages.Items.Count; i++)
             {
-                Item item = items.Find(find => find.model.Name == (string)checkedListBoxLanguages.Items[i]);
+                var item = items.Find(find => find.model.Name == (string)checkedListBoxLanguages.Items[i]);
                 item.selected = false;
             }
 
@@ -95,12 +95,12 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void hopeButtonStartDownload_Click(object sender, EventArgs e)
         {
-            List<Model> models = new List<Model>();
-            foreach (Item item in items)
+            var models = new List<Model>();
+            foreach (var item in items)
             {
                 if (item.selected)
                 {
-                    Model model = Model.CanDownload.Find(find => find.Name == item.model.Name);
+                    var model = Model.CanDownload.Find(find => find.Name == item.model.Name);
                     models.Add(model);
                 }
             }

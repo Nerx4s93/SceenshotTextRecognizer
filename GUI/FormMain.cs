@@ -49,7 +49,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            List<Keys> keys = Enum.GetValues(typeof(Keys)).Cast<Keys>().ToList<Keys>();
+            var keys = Enum.GetValues(typeof(Keys)).Cast<Keys>().ToList<Keys>();
             _globalKeyboardHook.HookedKeys = keys;
 
             _globalKeyboardHook.KeyUp += new KeyEventHandler(globalKeyboardHook_KeyUp);
@@ -149,12 +149,12 @@ namespace SceenshotTextRecognizer.GUI
         {
             if (hopeCheckBoxAddToAutorun.Checked)
             {
-                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.SetValue("SceenshotTextRecognizer", Application.ExecutablePath);
             }
             else
             {
-                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                var key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.DeleteValue("SceenshotTextRecognizer", false);
             }
 
@@ -184,7 +184,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private void hopeButtonDeleteLanguageModel_Click(object sender, EventArgs e)
         {
-            Model model = Model.Downloaded.Find(item => item.Name == crownListViewLanguagePacks.Items[crownListViewLanguagePacks.SelectedIndices[0]].Text);
+            var model = Model.Downloaded.Find(item => item.Name == crownListViewLanguagePacks.Items[crownListViewLanguagePacks.SelectedIndices[0]].Text);
 
             if (MessageBox.Show($"Вы дочно хотите удалить языковой пакет \"{model.Name}\"?", "Подтвердить удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

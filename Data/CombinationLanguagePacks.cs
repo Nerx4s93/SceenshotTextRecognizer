@@ -30,7 +30,7 @@ namespace SceenshotTextRecognizer.Data
             if (!File.Exists(path))
             {
                 combinationLanguagePacks = new List<CombinationLanguagePacks>();
-                using (StreamWriter streamWriter = new StreamWriter(path))
+                using (var streamWriter = new StreamWriter(path))
                 {
                     streamWriter.Write("[]");
                     streamWriter.Close();
@@ -38,7 +38,7 @@ namespace SceenshotTextRecognizer.Data
             }
             else
             {
-                using(StreamReader streamReader = new StreamReader(path))
+                using(var streamReader = new StreamReader(path))
                 {
                     combinationLanguagePacks = JsonConvert.DeserializeObject<List<CombinationLanguagePacks>>(streamReader.ReadToEnd());
                     streamReader.Close();
@@ -47,7 +47,7 @@ namespace SceenshotTextRecognizer.Data
         }
         public static void Save()
         {
-            using (StreamWriter streamWriter = new StreamWriter("data\\CombinationLanguagePacks.json"))
+            using (var streamWriter = new StreamWriter("data\\CombinationLanguagePacks.json"))
             {
                 streamWriter.Write(JsonConvert.SerializeObject(combinationLanguagePacks));
                 streamWriter.Close();

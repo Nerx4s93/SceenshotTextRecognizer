@@ -26,7 +26,7 @@ namespace SceenshotTextRecognizer
         {
             _thread = new Thread(() =>
             {
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
+                var ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
                 _listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 try
@@ -79,9 +79,9 @@ namespace SceenshotTextRecognizer
         {
             try
             {
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
+                var ipPoint = new IPEndPoint(IPAddress.Parse(_ip), _port);
 
-                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.SendTimeout = 100;
                 socket.Connect(ipPoint);
 

@@ -62,7 +62,7 @@ namespace SceenshotTextRecognizer.GUI
             _loading = true;
             hopeButtonScan.Enabled = false;
             hopeButtonScan.Text = "Загрузка";
-            Thread thread = new Thread(() =>
+            var thread = new Thread(() =>
             {
                 Model model = Model.Downloaded.Find(item => item.Name == hopeTextBoxSelected.Text);
 
@@ -151,7 +151,7 @@ namespace SceenshotTextRecognizer.GUI
 
             foreach (Model model in Model.Downloaded)
             {
-                CrownListItem listViewItem = new CrownListItem(model.Name);
+                var listViewItem = new CrownListItem(model.Name);
                 listViewItem.Tag = "Model";
 
                 if (string.IsNullOrEmpty(_find))
@@ -164,9 +164,9 @@ namespace SceenshotTextRecognizer.GUI
                 }
             }
 
-            foreach (CombinationLanguagePacks combinationLanguagePacks in CombinationLanguagePacks.combinationLanguagePacks)
+            foreach (var combinationLanguagePacks in CombinationLanguagePacks.combinationLanguagePacks)
             {
-                CrownListItem listViewItem = new CrownListItem(combinationLanguagePacks.name);
+                var listViewItem = new CrownListItem(combinationLanguagePacks.name);
                 listViewItem.Tag = "CombinationLanguagePacks";
 
                 if (string.IsNullOrEmpty(_find))

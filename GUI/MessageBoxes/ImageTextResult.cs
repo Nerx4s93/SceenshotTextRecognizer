@@ -36,7 +36,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             saveProcess = true;
 
-            SaveResult saveResult = new SaveResult(this, dungeonRichTextBoxText.Text);
+            var saveResult = new SaveResult(this, dungeonRichTextBoxText.Text);
             saveResult.Show();
         }
     }

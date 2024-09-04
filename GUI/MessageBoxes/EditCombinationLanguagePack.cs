@@ -141,7 +141,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                 return;
             }
 
-            List<string> stringModels = new List<string>();
+            var stringModels = new List<string>();
             foreach (Model model in _use)
             {
                 stringModels.Add(model.Code);
@@ -171,7 +171,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void Add()
         {
-            Model model = _dontUse.Find(item => item.Name == crownListViewDontUseModels.Items[crownListViewDontUseModels.SelectedIndices[0]].Text);
+            var model = _dontUse.Find(item => item.Name == crownListViewDontUseModels.Items[crownListViewDontUseModels.SelectedIndices[0]].Text);
 
             _use.Add(model);
             _dontUse.Remove(model);
@@ -182,7 +182,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void Remove()
         {
-            Model model = _use.Find(item => item.Name == crownListViewUseModels.Items[crownListViewUseModels.SelectedIndices[0]].Text);
+            var model = _use.Find(item => item.Name == crownListViewUseModels.Items[crownListViewUseModels.SelectedIndices[0]].Text);
 
             _dontUse.Add(model);
             _use.Remove(model);

@@ -32,8 +32,8 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
         private void hopeButtonBrowseDirectory_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            DialogResult dialogResult = folderBrowserDialog.ShowDialog();
+            var folderBrowserDialog = new FolderBrowserDialog();
+            var dialogResult = folderBrowserDialog.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
             {
@@ -68,9 +68,9 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                             MainDocumentPart mainPart = document.AddMainDocumentPart();
                             mainPart.Document = new Document();
 
-                            Body body = new Body();
-                            Paragraph paragraph = new Paragraph();
-                            Run run = new Run();
+                            var body = new Body();
+                            var paragraph = new Paragraph();
+                            var run = new Run();
                             run.Append(new Text(text));
                             paragraph.Append(run);
                             body.Append(paragraph);

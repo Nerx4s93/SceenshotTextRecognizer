@@ -26,9 +26,9 @@ namespace SceenshotTextRecognizer.GUI
 
         private Bitmap TakeScreenshot()
         {
-            Rectangle screenBounds = Screen.PrimaryScreen.Bounds;
+            var screenBounds = Screen.PrimaryScreen.Bounds;
 
-            Bitmap screenshot = new Bitmap(screenBounds.Width, screenBounds.Height);
+            var screenshot = new Bitmap(screenBounds.Width, screenBounds.Height);
 
             using (Graphics graphics = Graphics.FromImage(screenshot))
             {
@@ -61,10 +61,10 @@ namespace SceenshotTextRecognizer.GUI
             {
                 using (SolidBrush brush = new SolidBrush(Color.FromArgb(128, Color.Black)))
                 {
-                    Rectangle topRect = new Rectangle(0, 0, this.ClientSize.Width, selectionRectangle.Top);
-                    Rectangle bottomRect = new Rectangle(0, selectionRectangle.Bottom, this.ClientSize.Width, this.ClientSize.Height - selectionRectangle.Bottom);
-                    Rectangle leftRect = new Rectangle(0, selectionRectangle.Top, selectionRectangle.Left, selectionRectangle.Height);
-                    Rectangle rightRect = new Rectangle(selectionRectangle.Right, selectionRectangle.Top, this.ClientSize.Width - selectionRectangle.Right, selectionRectangle.Height);
+                    var topRect = new Rectangle(0, 0, this.ClientSize.Width, selectionRectangle.Top);
+                    var bottomRect = new Rectangle(0, selectionRectangle.Bottom, this.ClientSize.Width, this.ClientSize.Height - selectionRectangle.Bottom);
+                    var leftRect = new Rectangle(0, selectionRectangle.Top, selectionRectangle.Left, selectionRectangle.Height);
+                    var rightRect = new Rectangle(selectionRectangle.Right, selectionRectangle.Top, this.ClientSize.Width - selectionRectangle.Right, selectionRectangle.Height);
 
                     e.Graphics.FillRectangle(brush, topRect);
                     e.Graphics.FillRectangle(brush, bottomRect);
@@ -127,7 +127,7 @@ namespace SceenshotTextRecognizer.GUI
         {
             if (key == Program.settings.selectArea.closeSelectArea)
             {
-                DialogResult dialogResult = MessageBox.Show("Отменить сканирование области?", "Отмена", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var dialogResult = MessageBox.Show("Отменить сканирование области?", "Отмена", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -137,7 +137,7 @@ namespace SceenshotTextRecognizer.GUI
             }
             else if (key == Program.settings.selectArea.enterArea && ProgramData.SelectSone == true)
             {
-                DialogResult dialogResult = MessageBox.Show("Подтверидить выделеную область для сканирования?", "Сканирование области", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var dialogResult = MessageBox.Show("Подтверидить выделеную область для сканирования?", "Сканирование области", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -150,7 +150,7 @@ namespace SceenshotTextRecognizer.GUI
                         Math.Max(startPoint.Y, endPoint.Y) - Math.Min(startPoint.Y, endPoint.Y)), originalImage.PixelFormat);
 
                     ProgramData.SelectSone = false;
-                    ScanSettings scanSettings = new ScanSettings(result);
+                    var scanSettings = new ScanSettings(result);
                     scanSettings.Show();
 
                     Dispose();

@@ -30,9 +30,9 @@ namespace SceenshotTextRecognizer.Data
             }
         }
 
-        public static void Save(Settings config)
+        public static void Save(Settings config)    
         {
-            using (StreamWriter streamWriter = new StreamWriter(@"data\settings.json"))
+            using (var streamWriter = new StreamWriter(@"data\settings.json"))
             {
                 string stringJson = JsonConvert.SerializeObject(config);
 
