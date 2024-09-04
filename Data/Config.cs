@@ -9,8 +9,6 @@ namespace SceenshotTextRecognizer.Data
 {
     public class Config
     {
-        public static Config config;
-
         public Keys bind = Keys.RShiftKey;
         public bool showOnOtherWindows;
         public bool workInFon;
@@ -18,23 +16,21 @@ namespace SceenshotTextRecognizer.Data
         public SelectArea selectArea = new SelectArea();
         public ScanResult scanResult = new ScanResult();
 
-        public static void Load()
+        public static void Load(out Config config)
         {
             if (File.Exists(@"data\settings.json"))
             {
                 string stringJson = File.ReadAllText(@"data\settings.json");
-                Config config = JsonConvert.DeserializeObject<Config>(stringJson);
-
-                Config.config = config;
+                config = JsonConvert.DeserializeObject<Config>(stringJson);
             }
             else
             {
                 config = new Config();
-                Save();
+                Save(config);
             }
         }
 
-        public static void Save()
+        public static void Save(Config config)
         {
             using (StreamWriter streamWriter = new StreamWriter(@"data\settings.json"))
             {

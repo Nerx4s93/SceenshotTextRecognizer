@@ -10,6 +10,8 @@ namespace SceenshotTextRecognizer
 {
     internal static class Program
     {
+        public static Config config;
+
         [STAThread]
         static void Main()
         {
@@ -26,7 +28,7 @@ namespace SceenshotTextRecognizer
 
                 Model.Load();
                 CombinationLanguagePacks.Load();
-                Config.Load();
+                Config.Load(out config);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

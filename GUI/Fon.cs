@@ -58,7 +58,7 @@ namespace SceenshotTextRecognizer.GUI
 
             e.Graphics.DrawImage(originalImage, 0, 0);
 
-            if (Config.config.selectArea.typeFon == TypeFon.Black)
+            if (Program.config.selectArea.typeFon == TypeFon.Black)
             {
                 using (SolidBrush brush = new SolidBrush(Color.FromArgb(128, Color.Black)))
                 {
@@ -82,7 +82,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private void Fon_MouseDown(object sender, MouseEventArgs e)
         {
-            if (Config.config.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
+            if (Program.config.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
             {
                 if (e.Button == MouseButtons.Left)
                 {
@@ -126,7 +126,7 @@ namespace SceenshotTextRecognizer.GUI
 
         public void FormKeyDown(Keys key)
         {
-            if (key == Config.config.selectArea.closeSelectArea)
+            if (key == Program.config.selectArea.closeSelectArea)
             {
                 DialogResult dialogResult = MessageBox.Show("Отменить сканирование области?", "Отмена", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -136,7 +136,7 @@ namespace SceenshotTextRecognizer.GUI
                     Dispose();
                 }
             }
-            else if (key == Config.config.selectArea.enterArea && ProgramData.SelectSone == true)
+            else if (key == Program.config.selectArea.enterArea && ProgramData.SelectSone == true)
             {
                 DialogResult dialogResult = MessageBox.Show("Подтверидить выделеную область для сканирования?", "Сканирование области", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
