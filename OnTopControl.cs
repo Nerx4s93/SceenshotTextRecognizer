@@ -7,7 +7,6 @@ namespace SceenshotTextRecognizer
     public class OnTopControl : IDisposable
     {
         private Thread _thread;
-        private int _timerSleep = 0;
 
         [DllImport("user32.dll")]
         public static extern bool BringWindowToTop(IntPtr hWnd);
@@ -30,7 +29,6 @@ namespace SceenshotTextRecognizer
                                 }
                             }
                             catch { }
-                            Thread.Sleep(_timerSleep);
                         }
                 }
                 catch (ThreadAbortException) { }
