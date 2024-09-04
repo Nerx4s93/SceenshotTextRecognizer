@@ -78,14 +78,14 @@ namespace SceenshotTextRecognizer.GUI
 
                 #region Обработка текста
 
-                string text = Program.config.scanResult.removeExtraSpaces ? res.GetText().Replace("  ", " ") : res.GetText();
+                string text = Program.settings.scanResult.removeExtraSpaces ? res.GetText().Replace("  ", " ") : res.GetText();
                 List<string> strings = text.Split('\n').ToList();
 
-                if (Program.config.scanResult.deleteEmptyLines)
+                if (Program.settings.scanResult.deleteEmptyLines)
                 {
                     strings.RemoveAll(s => string.IsNullOrEmpty(s));
                 }
-                if (Program.config.scanResult.deleteLinesWithoutLetters)
+                if (Program.settings.scanResult.deleteLinesWithoutLetters)
                 {
                     bool remove = true;
 

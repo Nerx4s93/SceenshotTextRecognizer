@@ -29,8 +29,8 @@ namespace SceenshotTextRecognizer.GUI
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
 
-            hopeCheckBoxShowOnOtherWindows.Checked = Program.config.showOnOtherWindows;
-            hopeCheckBoxWorkInFon.Checked = Program.config.workInFon;
+            hopeCheckBoxShowOnOtherWindows.Checked = Program.settings.showOnOtherWindows;
+            hopeCheckBoxWorkInFon.Checked = Program.settings.workInFon;
         }
 
         private Server _server;
@@ -61,19 +61,19 @@ namespace SceenshotTextRecognizer.GUI
             {
                 hopeButtonBind.Text = "Bind: " + e.KeyData.ToString();
 
-                if (Program.config.selectArea.closeSelectArea == e.KeyData || Program.config.selectArea.enterArea == e.KeyData)
+                if (Program.settings.selectArea.closeSelectArea == e.KeyData || Program.settings.selectArea.enterArea == e.KeyData)
                 {
                     MessageBox.Show("Нельзя ставить одинаковые бинды на разные функции.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                Program.config.bind = e.KeyData;
-                Config.Save(Program.config);
+                Program.settings.bind = e.KeyData;
+                Data.Settings.Save(Program.settings);
 
                 hopeButtonBind.Enabled = true;
                 _waitKeyBind = false;
             }
-            else if (e.KeyData == Program.config.bind && !ProgramData.SelectSone)
+            else if (e.KeyData == Program.settings.bind && !ProgramData.SelectSone)
             {
                 _fon = new Fon();
                 _fon.Show();
@@ -135,14 +135,14 @@ namespace SceenshotTextRecognizer.GUI
         {
             TopMost = hopeCheckBoxShowOnOtherWindows.Checked;
 
-            Program.config.showOnOtherWindows = hopeCheckBoxShowOnOtherWindows.Checked;
-            Config.Save(Program.config);
+            Program.settings.showOnOtherWindows = hopeCheckBoxShowOnOtherWindows.Checked;
+            Data.Settings.Save(Program.settings);
         }
 
         private void hopeCheckBoxWorkInFon_CheckedChanged(object sender, EventArgs e)
         {
-            Program.config.workInFon = hopeCheckBoxWorkInFon.Checked;
-            Config.Save(Program.config);
+            Program.settings.workInFon = hopeCheckBoxWorkInFon.Checked;
+            Data.Settings.Save(Program.settings);
         }
 
         private void hopeCheckBoxAddToAutorun_CheckedChanged(object sender, EventArgs e)
@@ -158,8 +158,8 @@ namespace SceenshotTextRecognizer.GUI
                 key.DeleteValue("SceenshotTextRecognizer", false);
             }
 
-            Program.config.autoUpload = hopeCheckBoxWorkInFon.Checked;
-            Config.Save(Program.config);
+            Program.settings.autoUpload = hopeCheckBoxWorkInFon.Checked;
+            Data.Settings.Save(Program.settings);
         }
 
         #endregion
@@ -284,7 +284,7 @@ namespace SceenshotTextRecognizer.GUI
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Program.config.workInFon)
+            if (Program.settings.workInFon)
             {
                 e.Cancel = true;
 
@@ -298,7 +298,7 @@ namespace SceenshotTextRecognizer.GUI
 
         public void UpdateForm()
         {
-            hopeButtonBind.Text = "Bind: " + Program.config.bind;
+            hopeButtonBind.Text = "Bind: " + Program.settings.bind;
 
             crownListViewLanguagePacks.Items.Clear();
             crownListViewCombinationOfLanguagePacks.Items.Clear();

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace SceenshotTextRecognizer.Data
 {
-    public class Config
+    public class Settings
     {
         public Keys bind = Keys.RShiftKey;
         public bool showOnOtherWindows;
@@ -16,21 +16,21 @@ namespace SceenshotTextRecognizer.Data
         public SelectArea selectArea = new SelectArea();
         public ScanResult scanResult = new ScanResult();
 
-        public static void Load(out Config config)
+        public static void Load(out Settings config)
         {
             if (File.Exists(@"data\settings.json"))
             {
                 string stringJson = File.ReadAllText(@"data\settings.json");
-                config = JsonConvert.DeserializeObject<Config>(stringJson);
+                config = JsonConvert.DeserializeObject<Settings>(stringJson);
             }
             else
             {
-                config = new Config();
+                config = new Settings();
                 Save(config);
             }
         }
 
-        public static void Save(Config config)
+        public static void Save(Settings config)
         {
             using (StreamWriter streamWriter = new StreamWriter(@"data\settings.json"))
             {

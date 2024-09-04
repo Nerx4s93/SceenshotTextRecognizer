@@ -20,7 +20,7 @@ namespace SceenshotTextRecognizer.GUI.Settings
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
 
-            if (Program.config.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
+            if (Program.settings.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
             {
                 hopeCheckBoxSelectTypeClamping.Checked = true;
             }
@@ -29,7 +29,7 @@ namespace SceenshotTextRecognizer.GUI.Settings
                 hopeCheckBoxSelectTypePKMLKM.Checked = true;
             }
 
-            if (Program.config.selectArea.typeFon == TypeFon.Black)
+            if (Program.settings.selectArea.typeFon == TypeFon.Black)
             {
                 hopeCheckBoxFonTypeBlack.Checked = true;
             }
@@ -62,15 +62,15 @@ namespace SceenshotTextRecognizer.GUI.Settings
             if (hopeCheckBoxSelectTypeClamping.Checked)
             {
                 hopeCheckBoxSelectTypePKMLKM.Checked = false;
-                Program.config.selectArea.typeAreaSelection = TypeAreaSelection.Clamping;
+                Program.settings.selectArea.typeAreaSelection = TypeAreaSelection.Clamping;
             }
             else
             {
                 hopeCheckBoxSelectTypePKMLKM.Checked = true;
-                Program.config.selectArea.typeAreaSelection = TypeAreaSelection.PKM_LKM;
+                Program.settings.selectArea.typeAreaSelection = TypeAreaSelection.PKM_LKM;
             }
 
-            Config.Save(Program.config);
+            Data.Settings.Save(Program.settings);
         }
 
         private void hopeCheckBoxTypePKMLKM_CheckedChanged(object sender, EventArgs e)
@@ -78,15 +78,15 @@ namespace SceenshotTextRecognizer.GUI.Settings
             if (hopeCheckBoxSelectTypePKMLKM.Checked)
             {
                 hopeCheckBoxSelectTypeClamping.Checked = false;
-                Program.config.selectArea.typeAreaSelection = TypeAreaSelection.PKM_LKM;
+                Program.settings.selectArea.typeAreaSelection = TypeAreaSelection.PKM_LKM;
             }
             else
             {
                 hopeCheckBoxSelectTypeClamping.Checked = true;
-                Program.config.selectArea.typeAreaSelection = TypeAreaSelection.Clamping;
+                Program.settings.selectArea.typeAreaSelection = TypeAreaSelection.Clamping;
             }
 
-            Config.Save(Program.config);
+            Data.Settings.Save(Program.settings);
         }
 
         #endregion
@@ -98,15 +98,15 @@ namespace SceenshotTextRecognizer.GUI.Settings
             if (hopeCheckBoxFonTypeBlack.Checked)
             {
                 hopeCheckBoxFonTypeNone.Checked = false;
-                Program.config.selectArea.typeFon = TypeFon.Black;
+                Program.settings.selectArea.typeFon = TypeFon.Black;
             }
             else
             {
                 hopeCheckBoxFonTypeNone.Checked = true;
-                Program.config.selectArea.typeFon = TypeFon.None;
+                Program.settings.selectArea.typeFon = TypeFon.None;
             }
 
-            Config.Save(Program.config);
+            Data.Settings.Save(Program.settings);
         }
 
         private void hopeCheckBoxFonTypeNone_CheckedChanged(object sender, EventArgs e)
@@ -114,15 +114,15 @@ namespace SceenshotTextRecognizer.GUI.Settings
             if (hopeCheckBoxFonTypeNone.Checked)
             {
                 hopeCheckBoxFonTypeBlack.Checked = false;
-                Program.config.selectArea.typeFon = TypeFon.None;
+                Program.settings.selectArea.typeFon = TypeFon.None;
             }
             else
             {
                 hopeCheckBoxFonTypeBlack.Checked = true;
-                Program.config.selectArea.typeFon = TypeFon.Black;
+                Program.settings.selectArea.typeFon = TypeFon.Black;
             }
 
-            Config.Save(Program.config);
+            Data.Settings.Save(Program.settings);
         }
 
         #endregion
@@ -160,7 +160,7 @@ namespace SceenshotTextRecognizer.GUI.Settings
 
         public void FormKeyDown(Keys keys)
         {
-            if (keys == Program.config.bind)
+            if (keys == Program.settings.bind)
             {
                 hopeButtonBindClose.Enabled = true;
                 hopeButtonBindEnter.Enabled = true;
@@ -173,15 +173,15 @@ namespace SceenshotTextRecognizer.GUI.Settings
             {
                 hopeButtonBindClose.Enabled = true;
 
-                if (Program.config.selectArea.enterArea == keys || Program.config.bind == keys)
+                if (Program.settings.selectArea.enterArea == keys || Program.settings.bind == keys)
                 {
                     MessageBox.Show("Нельзя ставить одинаковые бинды на разные функции.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 hopeButtonBindClose.Refresh();
-                Program.config.selectArea.closeSelectArea = keys;
-                Config.Save(Program.config);
+                Program.settings.selectArea.closeSelectArea = keys;
+                Data.Settings.Save(Program.settings);
 
                 FormUpdate();
             }
@@ -189,15 +189,15 @@ namespace SceenshotTextRecognizer.GUI.Settings
             {
                 hopeButtonBindEnter.Enabled = true;
 
-                if (Program.config.selectArea.closeSelectArea == keys || Program.config.bind == keys)
+                if (Program.settings.selectArea.closeSelectArea == keys || Program.settings.bind == keys)
                 {
                     MessageBox.Show("Нельзя ставить одинаковые бинды на разные функции.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 hopeButtonBindEnter.Refresh();
-                Program.config.selectArea.enterArea = keys;
-                Config.Save(Program.config);
+                Program.settings.selectArea.enterArea = keys;
+                Data.Settings.Save(Program.settings);
 
                 FormUpdate();
             }
@@ -205,8 +205,8 @@ namespace SceenshotTextRecognizer.GUI.Settings
 
         private void FormUpdate()
         {
-            hopeButtonBindClose.Text = "Отмена bind: " + Program.config.selectArea.closeSelectArea;
-            hopeButtonBindEnter.Text = "Подтвердить bind: " + Program.config.selectArea.enterArea;
+            hopeButtonBindClose.Text = "Отмена bind: " + Program.settings.selectArea.closeSelectArea;
+            hopeButtonBindEnter.Text = "Подтвердить bind: " + Program.settings.selectArea.enterArea;
         }
     }
 }

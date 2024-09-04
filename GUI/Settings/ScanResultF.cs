@@ -19,9 +19,9 @@ namespace SceenshotTextRecognizer.GUI.Settings
             imageButtonClose.ImageNoHovered = Resources.close;
             imageButtonClose.ImageOnHovered = Resources.close2;
 
-            hopeCheckBoxRemoveExtraSpaces.Checked = Program.config.scanResult.removeExtraSpaces;
-            hopeCheckBoxDeleteEmptyLines.Checked = Program.config.scanResult.deleteEmptyLines;
-            hopeCheckBoxDeleteLinesWithoutLetters.Checked = Program.config.scanResult.deleteLinesWithoutLetters;
+            hopeCheckBoxRemoveExtraSpaces.Checked = Program.settings.scanResult.removeExtraSpaces;
+            hopeCheckBoxDeleteEmptyLines.Checked = Program.settings.scanResult.deleteEmptyLines;
+            hopeCheckBoxDeleteLinesWithoutLetters.Checked = Program.settings.scanResult.deleteLinesWithoutLetters;
         }
 
         private void imageButtonClose_Click(object sender, EventArgs e)
@@ -36,20 +36,20 @@ namespace SceenshotTextRecognizer.GUI.Settings
 
         private void hopeCheckBoxRemoveExtraSpaces_CheckedChanged(object sender, EventArgs e)
         {
-            Program.config.scanResult.removeExtraSpaces = hopeCheckBoxRemoveExtraSpaces.Checked;
-            Config.Save(Program.config);
+            Program.settings.scanResult.removeExtraSpaces = hopeCheckBoxRemoveExtraSpaces.Checked;
+            Data.Settings.Save(Program.settings);
         }
 
         private void hopeCheckBoxDeleteEmptyLines_CheckedChanged(object sender, EventArgs e)
         {
-            Program.config.scanResult.deleteEmptyLines = hopeCheckBoxDeleteEmptyLines.Checked;
-            Config.Save(Program.config);
+            Program.settings.scanResult.deleteEmptyLines = hopeCheckBoxDeleteEmptyLines.Checked;
+            Data.Settings.Save(Program.settings);
         }
 
         private void hopeCheckBoxDeleteLinesWithoutLetters_CheckedChanged(object sender, EventArgs e)
         {
-            Program.config.scanResult.deleteLinesWithoutLetters = hopeCheckBoxDeleteLinesWithoutLetters.Checked;
-            Config.Save(Program.config);
+            Program.settings.scanResult.deleteLinesWithoutLetters = hopeCheckBoxDeleteLinesWithoutLetters.Checked;
+            Data.Settings.Save(Program.settings);
         }
     }
 }

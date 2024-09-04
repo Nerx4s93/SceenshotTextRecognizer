@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomForm.cs" />
-    <Compile Include="Data\Config.cs" />
+    <Compile Include="Data\Settings.cs" />
     <Compile Include="Data\Setting\ScanResult.cs" />
     <Compile Include="Data\Setting\SelectArea.cs" />
     <Compile Include="Data\Setting\TypeAreaSelection.cs" />
