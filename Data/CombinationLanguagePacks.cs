@@ -11,6 +11,7 @@ namespace SceenshotTextRecognizer.Data
         {
 
         }
+
         public CombinationLanguagePacks(string name, List<string> models)
         {
             this.name = name;
