@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,6 +7,7 @@ using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
 using SceenshotTextRecognizer.GUI.Settings;
 using SceenshotTextRecognizer.Properties;
+using SceenshotTextRecognizer.Utils;
 
 using Microsoft.Win32;
 using ReaLTaiizor.Child.Crown;

@@ -136,9 +136,9 @@
     <Compile Include="GUI\Fon.Designer.cs">
       <DependentUpon>Fon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GlobalKeyboardHook.cs" />
+    <Compile Include="Utils\GlobalKeyboardHook.cs" />
     <Compile Include="Data\Model.cs" />
-    <Compile Include="Screen\OnTopControl.cs" />
+    <Compile Include="Utils\OnTopControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />

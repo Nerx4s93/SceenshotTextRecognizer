@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace SceenshotTextRecognizer
+namespace SceenshotTextRecognizer.Utils
 {
     /// <summary>
     /// A class that manages a global low level keyboard hook
