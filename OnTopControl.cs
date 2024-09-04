@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace WorkingScreen
+namespace SceenshotTextRecognizer
 {
     public class OnTopControl : IDisposable
     {

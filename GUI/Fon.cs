@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using WorkingScreen;
 using System.Drawing;
 using System;
 using SceenshotTextRecognizer.Data;
