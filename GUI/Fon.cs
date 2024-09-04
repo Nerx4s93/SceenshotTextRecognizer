@@ -25,23 +25,9 @@ namespace SceenshotTextRecognizer.GUI
             DoubleBuffered = true;
         }
 
-        private Bitmap TakeScreenshot()
-        {
-            var screenBounds = Screen.PrimaryScreen.Bounds;
-
-            var screenshot = new Bitmap(screenBounds.Width, screenBounds.Height);
-
-            using (Graphics graphics = Graphics.FromImage(screenshot))
-            {
-                graphics.CopyFromScreen(screenBounds.X, screenBounds.Y, 0, 0, screenBounds.Size);
-            }
-
-            return screenshot;
-        }
-
         private void InitializeImage()
         {
-            originalImage = TakeScreenshot();
+            originalImage = Screenshot.Take();
 
             ClientSize = new Size(originalImage.Width, originalImage.Height);
 

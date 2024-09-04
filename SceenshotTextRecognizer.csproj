@@ -145,6 +145,7 @@
     <Compile Include="UI\ImageButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utils\Screenshot.cs" />
     <EmbeddedResource Include="GUI\MessageBoxes\DownloadModel.resx">
       <DependentUpon>DownloadModel.cs</DependentUpon>
     </EmbeddedResource>
