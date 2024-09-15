@@ -6,9 +6,6 @@ namespace SceenshotTextRecognizer.UI
 {
     public class ImageButton : ButtonBase
     {
-        private Image _imageDeffault;
-        private Image _imageOnMouseEnter;
-
         private bool _onMouseEnter;
 
         public ImageButton()
@@ -16,37 +13,9 @@ namespace SceenshotTextRecognizer.UI
             DoubleBuffered = true;
         }
 
-        public Image ImageNoHovered
-        {
-            get
-            {
-                return _imageDeffault;
-            }
-            set
-            {
-                if (_imageDeffault != value)
-                {
-                    _imageDeffault = value;
-                    Invalidate();
-                }
-            }
-        }
+        public Image ImageDeffault { get; set; }
 
-        public Image ImageOnHovered
-        {
-            get
-            {
-                return _imageOnMouseEnter;
-            }
-            set
-            {
-                if (_imageOnMouseEnter != value)
-                {
-                    _imageOnMouseEnter = value;
-                    Invalidate();
-                }
-            }
-        }
+        public Image ImageOnMouseEnter { get; set; }
 
         protected override void OnMouseEnter(EventArgs eventargs)
         {
@@ -62,13 +31,13 @@ namespace SceenshotTextRecognizer.UI
 
         protected override void OnPaint(PaintEventArgs pevent)
         {
-            if (_onMouseEnter && _imageOnMouseEnter != null)
+            if (_onMouseEnter && ImageOnMouseEnter != null)
             {
-                pevent.Graphics.DrawImage(_imageOnMouseEnter, 0, 0, ClientSize.Width, ClientSize.Height);
+                pevent.Graphics.DrawImage(ImageOnMouseEnter, 0, 0, ClientSize.Width, ClientSize.Height);
             }
-            else if (_imageDeffault != null)
+            else if (ImageDeffault != null)
             {
-                pevent.Graphics.DrawImage(_imageDeffault, 0, 0, ClientSize.Width, ClientSize.Height);
+                pevent.Graphics.DrawImage(ImageDeffault, 0, 0, ClientSize.Width, ClientSize.Height);
             }
             else
             {
