@@ -12,23 +12,8 @@ namespace SceenshotTextRecognizer.GUI.Settings
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
 
-            if (Program.settings.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
-            {
-                hopeCheckBoxSelectTypeClamping.Checked = true;
-            }
-            else
-            {
-                hopeCheckBoxSelectTypePKMLKM.Checked = true;
-            }
-
-            if (Program.settings.selectArea.typeFon == TypeFon.Black)
-            {
-                hopeCheckBoxFonTypeBlack.Checked = true;
-            }
-            else
-            {
-                hopeCheckBoxFonTypeNone.Checked = true;
-            }
+            hopeCheckBoxSelectTypeClamping.Checked = Program.settings.selectArea.typeAreaSelection == TypeAreaSelection.Clamping;
+            hopeCheckBoxFonTypeBlack.Checked = Program.settings.selectArea.typeFon == TypeFon.Black;
 
             FormUpdate();
         }
