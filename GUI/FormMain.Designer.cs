@@ -470,6 +470,8 @@
             this.Controls.Add(this.hopeTabPage1);
             this.MaximumSize = new System.Drawing.Size(1920, 1040);
             this.Name = "FormMain";
+            this.ShowButtonClose = true;
+            this.ShowButtonMinimized = true;
             this.Text = "ScreenshotTextRecognizer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
