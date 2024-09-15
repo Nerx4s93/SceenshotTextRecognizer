@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.Title = new ReaLTaiizor.Forms.HopeForm();
-            this.imageButtonFormMin = new SceenshotTextRecognizer.UI.ImageButton();
-            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
+            this.ButtonMinimized = new SceenshotTextRecognizer.UI.ImageButton();
+            this.ButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.Title.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,8 +40,8 @@
             this.Title.ControlBoxColorH = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
             this.Title.ControlBoxColorHC = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
             this.Title.ControlBoxColorN = System.Drawing.Color.White;
-            this.Title.Controls.Add(this.imageButtonFormMin);
-            this.Title.Controls.Add(this.imageButtonClose);
+            this.Title.Controls.Add(this.ButtonMinimized);
+            this.Title.Controls.Add(this.ButtonClose);
             this.Title.Cursor = System.Windows.Forms.Cursors.Default;
             this.Title.Dock = System.Windows.Forms.DockStyle.Top;
             this.Title.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -54,29 +54,29 @@
             this.Title.Text = "Title";
             this.Title.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
             // 
-            // imageButtonFormMin
+            // ButtonMinimized
             // 
-            this.imageButtonFormMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageButtonFormMin.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.min;
-            this.imageButtonFormMin.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.min2;
-            this.imageButtonFormMin.Location = new System.Drawing.Point(573, 8);
-            this.imageButtonFormMin.Name = "imageButtonFormMin";
-            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonFormMin.TabIndex = 6;
-            this.imageButtonFormMin.Text = "imageButton1";
-            this.imageButtonFormMin.UseVisualStyleBackColor = true;
+            this.ButtonMinimized.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonMinimized.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.min;
+            this.ButtonMinimized.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.min2;
+            this.ButtonMinimized.Location = new System.Drawing.Point(573, 8);
+            this.ButtonMinimized.Name = "ButtonMinimized";
+            this.ButtonMinimized.Size = new System.Drawing.Size(24, 24);
+            this.ButtonMinimized.TabIndex = 6;
+            this.ButtonMinimized.Text = "imageButton1";
+            this.ButtonMinimized.UseVisualStyleBackColor = true;
             // 
-            // imageButtonClose
+            // ButtonClose
             // 
-            this.imageButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
-            this.imageButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
-            this.imageButtonClose.Location = new System.Drawing.Point(597, 8);
-            this.imageButtonClose.Name = "imageButtonClose";
-            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonClose.TabIndex = 5;
-            this.imageButtonClose.Text = "imageButton1";
-            this.imageButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
+            this.ButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
+            this.ButtonClose.Location = new System.Drawing.Point(597, 8);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.Size = new System.Drawing.Size(24, 24);
+            this.ButtonClose.TabIndex = 5;
+            this.ButtonClose.Text = "imageButton1";
+            this.ButtonClose.UseVisualStyleBackColor = true;
             // 
             // BaseForm
             // 
@@ -99,7 +99,7 @@
         #endregion
 
         private ReaLTaiizor.Forms.HopeForm Title;
-        private UI.ImageButton imageButtonFormMin;
-        private UI.ImageButton imageButtonClose;
+        private UI.ImageButton ButtonMinimized;
+        private UI.ImageButton ButtonClose;
     }
 }
