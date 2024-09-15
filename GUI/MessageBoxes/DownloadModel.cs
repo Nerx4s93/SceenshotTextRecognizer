@@ -11,7 +11,7 @@ using SceenshotTextRecognizer.Data;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
-    public partial class DownloadModel : Form
+    public partial class DownloadModel : BaseForm
     {
         private class Item
         {
@@ -109,7 +109,7 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                 _models = models;
                 iModel = 0;
 
-                imageButtonClose.Visible = false;
+                ShowButtonClose = false;
                 Download(models[iModel], iModel);
             }
         }
@@ -194,12 +194,10 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                             formMain.UpdateForm();
                         });
 
-                        hopeForm.Text = "Загрузка отменена";
                         Text = "Загрузка отменена";
                     }
                     else
                     {
-                        hopeForm.Text = "Загрузка завершена";
                         Text = "Загрузка завершена";
 
                         labelStatusDownloadedModels.Text = $"Загружено моделей: {_models.Count}/{_models.Count}";
@@ -248,11 +246,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             {
                 hopeButtonStartDownload.Enabled = false;
             }
-        }
-
-        private void imageButtonClose_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

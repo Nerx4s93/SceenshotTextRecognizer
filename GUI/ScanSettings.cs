@@ -13,7 +13,7 @@ using Tesseract;
 
 namespace SceenshotTextRecognizer.GUI
 {
-    public partial class ScanSettings : Form
+    public partial class ScanSettings : BaseForm
     {
         public ScanSettings(Bitmap bitmap)
         {
@@ -174,11 +174,6 @@ namespace SceenshotTextRecognizer.GUI
                     crownListViewSelectModels.Items.Add(listViewItem);  
                 }
             }
-        }
-
-        private void imageButtonClose_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.hopeForm1 = new ReaLTaiizor.Forms.HopeForm();
-            this.imageButtonFormMin = new SceenshotTextRecognizer.UI.ImageButton();
-            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeButtonBrowseDirectory = new ReaLTaiizor.Controls.HopeButton();
             this.hopeTextBoxDirectoryPath = new ReaLTaiizor.Controls.HopeTextBox();
             this.bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
@@ -39,54 +36,7 @@
             this.bigLabel3 = new ReaLTaiizor.Controls.BigLabel();
             this.hopeComboBoxFileExtension = new ReaLTaiizor.Controls.HopeComboBox();
             this.hopeButtonSave = new ReaLTaiizor.Controls.HopeButton();
-            this.hopeForm1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // hopeForm1
-            // 
-            this.hopeForm1.ControlBox = false;
-            this.hopeForm1.ControlBoxColorH = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.hopeForm1.ControlBoxColorHC = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
-            this.hopeForm1.ControlBoxColorN = System.Drawing.Color.White;
-            this.hopeForm1.Controls.Add(this.imageButtonFormMin);
-            this.hopeForm1.Controls.Add(this.imageButtonClose);
-            this.hopeForm1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.hopeForm1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hopeForm1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hopeForm1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(246)))), ((int)(((byte)(252)))));
-            this.hopeForm1.Image = null;
-            this.hopeForm1.Location = new System.Drawing.Point(0, 0);
-            this.hopeForm1.Name = "hopeForm1";
-            this.hopeForm1.Size = new System.Drawing.Size(629, 40);
-            this.hopeForm1.TabIndex = 0;
-            this.hopeForm1.Text = "Сохранить результат";
-            this.hopeForm1.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            // 
-            // imageButtonFormMin
-            // 
-            this.imageButtonFormMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageButtonFormMin.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.min;
-            this.imageButtonFormMin.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.min2;
-            this.imageButtonFormMin.Location = new System.Drawing.Point(569, 8);
-            this.imageButtonFormMin.Name = "imageButtonFormMin";
-            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonFormMin.TabIndex = 10;
-            this.imageButtonFormMin.Text = "imageButton1";
-            this.imageButtonFormMin.UseVisualStyleBackColor = true;
-            this.imageButtonFormMin.Click += new System.EventHandler(this.imageButtonFormMin_Click);
-            // 
-            // imageButtonClose
-            // 
-            this.imageButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.imageButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
-            this.imageButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
-            this.imageButtonClose.Location = new System.Drawing.Point(593, 8);
-            this.imageButtonClose.Name = "imageButtonClose";
-            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonClose.TabIndex = 9;
-            this.imageButtonClose.Text = "imageButton1";
-            this.imageButtonClose.UseVisualStyleBackColor = true;
-            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // hopeButtonBrowseDirectory
             // 
@@ -234,7 +184,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 263);
-            this.ControlBox = false;
             this.Controls.Add(this.hopeButtonSave);
             this.Controls.Add(this.hopeComboBoxFileExtension);
             this.Controls.Add(this.bigLabel3);
@@ -243,24 +192,24 @@
             this.Controls.Add(this.bigLabel1);
             this.Controls.Add(this.hopeTextBoxDirectoryPath);
             this.Controls.Add(this.hopeButtonBrowseDirectory);
-            this.Controls.Add(this.hopeForm1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1920, 1040);
-            this.MinimumSize = new System.Drawing.Size(190, 40);
             this.Name = "SaveResult";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ShowButtonMinimized = false;
             this.Text = "SaveResult";
-            this.hopeForm1.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.hopeButtonBrowseDirectory, 0);
+            this.Controls.SetChildIndex(this.hopeTextBoxDirectoryPath, 0);
+            this.Controls.SetChildIndex(this.bigLabel1, 0);
+            this.Controls.SetChildIndex(this.hopeTextBoxFileName, 0);
+            this.Controls.SetChildIndex(this.bigLabel2, 0);
+            this.Controls.SetChildIndex(this.bigLabel3, 0);
+            this.Controls.SetChildIndex(this.hopeComboBoxFileExtension, 0);
+            this.Controls.SetChildIndex(this.hopeButtonSave, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ReaLTaiizor.Forms.HopeForm hopeForm1;
-        private UI.ImageButton imageButtonFormMin;
-        private UI.ImageButton imageButtonClose;
         private ReaLTaiizor.Controls.HopeButton hopeButtonBrowseDirectory;
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBoxDirectoryPath;
         private ReaLTaiizor.Controls.BigLabel bigLabel1;

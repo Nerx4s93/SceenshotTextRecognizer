@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace SceenshotTextRecognizer.GUI.Settings
 {
-    public partial class ScanResultF : Form
+    public partial class ScanResultF : BaseForm
     {
         public ScanResultF()
         {
@@ -13,16 +12,6 @@ namespace SceenshotTextRecognizer.GUI.Settings
             hopeCheckBoxRemoveExtraSpaces.Checked = Program.settings.scanResult.removeExtraSpaces;
             hopeCheckBoxDeleteEmptyLines.Checked = Program.settings.scanResult.deleteEmptyLines;
             hopeCheckBoxDeleteLinesWithoutLetters.Checked = Program.settings.scanResult.deleteLinesWithoutLetters;
-        }
-
-        private void imageButtonClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void imageButtonFormMin_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
 
         private void hopeCheckBoxRemoveExtraSpaces_CheckedChanged(object sender, EventArgs e)

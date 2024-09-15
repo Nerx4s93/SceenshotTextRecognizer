@@ -8,7 +8,7 @@ using ReaLTaiizor.Child.Crown;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
-    public partial class EditCombinationLanguagePack : Form
+    public partial class EditCombinationLanguagePack : BaseForm
     {
         public EditCombinationLanguagePack(FormMain formMain)
         {
@@ -206,25 +206,17 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             {
                 if (_dontSave)
                 {
-                    hopeForm.Text = $"Языковая комбинация \"{_name}\"*";
                     Text = $"Языковая комбинация \"{_name}\"*";
                 }
                 else
                 {
-                    hopeForm.Text = $"Языковая комбинация \"{_name}\"";
                     Text = $"Языковая комбинация \"{_name}\"";
                 }
             }
             else
             {
-                hopeForm.Text = $"Создание новой комбинации";
                 Text = $"Создание новой комбинации";
             }
-        }
-
-        private void imageButtonClose_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

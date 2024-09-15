@@ -5,7 +5,7 @@ using SceenshotTextRecognizer.Data.Setting;
 
 namespace SceenshotTextRecognizer.GUI.Settings
 {
-    public partial class SelectAreaF : Form
+    public partial class SelectAreaF : BaseForm
     {
         public SelectAreaF()
         {
@@ -17,20 +17,6 @@ namespace SceenshotTextRecognizer.GUI.Settings
 
             FormUpdate();
         }
-
-        #region Top
-
-        private void imageButtonFormMin_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void imageButtonClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        #endregion
 
         #region Select Type
 

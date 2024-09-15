@@ -1,8 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using System;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
-    public partial class ImageTextResult : Form
+    public partial class ImageTextResult : BaseForm
     {
         public ImageTextResult(string text)
         {
@@ -12,22 +12,8 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             dungeonRichTextBoxText.Text = text;
         }
 
-        public bool saveProcess;
-
-        private void imageButtonClose_Click(object sender, System.EventArgs e)
+        private void hopeButtonSave_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        private void imageButtonFormMin_Click(object sender, System.EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void hopeButtonSave_Click(object sender, System.EventArgs e)
-        {
-            saveProcess = true;
-
             var saveResult = new SaveResult(this, dungeonRichTextBoxText.Text);
             saveResult.Show();
         }

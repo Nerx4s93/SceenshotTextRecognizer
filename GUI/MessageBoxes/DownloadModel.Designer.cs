@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.hopeForm = new ReaLTaiizor.Forms.HopeForm();
-            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.paneDownload = new System.Windows.Forms.Panel();
             this.hopeButtonClose = new ReaLTaiizor.Controls.HopeButton();
             this.lostProgressBarDownloadModel = new ReaLTaiizor.Controls.LostProgressBar();
@@ -47,49 +44,9 @@
             this.hopeTextBoxSearchLanguageModel = new ReaLTaiizor.Controls.HopeTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkedListBoxLanguages = new System.Windows.Forms.CheckedListBox();
-            this.hopeForm.SuspendLayout();
             this.paneDownload.SuspendLayout();
             this.panelSelectDownload.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // hopeForm
-            // 
-            this.hopeForm.ControlBox = false;
-            this.hopeForm.ControlBoxColorH = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.hopeForm.ControlBoxColorHC = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
-            this.hopeForm.ControlBoxColorN = System.Drawing.Color.White;
-            this.hopeForm.Controls.Add(this.imageButtonClose);
-            this.hopeForm.Controls.Add(this.panel1);
-            this.hopeForm.Cursor = System.Windows.Forms.Cursors.Default;
-            this.hopeForm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hopeForm.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hopeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(246)))), ((int)(((byte)(252)))));
-            this.hopeForm.Image = null;
-            this.hopeForm.Location = new System.Drawing.Point(0, 0);
-            this.hopeForm.Name = "hopeForm";
-            this.hopeForm.Size = new System.Drawing.Size(534, 40);
-            this.hopeForm.TabIndex = 0;
-            this.hopeForm.Text = "Загрузка языков";
-            this.hopeForm.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            // 
-            // imageButtonClose
-            // 
-            this.imageButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
-            this.imageButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
-            this.imageButtonClose.Location = new System.Drawing.Point(499, 8);
-            this.imageButtonClose.Name = "imageButtonClose";
-            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonClose.TabIndex = 2;
-            this.imageButtonClose.Text = "imageButton1";
-            this.imageButtonClose.UseVisualStyleBackColor = true;
-            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(0, 40);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(675, 314);
-            this.panel1.TabIndex = 1;
             // 
             // paneDownload
             // 
@@ -354,17 +311,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(534, 276);
-            this.ControlBox = false;
             this.Controls.Add(this.panelSelectDownload);
             this.Controls.Add(this.paneDownload);
-            this.Controls.Add(this.hopeForm);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1920, 1040);
-            this.MinimumSize = new System.Drawing.Size(190, 40);
             this.Name = "DownloadModel";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ShowButtonMinimized = false;
             this.Text = "DownloadMode";
-            this.hopeForm.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.paneDownload, 0);
+            this.Controls.SetChildIndex(this.panelSelectDownload, 0);
             this.paneDownload.ResumeLayout(false);
             this.paneDownload.PerformLayout();
             this.panelSelectDownload.ResumeLayout(false);
@@ -374,9 +328,6 @@
         }
 
         #endregion
-
-        private ReaLTaiizor.Forms.HopeForm hopeForm;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel paneDownload;
         private ReaLTaiizor.Controls.MaterialCheckBox materialCheckBox1;
         private ReaLTaiizor.Controls.MaterialCheckBox materialCheckBox2;
@@ -392,7 +343,6 @@
         private System.Windows.Forms.Label labelStatusModel;
         private ReaLTaiizor.Controls.LostProgressBar lostProgressBarDownloadedModels;
         private System.Windows.Forms.Label labelStatusDownloadedModels;
-        private UI.ImageButton imageButtonClose;
         private System.Windows.Forms.Panel panelSelectDownload;
     }
 }

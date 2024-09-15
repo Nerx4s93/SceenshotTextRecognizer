@@ -8,7 +8,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
-    public partial class SaveResult : Form
+    public partial class SaveResult : BaseForm
     {
         public SaveResult(ImageTextResult form, string text)
         {
@@ -75,17 +75,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
             }
 
             MessageBox.Show("Файл успешно сохранён", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void imageButtonClose_Click(object sender, EventArgs e)
-        {
-            parant.saveProcess = false;
-            Close();
-        }
-
-        private void imageButtonFormMin_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
     }
 }
