@@ -65,8 +65,10 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="Tesseract, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Tesseract.5.2.0\lib\net48\Tesseract.dll</HintPath>
     </Reference>
@@ -79,6 +81,12 @@
     <Compile Include="Data\Setting\SelectArea.cs" />
     <Compile Include="Data\Setting\TypeAreaSelection.cs" />
     <Compile Include="Data\Setting\TypeFon.cs" />
+    <Compile Include="GUI\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\MessageBoxes\DownloadModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +154,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utils\Screenshot.cs" />
+    <EmbeddedResource Include="GUI\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\MessageBoxes\DownloadModel.resx">
       <DependentUpon>DownloadModel.cs</DependentUpon>
     </EmbeddedResource>
