@@ -56,6 +56,11 @@ namespace SceenshotTextRecognizer.GUI
             }
         }
 
+        private void BaseForm_Shown(object sender, EventArgs e)
+        {
+            UpdateTitleButtonLocation();
+        }
+
         private void ButtonMinimized_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;

@@ -93,6 +93,7 @@
             this.Name = "BaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseForm";
+            this.Shown += new System.EventHandler(this.BaseForm_Shown);
             this.Title.ResumeLayout(false);
             this.ResumeLayout(false);
 
