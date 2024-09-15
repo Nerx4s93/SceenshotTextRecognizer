@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.hopeForm1 = new ReaLTaiizor.Forms.HopeForm();
-            this.imageButtonFormMin = new SceenshotTextRecognizer.UI.ImageButton();
-            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeTabPage1 = new ReaLTaiizor.Controls.HopeTabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.hopeButtonSettingsScanResult = new ReaLTaiizor.Controls.HopeButton();
@@ -53,56 +50,11 @@
             this.hopeButtonNewCombination = new ReaLTaiizor.Controls.HopeButton();
             this.hopeButtonEditCombination = new ReaLTaiizor.Controls.HopeButton();
             this.crownListViewCombinationOfLanguagePacks = new ReaLTaiizor.Controls.CrownListView();
-            this.hopeForm1.SuspendLayout();
             this.hopeTabPage1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // hopeForm1
-            // 
-            this.hopeForm1.ControlBox = false;
-            this.hopeForm1.ControlBoxColorH = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.hopeForm1.ControlBoxColorHC = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
-            this.hopeForm1.ControlBoxColorN = System.Drawing.Color.White;
-            this.hopeForm1.Controls.Add(this.imageButtonFormMin);
-            this.hopeForm1.Controls.Add(this.imageButtonClose);
-            this.hopeForm1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.hopeForm1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hopeForm1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.hopeForm1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(246)))), ((int)(((byte)(252)))));
-            this.hopeForm1.Image = null;
-            this.hopeForm1.Location = new System.Drawing.Point(0, 0);
-            this.hopeForm1.Name = "hopeForm1";
-            this.hopeForm1.Size = new System.Drawing.Size(631, 40);
-            this.hopeForm1.TabIndex = 0;
-            this.hopeForm1.Text = "SceenshotTextRecognizer";
-            this.hopeForm1.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            // 
-            // imageButtonFormMin
-            // 
-            this.imageButtonFormMin.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.min;
-            this.imageButtonFormMin.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.min2;
-            this.imageButtonFormMin.Location = new System.Drawing.Point(573, 8);
-            this.imageButtonFormMin.Name = "imageButtonFormMin";
-            this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonFormMin.TabIndex = 6;
-            this.imageButtonFormMin.Text = "imageButton1";
-            this.imageButtonFormMin.UseVisualStyleBackColor = true;
-            this.imageButtonFormMin.Click += new System.EventHandler(this.imageButtonFormMin_Click);
-            // 
-            // imageButtonClose
-            // 
-            this.imageButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
-            this.imageButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
-            this.imageButtonClose.Location = new System.Drawing.Point(597, 8);
-            this.imageButtonClose.Name = "imageButtonClose";
-            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonClose.TabIndex = 5;
-            this.imageButtonClose.Text = "imageButton1";
-            this.imageButtonClose.UseVisualStyleBackColor = true;
-            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // hopeTabPage1
             // 
@@ -515,19 +467,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(631, 350);
-            this.ControlBox = false;
             this.Controls.Add(this.hopeTabPage1);
-            this.Controls.Add(this.hopeForm1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1920, 1040);
-            this.MinimumSize = new System.Drawing.Size(190, 40);
             this.Name = "FormMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ScreenshotTextRecognizer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
-            this.hopeForm1.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.hopeTabPage1, 0);
             this.hopeTabPage1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -540,8 +487,6 @@
         }
 
         #endregion
-
-        private ReaLTaiizor.Forms.HopeForm hopeForm1;
         private ReaLTaiizor.Controls.HopeTabPage hopeTabPage1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -562,8 +507,6 @@
         private System.Windows.Forms.Label label2;
         private ReaLTaiizor.Controls.HopeTextBox hopeTextBoxSearchCombinationOfLanguagePacks;
         private System.Windows.Forms.Label label3;
-        private UI.ImageButton imageButtonClose;
-        private UI.ImageButton imageButtonFormMin;
         private ReaLTaiizor.Controls.HopeButton hopeButtonSettingsScanResult;
         private ReaLTaiizor.Controls.HopeButton hopeButtonSettingsSelectArea;
     }

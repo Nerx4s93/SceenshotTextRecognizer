@@ -13,7 +13,7 @@ using ReaLTaiizor.Child.Crown;
 
 namespace SceenshotTextRecognizer.GUI
 {
-    public partial class FormMain : Form
+    public partial class FormMain : BaseForm
     {
         public FormMain()
         {
@@ -82,19 +82,6 @@ namespace SceenshotTextRecognizer.GUI
             {
                 _selectAreaF.FormKeyDown(e.KeyData);
             }
-        }
-
-        #endregion
-        #region Top
-
-        private void imageButtonClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void imageButtonFormMin_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
 
         #endregion
