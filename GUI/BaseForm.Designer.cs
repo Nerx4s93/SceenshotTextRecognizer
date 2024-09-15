@@ -65,6 +65,7 @@
             this.ButtonMinimized.TabIndex = 6;
             this.ButtonMinimized.Text = "imageButton1";
             this.ButtonMinimized.UseVisualStyleBackColor = true;
+            this.ButtonMinimized.Click += new System.EventHandler(this.ButtonMinimized_Click);
             // 
             // ButtonClose
             // 
@@ -77,6 +78,7 @@
             this.ButtonClose.TabIndex = 5;
             this.ButtonClose.Text = "imageButton1";
             this.ButtonClose.UseVisualStyleBackColor = true;
+            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
             // BaseForm
             // 

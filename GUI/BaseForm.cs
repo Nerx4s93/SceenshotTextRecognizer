@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace SceenshotTextRecognizer.GUI
 {
@@ -21,6 +22,16 @@ namespace SceenshotTextRecognizer.GUI
                 Title.Text = value;
                 Title.Invalidate();
             }
+        }
+
+        private void ButtonMinimized_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
