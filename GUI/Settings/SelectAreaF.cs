@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.Data.Setting;
-using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI.Settings
 {
@@ -13,12 +11,6 @@ namespace SceenshotTextRecognizer.GUI.Settings
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
-
-            imageButtonFormMin.ImageNoHovered = Resources.min;
-            imageButtonFormMin.ImageOnHovered = Resources.min2;
-
-            imageButtonClose.ImageNoHovered = Resources.close;
-            imageButtonClose.ImageOnHovered = Resources.close2;
 
             if (Program.settings.selectArea.typeAreaSelection == TypeAreaSelection.Clamping)
             {

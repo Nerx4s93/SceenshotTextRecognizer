@@ -82,8 +82,8 @@
             // 
             // imageButtonFormMin
             // 
-            this.imageButtonFormMin.ImageNoHovered = null;
-            this.imageButtonFormMin.ImageOnHovered = null;
+            this.imageButtonFormMin.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.min;
+            this.imageButtonFormMin.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.min2;
             this.imageButtonFormMin.Location = new System.Drawing.Point(573, 8);
             this.imageButtonFormMin.Name = "imageButtonFormMin";
             this.imageButtonFormMin.Size = new System.Drawing.Size(24, 24);
@@ -94,8 +94,8 @@
             // 
             // imageButtonClose
             // 
-            this.imageButtonClose.ImageNoHovered = null;
-            this.imageButtonClose.ImageOnHovered = null;
+            this.imageButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
+            this.imageButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
             this.imageButtonClose.Location = new System.Drawing.Point(597, 8);
             this.imageButtonClose.Name = "imageButtonClose";
             this.imageButtonClose.Size = new System.Drawing.Size(24, 24);

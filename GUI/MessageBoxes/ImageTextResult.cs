@@ -1,7 +1,5 @@
 ﻿using System.Windows.Forms;
 
-using SceenshotTextRecognizer.Properties;
-
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
     public partial class ImageTextResult : Form
@@ -10,12 +8,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
-
-            imageButtonFormMin.ImageNoHovered = Resources.min;
-            imageButtonFormMin.ImageOnHovered = Resources.min2;
-
-            imageButtonClose.ImageNoHovered = Resources.close;
-            imageButtonClose.ImageOnHovered = Resources.close2;
 
             dungeonRichTextBoxText.Text = text;
         }

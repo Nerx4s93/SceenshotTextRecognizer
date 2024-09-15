@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using SceenshotTextRecognizer.Properties;
-
 namespace SceenshotTextRecognizer.GUI.Settings
 {
     public partial class ScanResultF : Form
@@ -11,12 +9,6 @@ namespace SceenshotTextRecognizer.GUI.Settings
         {
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
-
-            imageButtonFormMin.ImageNoHovered = Resources.min;
-            imageButtonFormMin.ImageOnHovered = Resources.min2;
-
-            imageButtonClose.ImageNoHovered = Resources.close;
-            imageButtonClose.ImageOnHovered = Resources.close2;
 
             hopeCheckBoxRemoveExtraSpaces.Checked = Program.settings.scanResult.removeExtraSpaces;
             hopeCheckBoxDeleteEmptyLines.Checked = Program.settings.scanResult.deleteEmptyLines;

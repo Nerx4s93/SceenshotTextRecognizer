@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
 using SceenshotTextRecognizer.GUI.Settings;
-using SceenshotTextRecognizer.Properties;
 using SceenshotTextRecognizer.Utils;
 
 using Microsoft.Win32;
@@ -22,12 +21,6 @@ namespace SceenshotTextRecognizer.GUI
             CustomForm.RoundOffTheEdges(this);
 
             UpdateForm();
-
-            imageButtonFormMin.ImageNoHovered = Resources.min;
-            imageButtonFormMin.ImageOnHovered = Resources.min2;
-
-            imageButtonClose.ImageNoHovered = Resources.close;
-            imageButtonClose.ImageOnHovered = Resources.close2;
 
             hopeCheckBoxShowOnOtherWindows.Checked = Program.settings.showOnOtherWindows;
             hopeCheckBoxWorkInFon.Checked = Program.settings.workInFon;

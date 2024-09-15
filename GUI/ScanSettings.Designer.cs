@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.hopeForm1 = new ReaLTaiizor.Forms.HopeForm();
+            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeTextBoxFind = new ReaLTaiizor.Controls.HopeTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.hopeTextBoxSelected = new ReaLTaiizor.Controls.HopeTextBox();
             this.crownListViewSelectModels = new ReaLTaiizor.Controls.CrownListView();
             this.hopeButtonScan = new ReaLTaiizor.Controls.HopeButton();
-            this.imageButtonClose = new SceenshotTextRecognizer.UI.ImageButton();
             this.hopeForm1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,18 @@
             this.hopeForm1.TabIndex = 0;
             this.hopeForm1.Text = "Сканировать область";
             this.hopeForm1.ThemeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            // 
+            // imageButtonClose
+            // 
+            this.imageButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
+            this.imageButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
+            this.imageButtonClose.Location = new System.Drawing.Point(346, 8);
+            this.imageButtonClose.Name = "imageButtonClose";
+            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
+            this.imageButtonClose.TabIndex = 6;
+            this.imageButtonClose.Text = "imageButton1";
+            this.imageButtonClose.UseVisualStyleBackColor = true;
+            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // hopeTextBoxFind
             // 
@@ -159,18 +171,6 @@
             this.hopeButtonScan.TextColor = System.Drawing.Color.White;
             this.hopeButtonScan.WarningColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(162)))), ((int)(((byte)(60)))));
             this.hopeButtonScan.Click += new System.EventHandler(this.hopeButtonScan_Click);
-            // 
-            // imageButtonClose
-            // 
-            this.imageButtonClose.ImageNoHovered = null;
-            this.imageButtonClose.ImageOnHovered = null;
-            this.imageButtonClose.Location = new System.Drawing.Point(346, 8);
-            this.imageButtonClose.Name = "imageButtonClose";
-            this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
-            this.imageButtonClose.TabIndex = 6;
-            this.imageButtonClose.Text = "imageButton1";
-            this.imageButtonClose.UseVisualStyleBackColor = true;
-            this.imageButtonClose.Click += new System.EventHandler(this.imageButtonClose_Click);
             // 
             // ScanSettings
             // 

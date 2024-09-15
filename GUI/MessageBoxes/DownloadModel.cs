@@ -8,7 +8,6 @@ using System.Threading;
 using System.Windows.Forms;
 
 using SceenshotTextRecognizer.Data;
-using SceenshotTextRecognizer.Properties;
 
 namespace SceenshotTextRecognizer.GUI.MessageBoxes
 {
@@ -37,9 +36,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
                 items.Add(new Item(model, false));
 
             UpdateForm();
-
-            imageButtonClose.ImageNoHovered = Resources.close;
-            imageButtonClose.ImageOnHovered = Resources.close2;
         }
 
         private FormMain formMain;

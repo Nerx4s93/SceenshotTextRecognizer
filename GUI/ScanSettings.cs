@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 using SceenshotTextRecognizer.Data;
 using SceenshotTextRecognizer.GUI.MessageBoxes;
-using SceenshotTextRecognizer.Properties;
 
 using ReaLTaiizor.Child.Crown;
 using Tesseract;
@@ -21,9 +20,6 @@ namespace SceenshotTextRecognizer.GUI
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
             FormUpdate();
-
-            imageButtonClose.ImageNoHovered = Resources.close;
-            imageButtonClose.ImageOnHovered = Resources.close2;
 
             _bitmap = bitmap;
         }

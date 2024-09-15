@@ -2,8 +2,6 @@
 using System.IO;
 using System.Windows.Forms;
 
-using SceenshotTextRecognizer.Properties;
-
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
@@ -19,12 +17,6 @@ namespace SceenshotTextRecognizer.GUI.MessageBoxes
 
             InitializeComponent();
             CustomForm.RoundOffTheEdges(this);
-
-            imageButtonFormMin.ImageNoHovered = Resources.min;
-            imageButtonFormMin.ImageOnHovered = Resources.min2;
-
-            imageButtonClose.ImageNoHovered = Resources.close;
-            imageButtonClose.ImageOnHovered = Resources.close2;
         }
 
         private ImageTextResult parant;

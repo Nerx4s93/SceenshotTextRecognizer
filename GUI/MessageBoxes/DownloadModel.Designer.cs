@@ -74,8 +74,8 @@
             // 
             // imageButtonClose
             // 
-            this.imageButtonClose.ImageNoHovered = null;
-            this.imageButtonClose.ImageOnHovered = null;
+            this.imageButtonClose.ImageDeffault = global::SceenshotTextRecognizer.Properties.Resources.close;
+            this.imageButtonClose.ImageOnMouseEnter = global::SceenshotTextRecognizer.Properties.Resources.close2;
             this.imageButtonClose.Location = new System.Drawing.Point(499, 8);
             this.imageButtonClose.Name = "imageButtonClose";
             this.imageButtonClose.Size = new System.Drawing.Size(24, 24);
