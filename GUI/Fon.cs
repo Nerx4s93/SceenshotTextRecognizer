@@ -112,6 +112,11 @@ namespace SceenshotTextRecognizer.GUI
 
         public void FormKeyDown(Keys key)
         {
+            if (IsDisposed)
+            {
+                return;
+            }
+
             if (key == Program.settings.selectArea.closeSelectArea)
             {
                 var dialogResult = MessageBox.Show("Отменить сканирование области?", "Отмена", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
